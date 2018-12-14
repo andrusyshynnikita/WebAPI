@@ -11,6 +11,7 @@ namespace TestProject.Core.Models
         public int Id { get; set; }
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
+        public bool TaskStatus { get; set; }
 
     }
 }

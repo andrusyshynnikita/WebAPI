@@ -7,9 +7,8 @@ namespace TestProject.Core.ViewModels
 {
     public class ViewModel : MvxViewModel
     {
-        public override async Task Initialize()
-        {
-            await base.Initialize();
-        }
+        private string _TaskName;
+        private bool _TaskStatus;
+
     }
 }

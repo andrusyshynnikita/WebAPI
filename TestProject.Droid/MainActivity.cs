@@ -18,10 +18,8 @@ namespace TestProject.Droid
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.MainLayout);
-
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetActionBar(toolbar);
-            ActionBar.Title = "My Toolbar";
+            
+           
 
 
 
@@ -29,9 +27,6 @@ namespace TestProject.Droid
         }
 
 
-        private void SetActionBar(Toolbar toolbar)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
