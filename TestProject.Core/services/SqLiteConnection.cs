@@ -4,23 +4,23 @@ using SQLite;
 
 //namespace testproject.core.services
 //{
-//    public class SqLiteConnection : ISqLiteConnection
+//    public class sqliteconnection : ISqLiteConnection
 //    {
-//        private readonly SqLiteConnection _datebaseconnection;
+//        private readonly sqliteconnection _datebaseconnection;
 
-//        public SqLiteConnection(ISqLiteDbPath sqlitedbpath)
+//        public sqliteconnection(ISqLiteDbPath sqlitedbpath)
 //        {
 
-//            var path = sqlitedbpath.GetDatebasePath("datebase.db");
+//            var path = sqlitedbpath.getdatebasepath("datebase.db");
 
-//            _datebaseconnection = new SqLiteConnection(path, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.FullMutex | SQLiteOpenFlags.SharedCache); ;
+//            _datebaseconnection = new sqliteconnection(path, sqliteopenflags.readwrite | sqliteopenflags.create | sqliteopenflags.fullmutex | sqliteopenflags.sharedcache); ;
 //        }
 
-//        public SqLiteConnection getdatebaseconnection()
+//        public sqliteconnection getdatebaseconnection()
 //        {
 //            return _datebaseconnection;
 //        }
 
-       
+
 //    }
 //}

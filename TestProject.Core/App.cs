@@ -15,7 +15,7 @@ namespace TestProject.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ViewModels.ViewModel>();
+            RegisterAppStart<ViewModels.FirstViewModel>();
         }
     }
 }

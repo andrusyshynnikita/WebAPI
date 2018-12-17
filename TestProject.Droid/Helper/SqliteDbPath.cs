@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using TestProject.Core;
 using TestProject.Core.Interface;
+using SQLite;
 
 namespace TestProject.Droid
 {

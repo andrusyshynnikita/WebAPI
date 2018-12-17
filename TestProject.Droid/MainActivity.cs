@@ -11,7 +11,7 @@ using Android.Widget;
 namespace TestProject.Droid
 {
     [Activity(Label = "MainActivity", MainLauncher = true)]
-    public class MainActivity : MvxAppCompatActivity<ViewModel>
+    public class MainActivity : MvxAppCompatActivity<FirstViewModel>
     {
         Android.Support.V7.Widget.Toolbar mToolbar;
         
