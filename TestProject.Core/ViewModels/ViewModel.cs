@@ -10,5 +10,6 @@ namespace TestProject.Core.ViewModels
         private string _TaskName;
         private bool _TaskStatus;
 
+
     }
 }

@@ -1,30 +1,26 @@
-﻿using System;
-using TestProject.Core.Interface;
+﻿using TestProject.Core.Interface;
 using SQLite;
-using SQLitePCL;
 
-//namespace TestProject.Core.services
+
+//namespace testproject.core.services
 //{
 //    public class SqLiteConnection : ISqLiteConnection
 //    {
-//        private readonly SqLiteConnection _datebaseConnection;
+//        private readonly SqLiteConnection _datebaseconnection;
 
-//        public SqLiteConnection(ISqLiteDbPath sqLiteDbPath)
+//        public SqLiteConnection(ISqLiteDbPath sqlitedbpath)
 //        {
 
-//            var path = sqLiteDbPath;
+//            var path = sqlitedbpath.GetDatebasePath("datebase.db");
 
-//            _datebaseConnection = new SqLiteConnection(path); ;
+//            _datebaseconnection = new SqLiteConnection(path, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.FullMutex | SQLiteOpenFlags.SharedCache); ;
 //        }
 
-//       public SqLiteConnection GetDatebaseConnection()
+//        public SqLiteConnection getdatebaseconnection()
 //        {
-//            return _datebaseConnection;
+//            return _datebaseconnection;
 //        }
 
-//        SQLiteConnection ISqLiteConnection.GetDatebaseConnection()
-//        {
-//            throw new NotImplementedException();
-//        }
+       
 //    }
 //}

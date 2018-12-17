@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TestProject.Core
+namespace TestProject.Core.Interface
 {
     public interface ISqLiteDbPath
     {

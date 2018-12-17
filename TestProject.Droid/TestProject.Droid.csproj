@@ -180,6 +180,9 @@
     <PackageReference Include="MvvmCross.Droid.Support.V7.AppCompat">
       <Version>6.2.2</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Design">
+      <Version>27.0.2.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
       <Version>27.0.2.1</Version>
     </PackageReference>
@@ -189,6 +192,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\MainLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\menu_main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

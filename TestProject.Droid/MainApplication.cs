@@ -3,6 +3,7 @@ using Android.App;
 using Android.Runtime;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using TestProject.Core;
+
 namespace TestProject.Droid
 {
     [Application]
