@@ -5,7 +5,7 @@ using SQLite;
 
 namespace TestProject.Core.Interface
 {
-    public interface ISqLiteConnection
+    public interface IDatabaseConnectionService
     {
         SQLiteConnection GetDatebaseConnection();
     }

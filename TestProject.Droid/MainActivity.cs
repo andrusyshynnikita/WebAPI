@@ -24,8 +24,7 @@ namespace TestProject.Droid
             mToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Layout.toolbar);
 
             SetSupportActionBar(mToolbar);
-            
-            
+
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

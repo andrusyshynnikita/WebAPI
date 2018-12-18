@@ -4,8 +4,8 @@ using System.Text;
 
 namespace TestProject.Core.Interface
 {
-    public interface ISqLiteDbPath
+    interface ITaskService
     {
-        string  GetDatebasePath(string sqliteFilename);
+
     }
 }

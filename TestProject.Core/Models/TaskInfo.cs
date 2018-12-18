@@ -6,7 +6,9 @@ using SQLite;
 namespace TestProject.Core.Models
 {
     public class TaskInfo
+
     {
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
