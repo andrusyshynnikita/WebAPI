@@ -7,6 +7,9 @@ using MvvmCross.Droid.Support.V7.AppCompat;
 using Android.Support.V7.AppCompat;
 using Android.Views;
 using Android.Widget;
+using MvvmCross.Navigation;
+using TestProject.Core.services;
+using TestProject.Core.Interface;
 
 namespace TestProject.Droid
 {
@@ -14,7 +17,7 @@ namespace TestProject.Droid
     public class MainActivity : MvxAppCompatActivity<FirstViewModel>
     {
         Android.Support.V7.Widget.Toolbar mToolbar;
-        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -24,7 +27,8 @@ namespace TestProject.Droid
             mToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Layout.toolbar);
 
             SetSupportActionBar(mToolbar);
-
+           
+                
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
