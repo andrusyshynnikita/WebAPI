@@ -18,8 +18,8 @@ namespace TestProject.Core.services
         {
             _sQLiteConnection = databaseConnectionService.GetDatebaseConnection();
             _sQLiteConnection.CreateTable<TaskInfo>();
-            _sQLiteConnection.Insert(new TaskInfo { TaskName = "TODO Semple", TaskDescription = "hello", TaskStatus = true });
-            _sQLiteConnection.Insert(new TaskInfo { TaskName = "TODO Semple2", TaskDescription = "hello2", TaskStatus = true });
+            //_sQLiteConnection.Insert(new TaskInfo { TaskName = "TODO Semple", TaskDescription = "hello", TaskStatus = true });
+            //_sQLiteConnection.Insert(new TaskInfo { TaskName = "TODO Semple2", TaskDescription = "hello2", TaskStatus = true });
 
         }
 

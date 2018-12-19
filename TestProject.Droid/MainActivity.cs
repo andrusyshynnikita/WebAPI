@@ -25,8 +25,9 @@ namespace TestProject.Droid
             SetContentView(Resource.Layout.MainLayout);
 
             mToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Layout.toolbar);
-
             SetSupportActionBar(mToolbar);
+            
+            
            
                 
         }
