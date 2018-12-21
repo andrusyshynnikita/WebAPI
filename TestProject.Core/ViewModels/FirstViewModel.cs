@@ -24,7 +24,7 @@ namespace TestProject.Core.ViewModels
             ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<SecondViewModel>());
             _taskService = taskService;
             var item = _taskService.GetAllTaskData();
-           
+            _getTaskInfo = new MvxObservableCollection<TaskInfo>(item);
 
 
         }
@@ -32,7 +32,7 @@ namespace TestProject.Core.ViewModels
         public IMvxAsyncCommand ShowSecondPage { get; set; }
 
 
-        public MvxObservableCollection<TaskInfo> GetTaskInfo
+        public MvxObservableCollection<TaskInfo> TaskCollection
         {
             get
             {
@@ -41,7 +41,7 @@ namespace TestProject.Core.ViewModels
             set
             {
                 _getTaskInfo = value;
-                RaisePropertyChanged(() => GetTaskInfo);
+                RaisePropertyChanged(() => TaskCollection);
             }
         }
 
