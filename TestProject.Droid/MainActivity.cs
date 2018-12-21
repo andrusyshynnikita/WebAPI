@@ -6,8 +6,12 @@ using MvvmCross.Droid.Support.V7.AppCompat;
 using Android.Views;
 using Android.Widget;
 using TestProject.Core.Models;
-using testproject.droid;
 using MvvmCross.ViewModels;
+using MvvmCross.Binding.BindingContext;
+using MvvmCross.Droid.Support.V7.RecyclerView;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
+using MvvmCross.Platforms.Android.Binding.Views;
+using testproject.droid;
 
 namespace TestProject.Droid
 {
@@ -15,10 +19,11 @@ namespace TestProject.Droid
     public class MainActivity : MvxAppCompatActivity<FirstViewModel>
     {
         Android.Support.V7.Widget.Toolbar mToolbar;
-        RecyclerView mRecyclerView;
-       
-        MvxObservableCollection<TaskInfo> mTaskInfo;
-        TasksItemAdapter mAdapter;
+
+        
+        private RecyclerView.LayoutManager _layoutManager;
+        private TasksItemAdapter _mAdapter;
+        private MvxRecyclerView _recyclerView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -27,23 +32,26 @@ namespace TestProject.Droid
             SetContentView(Resource.Layout.MainLayout);
             mToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Layout.toolbar);
             SetSupportActionBar(mToolbar);
-            mTaskInfo = ViewModel.TaskCollection;
-            mRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
-            mAdapter = new TasksItemAdapter(mTaskInfo);
-            mRecyclerView.SetAdapter(mAdapter);
+
+            _recyclerView = FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);
+            _layoutManager = new LinearLayoutManager(this);
+            _recyclerView.SetLayoutManager(_layoutManager);
+            var recyclerAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)this.BindingContext);
+            _recyclerView.Adapter = recyclerAdapter;
             //ViewModel.GetTaskInfo.CollectionChanged += GetTaskInfo_CollectionChanged;
 
         }
 
         //private void GetTaskInfo_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         //{
-            
-        //}
 
+        //}
+        
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
+            
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-            return true;
+            return base.OnCreateOptionsMenu(menu);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

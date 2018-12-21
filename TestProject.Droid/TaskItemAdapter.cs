@@ -10,34 +10,32 @@ using Android.Widget;
 using TestProject.Droid;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using Resource = TestProject.Droid.Resource;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace testproject.droid
 {
-    public class TasksItemAdapter : MvxRecyclerView.Adapter
+    public class TasksItemAdapter : MvxRecyclerAdapter
     {
         public MvxObservableCollection<TaskInfo> taskitem;
 
-        public TasksItemAdapter(MvxObservableCollection<TaskInfo> tasks )
+        public TasksItemAdapter(IMvxAndroidBindingContext bindingContext)
+            : base(bindingContext)
         {
-            taskitem = tasks;
         }
+        public override int ItemCount => base.ItemCount;
 
-        public override int ItemCount
-        {
-            get{ return taskitem.Count; }
-        }
-
-        public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
-        {
-            TaskItemHolder vh = holder as TaskItemHolder;
-            vh.TaskName.Text = taskitem[position].TaskName;
-        }
+        //public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
+        //{
+        //    TaskItemHolder vh = holder as TaskItemHolder;
+        //    vh.TaskName.Text = taskitem[position].TaskName;
+        //    vh.TaskStatus.Checked = taskitem[position].TaskStatus;
+        //}
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            
+            var itemBindingContext = new MvxAndroidBindingContext(parent.Context, this.BindingContext.LayoutInflaterHolder);
             View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.task_item, parent, false);
-            TaskItemHolder vh = new TaskItemHolder(itemView);
+            TaskItemHolder vh = new TaskItemHolder(itemView, itemBindingContext);
             return vh;
         }
     }

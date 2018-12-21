@@ -70,6 +70,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="TaskItemAdapter.cs" />
     <Compile Include="TaskItemHolder.cs" />
+    <Compile Include="Views\SecondViewPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -169,7 +170,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\twotone_add_box_black_48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="View\" />
+    <AndroidResource Include="Resources\layout\layout1.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestProject.Core\TestProject.Core.csproj">
@@ -215,6 +218,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\task_item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\SecondPageLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -6566,8 +6566,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090029
 			public const int add = 2131296297;
 			
-			// aapt resource value: 0x7f0900b4
-			public const int add_task = 2131296436;
+			// aapt resource value: 0x7f0900bb
+			public const int add_task = 2131296443;
 			
 			// aapt resource value: 0x7f090072
 			public const int alertTitle = 2131296370;
@@ -6592,6 +6592,12 @@ namespace TestProject.Droid
 			
 			// aapt resource value: 0x7f09003f
 			public const int bottom = 2131296319;
+			
+			// aapt resource value: 0x7f0900b4
+			public const int button1 = 2131296436;
+			
+			// aapt resource value: 0x7f0900b5
+			public const int button2 = 2131296437;
 			
 			// aapt resource value: 0x7f090065
 			public const int buttonPanel = 2131296357;
@@ -6749,14 +6755,14 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090063
 			public const int list_item = 2131296355;
 			
-			// aapt resource value: 0x7f0900b3
-			public const int masked = 2131296435;
+			// aapt resource value: 0x7f0900ba
+			public const int masked = 2131296442;
 			
 			// aapt resource value: 0x7f0900a3
 			public const int media_actions = 2131296419;
 			
-			// aapt resource value: 0x7f0900b1
-			public const int message = 2131296433;
+			// aapt resource value: 0x7f0900b8
+			public const int message = 2131296440;
 			
 			// aapt resource value: 0x7f090033
 			public const int middle = 2131296307;
@@ -6923,6 +6929,9 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f09004d
 			public const int start = 2131296333;
 			
+			// aapt resource value: 0x7f0900b7
+			public const int statusInfo = 2131296439;
+			
 			// aapt resource value: 0x7f0900a2
 			public const int status_bar_latest_event_content = 2131296418;
 			
@@ -6931,6 +6940,9 @@ namespace TestProject.Droid
 			
 			// aapt resource value: 0x7f090089
 			public const int submit_area = 2131296393;
+			
+			// aapt resource value: 0x7f0900b3
+			public const int switch1 = 2131296435;
 			
 			// aapt resource value: 0x7f090021
 			public const int tabMode = 2131296289;
@@ -6950,8 +6962,14 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f09006b
 			public const int textSpacerNoTitle = 2131296363;
 			
-			// aapt resource value: 0x7f0900b0
-			public const int textView = 2131296432;
+			// aapt resource value: 0x7f0900b6
+			public const int textView = 2131296438;
+			
+			// aapt resource value: 0x7f0900b1
+			public const int textView1 = 2131296433;
+			
+			// aapt resource value: 0x7f0900b2
+			public const int textView2 = 2131296434;
 			
 			// aapt resource value: 0x7f09009a
 			public const int text_input_password_toggle = 2131296410;
@@ -6974,8 +6992,11 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090071
 			public const int title_template = 2131296369;
 			
+			// aapt resource value: 0x7f0900b0
+			public const int toolbar = 2131296432;
+			
 			// aapt resource value: 0x7f09009b
-			public const int toolbar = 2131296411;
+			public const int toolbar1 = 2131296411;
 			
 			// aapt resource value: 0x7f090040
 			public const int top = 2131296320;
@@ -7013,8 +7034,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900b2
-			public const int visible = 2131296434;
+			// aapt resource value: 0x7f0900b9
+			public const int visible = 2131296441;
 			
 			// aapt resource value: 0x7f09003e
 			public const int withText = 2131296318;
@@ -7199,73 +7220,79 @@ namespace TestProject.Droid
 			public const int design_text_input_password_icon = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int MainLayout = 2130968616;
+			public const int layout1 = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int notification_action = 2130968617;
+			public const int MainLayout = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int notification_action_tombstone = 2130968618;
+			public const int notification_action = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int notification_media_action = 2130968619;
+			public const int notification_action_tombstone = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int notification_media_cancel_action = 2130968620;
+			public const int notification_media_action = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int notification_template_big_media = 2130968621;
+			public const int notification_media_cancel_action = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int notification_template_big_media_custom = 2130968622;
+			public const int notification_template_big_media = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int notification_template_big_media_narrow = 2130968623;
+			public const int notification_template_big_media_custom = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int notification_template_big_media_narrow_custom = 2130968624;
+			public const int notification_template_big_media_narrow = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int notification_template_custom_big = 2130968625;
+			public const int notification_template_big_media_narrow_custom = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_template_icon_group = 2130968626;
+			public const int notification_template_custom_big = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_template_lines_media = 2130968627;
+			public const int notification_template_icon_group = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_template_media = 2130968628;
+			public const int notification_template_lines_media = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int notification_template_media_custom = 2130968629;
+			public const int notification_template_media = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int notification_template_part_chronometer = 2130968630;
+			public const int notification_template_media_custom = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int notification_template_part_time = 2130968631;
+			public const int notification_template_part_chronometer = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int select_dialog_item_material = 2130968632;
+			public const int notification_template_part_time = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int select_dialog_multichoice_material = 2130968633;
+			public const int SecondPageLayout = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int select_dialog_singlechoice_material = 2130968634;
+			public const int select_dialog_item_material = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int support_simple_spinner_dropdown_item = 2130968635;
+			public const int select_dialog_multichoice_material = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int task_item = 2130968636;
+			public const int select_dialog_singlechoice_material = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int toolbar = 2130968637;
+			public const int support_simple_spinner_dropdown_item = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int tooltip = 2130968638;
+			public const int task_item = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int toolbar = 2130968639;
+			
+			// aapt resource value: 0x7f040040
+			public const int tooltip = 2130968640;
 			
 			static Layout()
 			{

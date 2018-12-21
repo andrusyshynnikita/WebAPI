@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 	android:orientation="vertical">
-	<RelativeLayout 
-	android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+	
     <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />   
-	</RelativeLayout>
+        layout="@layout/layout1" />  
 	 <MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/recyclerView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    app:MvxItemTemplate="@layout/task_item"
-    app:MvxBind="ItemsSource GetTaskInfo" />
-
+		android:id="@+id/recyclerView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" 
+		local:MvxBind="ItemsSource TaskCollection"
+		local:MvxItemTemplate="@layout/task_item"/>
+		
 </RelativeLayout>

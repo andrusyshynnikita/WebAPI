@@ -12,7 +12,7 @@ namespace TestProject.Core.ViewModels
     public class FirstViewModel : MvxViewModel
     {
         private readonly IMvxNavigationService _navigationService;
-        private List<TaskInfo> _taskInfo;
+        
         private MvxObservableCollection<TaskInfo> _getTaskInfo;
 
         private ITaskService _taskService;
@@ -23,9 +23,9 @@ namespace TestProject.Core.ViewModels
             _navigationService = mvxNavigationService;
             ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<SecondViewModel>());
             _taskService = taskService;
-            var item = _taskService.GetAllTaskData();
-            _getTaskInfo = new MvxObservableCollection<TaskInfo>(item);
 
+            //var items = _taskService.GetAllTaskData();
+            //TaskCollection = new MvxObservableCollection<TaskInfo>();
 
         }
 
@@ -46,7 +46,11 @@ namespace TestProject.Core.ViewModels
         }
 
 
-
+        public override void ViewAppearing()
+        {
+            var items = _taskService.GetAllTaskData();
+            TaskCollection = new MvxObservableCollection<TaskInfo>(items);
+        }
 
 
     }
