@@ -43,6 +43,10 @@ namespace TestProject.Core.services
             _sQLiteConnection.Insert(taskInfo);
         }
 
+        public void DeleteAllTask()
+        {
+            _sQLiteConnection.DeleteAll<TaskInfo>();
+        }
 
     }
 }

@@ -10,6 +10,7 @@ namespace TestProject.Core.Interface
         List<TaskInfo> GetAllTaskData();
         void DeleteTask(int id);
         void InsertTask(TaskInfo taskInfo);
+        void DeleteAllTask();
 
     }
 }

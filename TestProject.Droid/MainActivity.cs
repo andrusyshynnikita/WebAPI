@@ -18,9 +18,7 @@ namespace TestProject.Droid
     [Activity(Label = "MainActivity", MainLauncher = true)]
     public class MainActivity : MvxAppCompatActivity<FirstViewModel>
     {
-        Android.Support.V7.Widget.Toolbar mToolbar;
-
-        
+        private Android.Support.V7.Widget.Toolbar _mToolbar;
         private RecyclerView.LayoutManager _layoutManager;
         private TasksItemAdapter _mAdapter;
         private MvxRecyclerView _recyclerView;
@@ -30,14 +28,16 @@ namespace TestProject.Droid
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.MainLayout);
-            mToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Layout.toolbar);
-            SetSupportActionBar(mToolbar);
+            _mToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Layout.toolbar);
+            SetSupportActionBar(_mToolbar);
+            
 
             _recyclerView = FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);
             _layoutManager = new LinearLayoutManager(this);
             _recyclerView.SetLayoutManager(_layoutManager);
-            var recyclerAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)this.BindingContext);
-            _recyclerView.Adapter = recyclerAdapter;
+            _mAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)this.BindingContext);
+           // _mAdapter.ItemClick += ItemClick;
+            _recyclerView.Adapter = _mAdapter;
             //ViewModel.GetTaskInfo.CollectionChanged += GetTaskInfo_CollectionChanged;
 
         }
@@ -47,18 +47,18 @@ namespace TestProject.Droid
 
         //}
         
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
+        //public override bool OnCreateOptionsMenu(IMenu menu)
+        //{
             
-            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-            return base.OnCreateOptionsMenu(menu);
-        }
+        //    MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+        //    return base.OnCreateOptionsMenu(menu);
+        //}
 
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
-                ToastLength.Short).Show();
-            return base.OnOptionsItemSelected(item);
-        }
+        //public override bool OnOptionsItemSelected(IMenuItem item)
+        //{
+        //    Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
+        //        ToastLength.Short).Show();
+        //    return base.OnOptionsItemSelected(item);
+        //}
     }
 }

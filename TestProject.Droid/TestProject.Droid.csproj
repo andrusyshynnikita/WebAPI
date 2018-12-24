@@ -70,7 +70,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="TaskItemAdapter.cs" />
     <Compile Include="TaskItemHolder.cs" />
-    <Compile Include="Views\SecondViewPage.cs" />
+    <Compile Include="Views\SecondView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -170,7 +170,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\twotone_add_box_black_48.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\layout1.axml">
+    <AndroidResource Include="Resources\layout\toolbar.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -202,9 +202,6 @@
     <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView">
       <Version>27.0.2.1</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\toolbar.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\MainLayout.axml">

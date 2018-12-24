@@ -5,4 +5,13 @@
     <item name="android:windowActionBar">false</item>
     <item name="android:colorPrimary">#5A8622</item>
   </style>
+  
+  <style name="MyToolBar" >
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+    <item name="android:background">@color/toolbarColor</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+  </style>
 </resources>
+

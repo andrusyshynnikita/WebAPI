@@ -19,22 +19,23 @@ namespace TestProject.Droid
 {
     public class TaskItemHolder : MvxRecyclerViewHolder
     {
-        public TextView TaskName { get; set; }
-        public CheckBox TaskStatus { get; set; }
+        public TextView Title { get; set; }
+        public CheckBox Status { get; set; }
 
 
-        public TaskItemHolder(View itemview, IMvxAndroidBindingContext context) : base(itemview, context)
+        public TaskItemHolder(View itemview, IMvxAndroidBindingContext context, Action<int> listener) : base(itemview, context)
 
         {
-            TaskName = itemview.FindViewById<TextView>(Resource.Id.textView);
-            TaskStatus = itemview.FindViewById<CheckBox>(Resource.Id.statusInfo);
+            Title = itemview.FindViewById<TextView>(Resource.Id.textView);
+            Status = itemview.FindViewById<CheckBox>(Resource.Id.statusInfo);
             this.DelayBind(() =>
             {
                 var set = this.CreateBindingSet<TaskItemHolder, TaskInfo>();
-                set.Bind(this.TaskName).To(x => x.TaskName);
-                set.Bind(this.TaskStatus).To(x => x.TaskStatus);
+                set.Bind(this.Title).To(x => x.Title);
+                set.Bind(this.Status).To(x => x.Status);
                 set.Apply();
             });
+            itemview.Click += (sender, e) => listener(base.AdapterPosition);
         }
     }
 }

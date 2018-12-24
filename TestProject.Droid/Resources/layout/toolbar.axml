@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+ xmlns:android="http://schemas.android.com/apk/res/android"
+	 xmlns:local="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/toolbar1"
+     style="@style/MyToolBar">
+	<RelativeLayout
+		android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+	<ImageButton
+	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+	android:layout_alignParentRight="true"
+	android:src="@mipmap/twotone_add_box_24"
+	local:MvxBind="Click ShowSecondPage"/>
+		<TextView
+			android:text="Map"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:fontWeight="800"/>
+		</RelativeLayout>
+	</android.support.v7.widget.Toolbar>

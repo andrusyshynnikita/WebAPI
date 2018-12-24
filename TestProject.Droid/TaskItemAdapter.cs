@@ -16,7 +16,7 @@ namespace testproject.droid
 {
     public class TasksItemAdapter : MvxRecyclerAdapter
     {
-        public MvxObservableCollection<TaskInfo> taskitem;
+        public EventHandler<int> ItemClick;
 
         public TasksItemAdapter(IMvxAndroidBindingContext bindingContext)
             : base(bindingContext)
@@ -35,8 +35,13 @@ namespace testproject.droid
         {
             var itemBindingContext = new MvxAndroidBindingContext(parent.Context, this.BindingContext.LayoutInflaterHolder);
             View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.task_item, parent, false);
-            TaskItemHolder vh = new TaskItemHolder(itemView, itemBindingContext);
+            TaskItemHolder vh = new TaskItemHolder(itemView, itemBindingContext, OnClick);
             return vh;
+        }
+
+        private void OnClick(int position)
+        {
+            ItemClick?.Invoke(this, position);
         }
     }
 

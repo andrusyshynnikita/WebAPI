@@ -1,36 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-	<include
-		android:id="@+id/toolbar"
-		layout="@layout/toolbar" />
-	<TextView
-		android:text="Text"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"	
+     xmlns:local="http://schemas.android.com/apk/res-auto"  
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	 <include
+		layout="@layout/toolbar"/>
+	<EditText
+		android:id = "@+id/name_text"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:hint = "Title"
+		android:textColorHint = "@android:color/background_dark"
+		android:textColor = "@android:color/background_dark"
+		local:MvxBind = "Text Title"
+	/>
+	<EditText
+		android:id = "@+id/task_text"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:hint = "Description"
+		android:lines = "5"
+		android:textColorHint = "@android:color/background_dark"
+		android:textColor = "@android:color/background_dark"
+	    local:MvxBind = "Text Description"/>
+	<LinearLayout
+		android:orientation="horizontal"
 		android:layout_width="match_parent"
-		android:layout_height="26.5dp"
-		android:id="@+id/textView1" />
-	<TextView
-		android:text="Text"
+		android:layout_height="match_parent"
+		android:layout_weight="1">
+		<CheckBox
+			android:id = "@+id/togglebutton"
+			android:layout_width = "wrap_content"
+			android:layout_height = "match_parent"
+			android:textColor = "@android:color/black"
+		    local:MvxBind = "Text Status"/>
+		<TextView
+			android:text = "Done"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"/>
+	</LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal"
 		android:layout_width="match_parent"
-		android:layout_height="105.5dp"
-		android:id="@+id/textView2" />
-	<Switch
-		android:layout_width="wrap_content"
-		android:layout_height="23.0dp"
-		android:id="@+id/switch1" />
-	<Button
-		android:text="Save"
-		android:layout_width="108.0dp"
-		android:layout_height="wrap_content"
-		android:id="@+id/button1" />
-	<Button
-		android:text="Delete"
-		android:layout_width="108.0dp"
-		android:layout_height="wrap_content"
-		android:id="@+id/button2" /> 
-
-
+		android:layout_height="match_parent"
+		android:layout_weight="1">
+		<Button
+			android:id = "@+id/Savetask"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="0dip"
+			android:text="Save"
+		    local:MvxBind = "Click SaveCommand"/>
+		<Button
+			android:id = "@+id/Deletetask"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Delete"
+		    local:MvxBind = "Click DeleteCommand"/>
+		<Button
+			android:id = "@+id/Backtask"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Back"
+			local:MvxBind = "Click CloseCommand"/>
+	</LinearLayout>
 </LinearLayout>

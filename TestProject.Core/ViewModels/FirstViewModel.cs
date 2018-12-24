@@ -24,12 +24,10 @@ namespace TestProject.Core.ViewModels
             ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<SecondViewModel>());
             _taskService = taskService;
 
-            //var items = _taskService.GetAllTaskData();
-            //TaskCollection = new MvxObservableCollection<TaskInfo>();
-
         }
 
-        public IMvxAsyncCommand ShowSecondPage { get; set; }
+        public IMvxCommand ShowSecondPage { get; set; }
+        
 
 
         public MvxObservableCollection<TaskInfo> TaskCollection
