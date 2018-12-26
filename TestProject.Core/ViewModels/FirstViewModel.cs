@@ -13,28 +13,39 @@ namespace TestProject.Core.ViewModels
     public class FirstViewModel : MvxViewModel
     {
         private readonly IMvxNavigationService _navigationService;
-        
         private MvxObservableCollection<TaskInfo> _taskCollection;
-
         private ITaskService _taskService;
-
+        private MvxCommand _refreshCommand;
+        private bool _isRefreshing;
 
         public FirstViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService)
         {
             _navigationService = mvxNavigationService;
             ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<SecondViewModel>());
             _taskService = taskService;
-            TaskViewCommand = new MvxAsyncCommand<TaskInfo>(Method);
+            TaskViewCommand = new MvxAsyncCommand<TaskInfo>(NavigateMethod);
+
+        }
+
+        public IMvxCommand RefreshCommand => _refreshCommand = _refreshCommand ?? new MvxCommand(DoRefreshCommand);
+
+        private void DoRefreshCommand()
+        {
+            IsRefreshing = true;
+            var items = _taskService.GetAllTaskData();
+            TaskCollection = new MvxObservableCollection<TaskInfo>(items);
+            IsRefreshing = false;
         }
 
         public IMvxCommand ShowSecondPage { get; set; }
 
         public IMvxCommand<TaskInfo> TaskViewCommand { get; set; }
           
-        public async Task Method(TaskInfo taskInfo)
+        private async Task NavigateMethod(TaskInfo taskInfo)
         {
             var result = await _navigationService.Navigate<SecondViewModel, TaskInfo>(taskInfo);
         }
+
         public MvxObservableCollection<TaskInfo> TaskCollection
         {
             get
@@ -48,13 +59,21 @@ namespace TestProject.Core.ViewModels
             }
         }
 
-
         public override void ViewAppearing()
         {
             var items = _taskService.GetAllTaskData();
             TaskCollection = new MvxObservableCollection<TaskInfo>(items);
         }
 
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                RaisePropertyChanged(() => IsRefreshing);
+            }
+        }
 
     }
 

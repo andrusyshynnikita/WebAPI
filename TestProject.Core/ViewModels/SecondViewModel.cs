@@ -11,6 +11,11 @@ namespace TestProject.Core.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly ITaskService _taskService;
+        private int _id;
+        private string _title;
+        private string _description;
+        private bool _status;
+        private bool _titleEnableStatus;
 
         public override async Task Initialize()
         {
@@ -22,14 +27,9 @@ namespace TestProject.Core.ViewModels
         {
             _taskService = taskService;
             _navigationService = mvxNavigationService;
-            CloseCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<FirstViewModel>());
+            CloseCommand = new MvxAsyncCommand(async () => await _navigationService.Close(this)); 
         }
         public IMvxAsyncCommand CloseCommand { get; set; }
-
-        private int _id;
-        private string _title;
-        private string _description;
-        private bool _status;
 
         public int Id
         {
@@ -70,10 +70,11 @@ namespace TestProject.Core.ViewModels
                 RaisePropertyChanged(() => Status);
             }
         }
+
         public IMvxCommand SaveCommand
         {
             get { return new MvxCommand(SaveTask); }
-            
+
         }
 
         public IMvxCommand DeleteCommand
@@ -83,17 +84,17 @@ namespace TestProject.Core.ViewModels
 
         private void SaveTask()
         {
-            TaskInfo taskInfo = new TaskInfo(Id,Title, Description, Status);
+            TaskInfo taskInfo = new TaskInfo(Id, Title, Description, Status);
 
-                _taskService.InsertTask(taskInfo);
-            _navigationService.Navigate<FirstViewModel>();
+            _taskService.InsertTask(taskInfo);
+            _navigationService.Close(this);
         }
 
         private void DeleteTask()
         {
             var position = Id;
             _taskService.DeleteTask(position);
-            _navigationService.Navigate<FirstViewModel>();
+            _navigationService.Close(this);
         }
 
         public override void Prepare()
@@ -107,6 +108,23 @@ namespace TestProject.Core.ViewModels
             Title = _taskInfo.Title;
             Description = _taskInfo.Description;
             Status = _taskInfo.Status;
+        }
+
+        public bool TitleEnableStatus
+        {
+            get
+            {
+                if (Id == 0)
+                {
+                    _titleEnableStatus = true;
+                }
+                else
+                {
+                    _titleEnableStatus = false;
+                }
+                return _titleEnableStatus;
+            }
+
         }
     }
 }

@@ -13,17 +13,12 @@ namespace TestProject.Core.services
     {
         private SQLiteConnection _sQLiteConnection;
 
-
         public TaskService(IDatabaseConnectionService databaseConnectionService)
         {
             _sQLiteConnection = databaseConnectionService.GetDatebaseConnection();
             _sQLiteConnection.CreateTable<TaskInfo>();
-            //_sQLiteConnection.Insert(new TaskInfo { TaskName = "TODO Semple", TaskDescription = "hello", TaskStatus = true });
-            //_sQLiteConnection.Insert(new TaskInfo { TaskName = "TODO Semple2", TaskDescription = "hello2", TaskStatus = true });
 
         }
-
-
 
         public List<TaskInfo> GetAllTaskData()
         {

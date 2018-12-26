@@ -31,6 +31,7 @@
     android:textAppearance="?android:attr/textAppearanceMedium"  
     android:textColor="#333333"   
     android:id="@+id/statusInfo"
+	android:clickable="false"			
 	local:MvxBind="Checked Status"
 	android:layout_alignParentRight = "true"/>
 </RelativeLayout>

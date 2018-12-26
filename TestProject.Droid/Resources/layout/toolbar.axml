@@ -14,7 +14,7 @@
 	android:src="@mipmap/twotone_add_box_24"
 	local:MvxBind="Click ShowSecondPage"/>
 		<TextView
-			android:text="Map"
+			android:text="TaskyDrop"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerInParent="true"
