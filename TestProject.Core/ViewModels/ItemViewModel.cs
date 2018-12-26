@@ -7,7 +7,7 @@ using TestProject.Core.Models;
 
 namespace TestProject.Core.ViewModels
 {
-    public class SecondViewModel : MvxViewModel<TaskInfo>
+    public class ItemViewModel : MvxViewModel<TaskInfo>
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly ITaskService _taskService;
@@ -23,7 +23,7 @@ namespace TestProject.Core.ViewModels
 
         }
 
-        public SecondViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService)
+        public ItemViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService)
         {
             _taskService = taskService;
             _navigationService = mvxNavigationService;

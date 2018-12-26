@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestProject.Core.ViewModels
 {
-    public class FirstViewModel : MvxViewModel
+    public class ListItemsViewModel : MvxViewModel
     {
         private readonly IMvxNavigationService _navigationService;
         private MvxObservableCollection<TaskInfo> _taskCollection;
@@ -15,10 +15,10 @@ namespace TestProject.Core.ViewModels
         private MvxCommand _refreshCommand;
         private bool _isRefreshing;
 
-        public FirstViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService)
+        public ListItemsViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService)
         {
             _navigationService = mvxNavigationService;
-            ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<SecondViewModel>());
+            ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
             _taskService = taskService;
             TaskViewCommand = new MvxAsyncCommand<TaskInfo>(NavigateMethod);
 
@@ -40,7 +40,7 @@ namespace TestProject.Core.ViewModels
           
         private async Task NavigateMethod(TaskInfo taskInfo)
         {
-            var result = await _navigationService.Navigate<SecondViewModel, TaskInfo>(taskInfo);
+            var result = await _navigationService.Navigate<ItemViewModel, TaskInfo>(taskInfo);
         }
 
         public MvxObservableCollection<TaskInfo> TaskCollection

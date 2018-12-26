@@ -10,7 +10,7 @@ using testproject.droid;
 namespace TestProject.Droid
 {
     [Activity(Label = "MainActivity", MainLauncher = true)]
-    public class MainActivity : MvxAppCompatActivity<FirstViewModel>
+    public class ListItemsView : MvxAppCompatActivity<ListItemsViewModel>
     {
         private Toolbar _mToolbar;
         private RecyclerView.LayoutManager _layoutManager;
@@ -21,7 +21,7 @@ namespace TestProject.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.MainLayout);
+            SetContentView(Resource.Layout.ListItemsLayout);
             _mToolbar = FindViewById<Toolbar>(Resource.Layout.toolbar);
             SetSupportActionBar(_mToolbar);
             _recyclerView = FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);

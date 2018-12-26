@@ -10,14 +10,14 @@ namespace testproject.droid
 {
     public class TasksItemAdapter : MvxRecyclerAdapter
     {
-       // private MvxObservableCollection<TaskInfo> _taskcollection;
+        // private MvxObservableCollection<TaskInfo> _taskcollection;
         public EventHandler<int> ItemClick;
 
         public TasksItemAdapter(IMvxAndroidBindingContext bindingContext)
             : base(bindingContext)
         {
         }
-      
+
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             var itemBindingContext = new MvxAndroidBindingContext(parent.Context, this.BindingContext.LayoutInflaterHolder);
