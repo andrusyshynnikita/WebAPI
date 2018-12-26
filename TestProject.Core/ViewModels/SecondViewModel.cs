@@ -34,6 +34,7 @@ namespace TestProject.Core.ViewModels
         public int Id
         {
             get => _id;
+
             set
             {
                 _id = value;
@@ -44,6 +45,7 @@ namespace TestProject.Core.ViewModels
         public string Title
         {
             get => _title;
+
             set
             {
                 _title = value;
@@ -54,6 +56,7 @@ namespace TestProject.Core.ViewModels
         public string Description
         {
             get => _description;
+
             set
             {
                 _description = value;
@@ -64,6 +67,7 @@ namespace TestProject.Core.ViewModels
         public bool Status
         {
             get => _status;
+
             set
             {
                 _status = value;
@@ -87,13 +91,16 @@ namespace TestProject.Core.ViewModels
             TaskInfo taskInfo = new TaskInfo(Id, Title, Description, Status);
 
             _taskService.InsertTask(taskInfo);
+
             _navigationService.Close(this);
         }
 
         private void DeleteTask()
         {
             var position = Id;
+
             _taskService.DeleteTask(position);
+
             _navigationService.Close(this);
         }
 

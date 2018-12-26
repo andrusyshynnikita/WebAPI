@@ -1,14 +1,8 @@
 ﻿using Android.Support.V7.Widget;
 using Android.Views;
 using System;
-using MvvmCross.Droid.Support.V7.AppCompat.Widget;
-using Android.Support.V7.RecyclerView;
 using MvvmCross.Droid.Support.V7.RecyclerView;
-using TestProject.Core.Models;
-using MvvmCross.ViewModels;
-using Android.Widget;
 using TestProject.Droid;
-using MvvmCross.Droid.Support.V7.AppCompat;
 using Resource = TestProject.Droid.Resource;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 

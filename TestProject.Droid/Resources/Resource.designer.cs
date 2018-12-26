@@ -6485,14 +6485,14 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090034
 			public const int ALT = 2131296308;
 			
-			// aapt resource value: 0x7f0900b4
-			public const int Backtask = 2131296436;
+			// aapt resource value: 0x7f0900b5
+			public const int Backtask = 2131296437;
 			
 			// aapt resource value: 0x7f090035
 			public const int CTRL = 2131296309;
 			
-			// aapt resource value: 0x7f0900b3
-			public const int Deletetask = 2131296435;
+			// aapt resource value: 0x7f0900b4
+			public const int Deletetask = 2131296436;
 			
 			// aapt resource value: 0x7f090036
 			public const int FUNCTION = 2131296310;
@@ -6512,8 +6512,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090039
 			public const int SYM = 2131296313;
 			
-			// aapt resource value: 0x7f0900b2
-			public const int Savetask = 2131296434;
+			// aapt resource value: 0x7f0900b3
+			public const int Savetask = 2131296435;
 			
 			// aapt resource value: 0x7f09009f
 			public const int action0 = 2131296415;
@@ -6578,8 +6578,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090029
 			public const int add = 2131296297;
 			
-			// aapt resource value: 0x7f0900bb
-			public const int add_task = 2131296443;
+			// aapt resource value: 0x7f0900bc
+			public const int add_task = 2131296444;
 			
 			// aapt resource value: 0x7f090072
 			public const int alertTitle = 2131296370;
@@ -6761,14 +6761,14 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090063
 			public const int list_item = 2131296355;
 			
-			// aapt resource value: 0x7f0900ba
-			public const int masked = 2131296442;
+			// aapt resource value: 0x7f0900bb
+			public const int masked = 2131296443;
 			
 			// aapt resource value: 0x7f0900a2
 			public const int media_actions = 2131296418;
 			
-			// aapt resource value: 0x7f0900b8
-			public const int message = 2131296440;
+			// aapt resource value: 0x7f0900b9
+			public const int message = 2131296441;
 			
 			// aapt resource value: 0x7f090033
 			public const int middle = 2131296307;
@@ -6779,8 +6779,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f09002a
 			public const int multiply = 2131296298;
 			
-			// aapt resource value: 0x7f0900af
-			public const int name_text = 2131296431;
+			// aapt resource value: 0x7f0900b0
+			public const int name_text = 2131296432;
 			
 			// aapt resource value: 0x7f090095
 			public const int navigation_header_container = 2131296405;
@@ -6938,8 +6938,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f09004d
 			public const int start = 2131296333;
 			
-			// aapt resource value: 0x7f0900b6
-			public const int statusInfo = 2131296438;
+			// aapt resource value: 0x7f0900b7
+			public const int statusInfo = 2131296439;
 			
 			// aapt resource value: 0x7f0900a1
 			public const int status_bar_latest_event_content = 2131296417;
@@ -6956,8 +6956,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090019
 			public const int tag_transition_group = 2131296281;
 			
-			// aapt resource value: 0x7f0900b0
-			public const int task_text = 2131296432;
+			// aapt resource value: 0x7f0900b1
+			public const int task_text = 2131296433;
 			
 			// aapt resource value: 0x7f09001a
 			public const int text = 2131296282;
@@ -6971,8 +6971,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f09006b
 			public const int textSpacerNoTitle = 2131296363;
 			
-			// aapt resource value: 0x7f0900b5
-			public const int textView = 2131296437;
+			// aapt resource value: 0x7f0900b6
+			public const int textView = 2131296438;
 			
 			// aapt resource value: 0x7f09009a
 			public const int text_input_password_toggle = 2131296410;
@@ -6995,11 +6995,14 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090071
 			public const int title_template = 2131296369;
 			
-			// aapt resource value: 0x7f0900b1
-			public const int togglebutton = 2131296433;
+			// aapt resource value: 0x7f0900b2
+			public const int togglebutton = 2131296434;
 			
-			// aapt resource value: 0x7f0900b7
-			public const int toolbar1 = 2131296439;
+			// aapt resource value: 0x7f0900b8
+			public const int toolbar1 = 2131296440;
+			
+			// aapt resource value: 0x7f0900af
+			public const int toolbar2 = 2131296431;
 			
 			// aapt resource value: 0x7f090040
 			public const int top = 2131296320;
@@ -7037,8 +7040,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900b9
-			public const int visible = 2131296441;
+			// aapt resource value: 0x7f0900ba
+			public const int visible = 2131296442;
 			
 			// aapt resource value: 0x7f09003e
 			public const int withText = 2131296318;

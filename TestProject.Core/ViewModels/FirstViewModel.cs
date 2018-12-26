@@ -2,9 +2,6 @@
 using MvvmCross.ViewModels;
 using MvvmCross.Navigation;
 using MvvmCross.Commands;
-using System.Collections.ObjectModel;
-using TestProject.Core.services;
-using System.Collections.Generic;
 using TestProject.Core.Interface;
 using System.Threading.Tasks;
 

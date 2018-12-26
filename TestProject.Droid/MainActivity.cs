@@ -3,14 +3,8 @@ using Android.OS;
 using TestProject.Core.ViewModels;
 using Android.Support.V7.Widget;
 using MvvmCross.Droid.Support.V7.AppCompat;
-using Android.Views;
-using Android.Widget;
-using TestProject.Core.Models;
-using MvvmCross.ViewModels;
-using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
-using MvvmCross.Platforms.Android.Binding.Views;
 using testproject.droid;
 
 namespace TestProject.Droid
@@ -18,7 +12,7 @@ namespace TestProject.Droid
     [Activity(Label = "MainActivity", MainLauncher = true)]
     public class MainActivity : MvxAppCompatActivity<FirstViewModel>
     {
-        private Android.Support.V7.Widget.Toolbar _mToolbar;
+        private Toolbar _mToolbar;
         private RecyclerView.LayoutManager _layoutManager;
         private TasksItemAdapter _mAdapter;
         private MvxRecyclerView _recyclerView;
@@ -28,27 +22,22 @@ namespace TestProject.Droid
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.MainLayout);
-            _mToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Layout.toolbar);
+            _mToolbar = FindViewById<Toolbar>(Resource.Layout.toolbar);
             SetSupportActionBar(_mToolbar);
-
-
             _recyclerView = FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);
             _layoutManager = new LinearLayoutManager(this);
             _recyclerView.SetLayoutManager(_layoutManager);
-            _mAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)this.BindingContext);
+            _mAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)BindingContext);
             _mAdapter.ItemClick += _mAdapter_ItemClick;
             _recyclerView.Adapter = _mAdapter;
-            //ViewModel.GetTaskInfo.CollectionChanged += GetTaskInfo_CollectionChanged;
+         
         }
 
         private void _mAdapter_ItemClick(object sender, int e)
         {
-            this.ViewModel.TaskViewCommand.Execute(this.ViewModel.TaskCollection[e]);
+            ViewModel.TaskViewCommand.Execute(ViewModel.TaskCollection[e]);
         }
-        //private void GetTaskInfo_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        //{
-
-        //}
+       
 
         //public override bool OnCreateOptionsMenu(IMenu menu)
         //{

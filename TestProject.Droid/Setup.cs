@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V4.Widget;
-using Android.Views;
 using Android.Widget;
 using MvvmCross.Converters;
 using MvvmCross.Droid.Support.V4;
@@ -23,7 +14,7 @@ using MvvmCross.ViewModels;
 namespace TestProject.Droid
 {
 
-    public class Setup : MvxAppCompatSetup<TestProject.Core.App>
+    public class Setup : MvxAppCompatSetup<Core.App>
     {
         protected override IEnumerable<Assembly> AndroidViewAssemblies => new List<Assembly>(base.AndroidViewAssemblies)
         {

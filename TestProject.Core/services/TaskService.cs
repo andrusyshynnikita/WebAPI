@@ -1,9 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using SQLite;
+﻿using SQLite;
 using TestProject.Core.Interface;
 using TestProject.Core.Models;
 using System.Linq;
-using System;
 using System.Collections.Generic;
 
 
