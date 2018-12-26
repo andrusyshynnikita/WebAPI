@@ -16,21 +16,14 @@ namespace testproject.droid
 {
     public class TasksItemAdapter : MvxRecyclerAdapter
     {
+       // private MvxObservableCollection<TaskInfo> _taskcollection;
         public EventHandler<int> ItemClick;
 
         public TasksItemAdapter(IMvxAndroidBindingContext bindingContext)
             : base(bindingContext)
         {
         }
-        public override int ItemCount => base.ItemCount;
-
-        //public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
-        //{
-        //    TaskItemHolder vh = holder as TaskItemHolder;
-        //    vh.TaskName.Text = taskitem[position].TaskName;
-        //    vh.TaskStatus.Checked = taskitem[position].TaskStatus;
-        //}
-
+      
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             var itemBindingContext = new MvxAndroidBindingContext(parent.Context, this.BindingContext.LayoutInflaterHolder);

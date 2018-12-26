@@ -30,26 +30,29 @@ namespace TestProject.Droid
             SetContentView(Resource.Layout.MainLayout);
             _mToolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Layout.toolbar);
             SetSupportActionBar(_mToolbar);
-            
+
 
             _recyclerView = FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);
             _layoutManager = new LinearLayoutManager(this);
             _recyclerView.SetLayoutManager(_layoutManager);
             _mAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)this.BindingContext);
-           // _mAdapter.ItemClick += ItemClick;
+            _mAdapter.ItemClick += _mAdapter_ItemClick;
             _recyclerView.Adapter = _mAdapter;
             //ViewModel.GetTaskInfo.CollectionChanged += GetTaskInfo_CollectionChanged;
-
         }
 
+        private void _mAdapter_ItemClick(object sender, int e)
+        {
+            this.ViewModel.TaskViewCommand.Execute(this.ViewModel.TaskCollection[e]);
+        }
         //private void GetTaskInfo_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         //{
 
         //}
-        
+
         //public override bool OnCreateOptionsMenu(IMenu menu)
         //{
-            
+
         //    MenuInflater.Inflate(Resource.Menu.menu_main, menu);
         //    return base.OnCreateOptionsMenu(menu);
         //}

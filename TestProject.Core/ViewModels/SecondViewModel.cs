@@ -7,7 +7,7 @@ using TestProject.Core.Models;
 
 namespace TestProject.Core.ViewModels
 {
-    public class SecondViewModel : MvxViewModel
+    public class SecondViewModel : MvxViewModel<TaskInfo>
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly ITaskService _taskService;
@@ -76,11 +76,37 @@ namespace TestProject.Core.ViewModels
             
         }
 
+        public IMvxCommand DeleteCommand
+        {
+            get { return new MvxCommand(DeleteTask); }
+        }
+
         private void SaveTask()
         {
-            TaskInfo taskInfo = new TaskInfo(Title, Description, Status);
-            _taskService.InsertTask(taskInfo);
+            TaskInfo taskInfo = new TaskInfo(Id,Title, Description, Status);
+
+                _taskService.InsertTask(taskInfo);
             _navigationService.Navigate<FirstViewModel>();
+        }
+
+        private void DeleteTask()
+        {
+            var position = Id;
+            _taskService.DeleteTask(position);
+            _navigationService.Navigate<FirstViewModel>();
+        }
+
+        public override void Prepare()
+        {
+            base.Prepare();
+        }
+
+        public override void Prepare(TaskInfo _taskInfo)
+        {
+            Id = _taskInfo.Id;
+            Title = _taskInfo.Title;
+            Description = _taskInfo.Description;
+            Status = _taskInfo.Status;
         }
     }
 }

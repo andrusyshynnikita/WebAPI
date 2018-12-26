@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using TestProject.Core.services;
 using System.Collections.Generic;
 using TestProject.Core.Interface;
+using System.Threading.Tasks;
 
 namespace TestProject.Core.ViewModels
 {
@@ -13,7 +14,7 @@ namespace TestProject.Core.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         
-        private MvxObservableCollection<TaskInfo> _getTaskInfo;
+        private MvxObservableCollection<TaskInfo> _taskCollection;
 
         private ITaskService _taskService;
 
@@ -23,22 +24,26 @@ namespace TestProject.Core.ViewModels
             _navigationService = mvxNavigationService;
             ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<SecondViewModel>());
             _taskService = taskService;
-
+            TaskViewCommand = new MvxAsyncCommand<TaskInfo>(Method);
         }
 
         public IMvxCommand ShowSecondPage { get; set; }
-        
 
-
+        public IMvxCommand<TaskInfo> TaskViewCommand { get; set; }
+          
+        public async Task Method(TaskInfo taskInfo)
+        {
+            var result = await _navigationService.Navigate<SecondViewModel, TaskInfo>(taskInfo);
+        }
         public MvxObservableCollection<TaskInfo> TaskCollection
         {
             get
             {
-                return _getTaskInfo;
+                return _taskCollection;
             }
             set
             {
-                _getTaskInfo = value;
+                _taskCollection = value;
                 RaisePropertyChanged(() => TaskCollection);
             }
         }

@@ -40,11 +40,18 @@ namespace TestProject.Core.services
 
         public void InsertTask(TaskInfo taskInfo)
         {
+            if (taskInfo.Id != 0)
+            {
+                _sQLiteConnection.Update(taskInfo);
+            }
+
+            else
             _sQLiteConnection.Insert(taskInfo);
         }
 
         public void DeleteAllTask()
         {
+
             _sQLiteConnection.DeleteAll<TaskInfo>();
         }
 

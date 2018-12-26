@@ -34,7 +34,7 @@
 			android:layout_width = "wrap_content"
 			android:layout_height = "match_parent"
 			android:textColor = "@android:color/black"
-		    local:MvxBind = "Text Status"/>
+		    local:MvxBind = "Checked Status"/>
 		<TextView
 			android:text = "Done"
 			android:layout_width = "wrap_content"

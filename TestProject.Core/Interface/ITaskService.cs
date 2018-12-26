@@ -11,6 +11,7 @@ namespace TestProject.Core.Interface
         void DeleteTask(int id);
         void InsertTask(TaskInfo taskInfo);
         void DeleteAllTask();
+        
 
     }
 }
