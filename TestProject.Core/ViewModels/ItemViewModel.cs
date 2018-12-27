@@ -16,6 +16,7 @@ namespace TestProject.Core.ViewModels
         private string _description;
         private bool _status;
         private bool _titleEnableStatus;
+        private bool _saveTaskEnable;
 
         public override async Task Initialize()
         {
@@ -50,6 +51,7 @@ namespace TestProject.Core.ViewModels
             {
                 _title = value;
                 RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => SaveTaskEnable);
             }
         }
 
@@ -89,8 +91,10 @@ namespace TestProject.Core.ViewModels
         private void SaveTask()
         {
             TaskInfo taskInfo = new TaskInfo(Id, Title, Description, Status);
-
-            _taskService.InsertTask(taskInfo);
+            if (Title != null)
+            {
+                _taskService.InsertTask(taskInfo);
+            }
 
             _navigationService.Close(this);
         }
@@ -133,5 +137,22 @@ namespace TestProject.Core.ViewModels
             }
 
         }
+        
+        public bool SaveTaskEnable
+        {
+            get
+            {
+                if (Title != null)
+                {
+                    _saveTaskEnable = true;
+                }
+                else
+                {
+                    _saveTaskEnable = false;
+                }
+                return _saveTaskEnable;
+            }
+        }
+        
     }
 }

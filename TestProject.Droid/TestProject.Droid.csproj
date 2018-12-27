@@ -72,6 +72,7 @@
     <Compile Include="Views\ListItemsView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\13159.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
@@ -107,7 +108,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icons8_add_new_48.png" />
-    <Content Include="Resources\mipmap\twotone_add_box_24.png" />
+    <AndroidResource Include="Resources\layout\toolbar_2.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icons8_arrow_pointing_left_48.png" />
+    <AndroidResource Include="Resources\drawable\ShapeEditText.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <Content Include="Resources\mipmap\twotone_add_box_24.png">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\twotone_add_box_black_18.png" />
@@ -221,7 +231,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\Fonts\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.

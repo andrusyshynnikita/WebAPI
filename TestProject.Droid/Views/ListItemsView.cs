@@ -6,6 +6,7 @@ using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using testproject.droid;
+using Android.Graphics;
 
 namespace TestProject.Droid
 {
@@ -22,7 +23,7 @@ namespace TestProject.Droid
             base.OnCreate(savedInstanceState);
 
             SetContentView(Resource.Layout.ListItemsLayout);
-            _mToolbar = FindViewById<Toolbar>(Resource.Layout.toolbar);
+            _mToolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
             SetSupportActionBar(_mToolbar);
             _recyclerView = FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);
             _layoutManager = new LinearLayoutManager(this);
@@ -30,7 +31,6 @@ namespace TestProject.Droid
             _mAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)BindingContext);
             _mAdapter.ItemClick += _mAdapter_ItemClick;
             _recyclerView.Adapter = _mAdapter;
-         
         }
 
         private void _mAdapter_ItemClick(object sender, int e)
@@ -38,19 +38,5 @@ namespace TestProject.Droid
             ViewModel.TaskViewCommand.Execute(ViewModel.TaskCollection[e]);
         }
        
-
-        //public override bool OnCreateOptionsMenu(IMenu menu)
-        //{
-
-        //    MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-        //    return base.OnCreateOptionsMenu(menu);
-        //}
-
-        //public override bool OnOptionsItemSelected(IMenuItem item)
-        //{
-        //    Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
-        //        ToastLength.Short).Show();
-        //    return base.OnOptionsItemSelected(item);
-        //}
     }
 }
