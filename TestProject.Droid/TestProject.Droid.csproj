@@ -81,8 +81,8 @@
     <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher.xml" />
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher_round.xml" />
+    <AndroidResource Include="Resources\mipmap\ic_launcher.xml" />
+    <AndroidResource Include="Resources\mipmap\ic_launcher_round.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher_round.png" />
@@ -106,7 +106,8 @@
     <AndroidResource Include="Resources\mipmap-mdpi\ic_action_content_save.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\twotone_add_box_24.xml" />
+    <AndroidResource Include="Resources\drawable\icons8_add_new_48.png" />
+    <Content Include="Resources\mipmap\twotone_add_box_24.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\twotone_add_box_black_18.png" />
@@ -207,11 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\ListItemsLayout.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\menu\menu_main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
