@@ -64,6 +64,7 @@
     <Compile Include="Helper\DatabaseConnectionService.cs" />
     <Compile Include="Helper\TaskItemAdapter.cs" />
     <Compile Include="Helper\TaskItemHolder.cs" />
+    <Compile Include="LoginActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +116,9 @@
     <AndroidResource Include="Resources\drawable\ShapeEditText.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icons8_add_new_49.png" />
+    <AndroidResource Include="Resources\drawable\baseline_add_box_black_24dp.png" />
+    <AndroidResource Include="Resources\drawable\baseline_backspace_black_24dp.png" />
     <Content Include="Resources\mipmap\twotone_add_box_24.png">
       <SubType>Designer</SubType>
     </Content>
