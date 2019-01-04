@@ -10,6 +10,7 @@ namespace TestProject.Core.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public long User_Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public bool Status { get; set; }

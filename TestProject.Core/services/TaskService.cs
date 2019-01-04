@@ -26,6 +26,14 @@ namespace TestProject.Core.services
 
         }
 
+        public List<TaskInfo> GetAllUserTasks(long twitterUserId)
+        {
+            var result = (from data in _sQLiteConnection.Table<TaskInfo>()
+                          where data.User_Id == twitterUserId
+                          select data).ToList();
+            return result;
+        }
+
         public void DeleteTask(int id)
         {
             _sQLiteConnection.Delete<TaskInfo>(id);

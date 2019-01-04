@@ -119,6 +119,10 @@
     <AndroidResource Include="Resources\drawable\icons8_add_new_49.png" />
     <AndroidResource Include="Resources\drawable\baseline_add_box_black_24dp.png" />
     <AndroidResource Include="Resources\drawable\baseline_backspace_black_24dp.png" />
+    <AndroidResource Include="Resources\layout\LoginLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\twitter_login_button.png" />
     <Content Include="Resources\mipmap\twotone_add_box_24.png">
       <SubType>Designer</SubType>
     </Content>
@@ -235,9 +239,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.

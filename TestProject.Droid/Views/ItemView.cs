@@ -15,9 +15,6 @@ namespace TestProject.Droid.Views
         private LinearLayout _linearLayout;
         private EditText _editText;
 
-
-
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -31,7 +28,6 @@ namespace TestProject.Droid.Views
             Typeface type = Typeface.CreateFromAsset(Assets, "13159.otf");
             _editText.SetTypeface(type, TypefaceStyle.Normal);
         }
-
 
         public void HideSoftKeyboard()
         {

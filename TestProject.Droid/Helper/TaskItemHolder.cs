@@ -16,7 +16,7 @@ namespace TestProject.Droid
         public TextView Title { get; set; }
         public CheckBox Status { get; set; }
 
-        public TaskItemHolder(View itemview, IMvxAndroidBindingContext context, Action<int> listener) : base(itemview, context)
+        public TaskItemHolder(View itemview, IMvxAndroidBindingContext context) : base(itemview, context)
         {
             Title = itemview.FindViewById<TextView>(Resource.Id.item_text_view);
             
@@ -28,7 +28,6 @@ namespace TestProject.Droid
                 set.Bind(this.Status).To(x => x.Status);
                 set.Apply();
             });
-            itemview.Click += (sender, e) => listener(base.AdapterPosition);
         }
     }
 }

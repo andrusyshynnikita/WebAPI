@@ -7,16 +7,19 @@ using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using testproject.droid;
 using Android.Graphics;
+using Xamarin.Auth;
+using System;
 
 namespace TestProject.Droid
 {
-    [Activity(Label = "MainActivity", MainLauncher = true)]
+    [Activity(Label = "MainActivity")]//, MainLauncher = true)]
     public class ListItemsView : MvxAppCompatActivity<ListItemsViewModel>
     {
         private Toolbar _mToolbar;
         private RecyclerView.LayoutManager _layoutManager;
         private TasksItemAdapter _mAdapter;
         private MvxRecyclerView _recyclerView;
+       
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,14 +32,10 @@ namespace TestProject.Droid
             _layoutManager = new LinearLayoutManager(this);
             _recyclerView.SetLayoutManager(_layoutManager);
             _mAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)BindingContext);
-            _mAdapter.ItemClick += _mAdapter_ItemClick;
             _recyclerView.Adapter = _mAdapter;
+
         }
 
-        private void _mAdapter_ItemClick(object sender, int e)
-        {
-            ViewModel.TaskViewCommand.Execute(ViewModel.TaskCollection[e]);
-        }
-       
+        
     }
 }
