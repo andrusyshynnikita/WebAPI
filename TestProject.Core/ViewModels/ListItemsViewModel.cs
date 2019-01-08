@@ -58,7 +58,7 @@ namespace TestProject.Core.ViewModels
 
         public override void ViewAppearing()
         {
-            var items = _taskService.GetAllTaskData();
+            var items = _taskService.GetAllUserTasks(TwitterUserId.Id_User);
             TaskCollection = new MvxObservableCollection<TaskInfo>(items);
         }
 

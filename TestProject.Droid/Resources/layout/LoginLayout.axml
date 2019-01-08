@@ -14,7 +14,6 @@
 		android:layout_gravity="center"
 		android:layout_marginTop="20dp"
 		android:background="#87ceeb"/>
-
 	<Button
 		android:id="@+id/twitterButton"
 		android:layout_width="200dp"
@@ -24,6 +23,13 @@
 		android:layout_marginTop="200dp"
 		android:background="#32CD32"
 	    local:MvxBind="Click ShowListItems"/>
+	    <Button
+        android:id="@+id/LogoutButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/buttonPanel"
+        android:text="Logout" />
 	</LinearLayout>
 
 

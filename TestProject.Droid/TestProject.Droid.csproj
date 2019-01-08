@@ -61,6 +61,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\DatabaseConnectionService.cs" />
     <Compile Include="Helper\TaskItemAdapter.cs" />
     <Compile Include="Helper\TaskItemHolder.cs" />

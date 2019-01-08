@@ -90,7 +90,7 @@ namespace TestProject.Core.ViewModels
 
         private void SaveTask()
         {
-            TaskInfo taskInfo = new TaskInfo(Id, Title, Description, Status);
+            TaskInfo taskInfo = new TaskInfo(Id, TwitterUserId.Id_User, Title, Description, Status);
             if (Title != null)
             {
                 _taskService.InsertTask(taskInfo);

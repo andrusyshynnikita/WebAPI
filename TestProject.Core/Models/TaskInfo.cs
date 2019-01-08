@@ -15,12 +15,13 @@ namespace TestProject.Core.Models
         public string Description { get; set; }
         public bool Status { get; set; }
 
-        public TaskInfo(int _id,string _taskName, string _taskDescription, bool _taskStatus)
+        public TaskInfo(int id,long user_id, string taskName, string taskDescription, bool taskStatus)
         {
-            Id = _id;
-            Title = _taskName;
-            Description = _taskDescription;
-            Status = _taskStatus;
+            Id = id;
+            User_Id = user_id;
+            Title = taskName;
+            Description = taskDescription;
+            Status = taskStatus;
         }
 
         public TaskInfo()
