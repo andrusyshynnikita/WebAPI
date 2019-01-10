@@ -26,7 +26,7 @@ namespace TestProject.Core.services
 
         }
 
-        public List<TaskInfo> GetAllUserTasks(long twitterUserId)
+        public List<TaskInfo> GetAllUserTasks(string twitterUserId)
         {
             var result = (from data in _sQLiteConnection.Table<TaskInfo>()
                           where data.User_Id == twitterUserId

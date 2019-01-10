@@ -6,9 +6,9 @@ namespace TestProject.Core.Models
 {
     public class TwitterUserId
     {
-        private static long _id_user;
+        private static string _id_user;
 
-        public static long Id_User
+        public static string Id_User
         {
             get
             {

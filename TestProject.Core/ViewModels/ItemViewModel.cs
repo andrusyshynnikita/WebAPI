@@ -142,7 +142,7 @@ namespace TestProject.Core.ViewModels
         {
             get
             {
-                if (Title != null)
+                if (!string.IsNullOrEmpty(Title))
                 {
                     _saveTaskEnable = true;
                 }

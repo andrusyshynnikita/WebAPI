@@ -12,17 +12,15 @@ using Android.Widget;
 
 namespace TestProject.Droid.Helper
 {
-    class Constants
+    public class Constants
     {
-        public static string WAIT = "Please wait.";
-        public static string USERNAME = "name";
-        public static string HELLO = "Hello ";
-        public static string REST_TYPE = "GET";
-        public static string CHECKING_INFO = "Checking user Info..";
-        public static string SERVICE_ID = "userdata";
-        public static string USER_KEY = "userkey";
-        public static string WELCOME = "Welcome ";
-        public static string LOGGED_OUT = "You are LoggedOut!!";
-        public static string FAIL_AUTH = "Authentication is cancelled!";
+        //** For Twitter **//
+        public static string TWITTER_KEY = "3xQZI7K71BrOJ7DFVkL1CPTXp";
+        public static string TWITTE_SECRET = "96oyLeoB5B9YFcJuPw46WYcDGLTR8u31lfH0hOcrhZCETgWaZB";
+        public static string TWITTE_REQ_TOKEN = "https://api.twitter.com/oauth/request_token";
+        public static string TWITTER_AUTH = "https://api.twitter.com/oauth/authorize";
+        public static string TWITTER_ACCESS_TOKEN = "https://api.twitter.com/oauth/access_token";
+        public static string TWITTE_CALLBACKURL = "https://www.google.com";
+        public static string TWITTER_REQUESTURL = "https://api.twitter.com/1.1/account/verify_credentials.json";
     }
 }

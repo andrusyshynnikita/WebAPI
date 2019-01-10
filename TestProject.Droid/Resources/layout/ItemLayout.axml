@@ -7,6 +7,11 @@
     android:layout_height="match_parent">
 	<include
 		layout="@layout/toolbar_2"/>
+	<LinearLayout
+	android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:id="@+id/item_Layout2">
 	<EditText
 		android:id = "@+id/name_text"
 		android:layout_width = "match_parent"
@@ -29,27 +34,27 @@
 		android:textColorHint = "@android:color/background_dark"
 		android:textColor = "@android:color/background_dark"
 	    local:MvxBind = "Text Description"/>
-	<LinearLayout
+	<RelativeLayout
+		android:id="@+id/liner_layout2"
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_weight="1">
+		android:layout_height="20dp">
 		<CheckBox
 			android:id = "@+id/togglebutton"
 			android:layout_width = "wrap_content"
-			android:layout_height = "match_parent"
+			android:layout_height = "wrap_content"
 			android:textColor = "@android:color/black"
 		    local:MvxBind = "Checked Status"/>
 		<TextView
 			android:text = "Done"
+				android:layout_marginLeft="40dp"
 			android:layout_width = "wrap_content"
 			android:layout_height = "wrap_content"/>
-	</LinearLayout>
+	</RelativeLayout>
 	<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_weight="1">
+		android:layout_height="match_parent">
 		<Button
 			android:id = "@+id/Savetask"
 			android:layout_width="wrap_content"
@@ -63,5 +68,6 @@
 			android:layout_height="wrap_content"
 			android:text="Delete"
 		    local:MvxBind = "Click DeleteCommand"/>
+	</LinearLayout>
 	</LinearLayout>
 </LinearLayout>

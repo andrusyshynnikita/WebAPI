@@ -29,7 +29,7 @@ namespace TestProject.Core.ViewModels
         private void DoRefreshCommand()
         {
             IsRefreshing = true;
-            var items = _taskService.GetAllTaskData();
+            var items = _taskService.GetAllUserTasks(TwitterUserId.Id_User);
             TaskCollection = new MvxObservableCollection<TaskInfo>(items);
             IsRefreshing = false;
         }

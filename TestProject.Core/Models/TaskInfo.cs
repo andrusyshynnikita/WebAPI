@@ -10,12 +10,12 @@ namespace TestProject.Core.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public long User_Id { get; set; }
+        public string User_Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public bool Status { get; set; }
 
-        public TaskInfo(int id,long user_id, string taskName, string taskDescription, bool taskStatus)
+        public TaskInfo(int id,string user_id, string taskName, string taskDescription, bool taskStatus)
         {
             Id = id;
             User_Id = user_id;

@@ -13,6 +13,7 @@ namespace TestProject.Droid.Views
     {
         private Android.Support.V7.Widget.Toolbar _mToolBar;
         private LinearLayout _linearLayout;
+        private LinearLayout _linearLayout2;
         private EditText _editText;
 
         protected override void OnCreate(Bundle bundle)
@@ -21,7 +22,7 @@ namespace TestProject.Droid.Views
             SetContentView(Resource.Layout.ItemLayout);
             _mToolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar2);    
             SetSupportActionBar(_mToolBar);
-            _linearLayout = FindViewById<LinearLayout>(Resource.Id.item_Layout);
+            _linearLayout = FindViewById<LinearLayout>(Resource.Id.item_Layout2);
             _linearLayout.Click += delegate { HideSoftKeyboard(); };
             _mToolBar.Click += delegate { HideSoftKeyboard(); };
             _editText = FindViewById<Android.Widget.EditText>(Resource.Id.name_text);
