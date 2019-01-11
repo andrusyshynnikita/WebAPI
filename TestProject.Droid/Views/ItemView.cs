@@ -1,46 +1,45 @@
-﻿using Android.App;
-using Android.OS;
-using TestProject.Core.ViewModels;
-using MvvmCross.Droid.Support.V7.AppCompat;
-using Android.Views.InputMethods;
-using Android.Widget;
+﻿using System;
+using Android.Content;
 using Android.Graphics;
+using Android.OS;
+using Android.Views;
+using Android.Views.InputMethods;
+using MvvmCross.Platforms.Android.Presenters.Attributes;
+using Android.Widget;
+using TestProject.Core.ViewModels;
+using Android.Runtime;
 
 namespace TestProject.Droid.Views
 {
-    [Activity(Label = "SecondView")]  
-    public  class ItemView: MvxAppCompatActivity<ItemViewModel>
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [Register("TestProject.droid.views.ItemView")]
+    public  class ItemView: BaseFragment<ItemViewModel>
     {
         private Android.Support.V7.Widget.Toolbar _mToolBar;
         private LinearLayout _linearLayout;
         private LinearLayout _linearLayout2;
         private EditText _editText;
 
-        protected override void OnCreate(Bundle bundle)
+        protected override int FragmentId => Resource.Layout.ItemLayout;
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
-            SetContentView(Resource.Layout.ItemLayout);
-            _mToolBar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar2);    
-            SetSupportActionBar(_mToolBar);
-            _linearLayout = FindViewById<LinearLayout>(Resource.Id.item_Layout2);
+            var view = base.OnCreateView(inflater, container, savedInstanceState);
+            _mToolBar = view.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar2);    
+            ParentActivity.SetSupportActionBar(_mToolBar);
+            _linearLayout = view.FindViewById<LinearLayout>(Resource.Id.item_Layout2);
             _linearLayout.Click += delegate { HideSoftKeyboard(); };
             _mToolBar.Click += delegate { HideSoftKeyboard(); };
-            _editText = FindViewById<Android.Widget.EditText>(Resource.Id.name_text);
-            Typeface type = Typeface.CreateFromAsset(Assets, "13159.otf");
+            _editText = view.FindViewById<Android.Widget.EditText>(Resource.Id.name_text);
+            Typeface type = Typeface.CreateFromAsset(Activity.Assets, "13159.otf");
             _editText.SetTypeface(type, TypefaceStyle.Normal);
+            return view;
         }
 
         public void HideSoftKeyboard()
         {
-            if (CurrentFocus == null)
-            {
-                return;
-            }
-
-            InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(InputMethodService);
-            inputMethodManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, 0);
-
-            CurrentFocus.ClearFocus();
+            InputMethodManager close = (InputMethodManager)Activity.GetSystemService(Context.InputMethodService);
+            close.HideSoftInputFromWindow(_linearLayout.WindowToken, 0);
         }
     }
 }

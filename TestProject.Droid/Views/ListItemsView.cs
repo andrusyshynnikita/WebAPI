@@ -9,31 +9,36 @@ using testproject.droid;
 using Android.Graphics;
 using Xamarin.Auth;
 using System;
+using TestProject.Droid.Views;
+using Android.Views;
+using MvvmCross.Platforms.Android.Presenters.Attributes;
+using Android.Runtime;
 
 namespace TestProject.Droid
 {
-    [Activity(Label = "MainActivity")]//, MainLauncher = true)]
-    public class ListItemsView : MvxAppCompatActivity<ListItemsViewModel>
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [Register("TestProject.droid.views.ListItemsView")]
+    public class ListItemsView :BaseFragment<ListItemsViewModel>
     {
         private Toolbar _mToolbar;
         private RecyclerView.LayoutManager _layoutManager;
         private TasksItemAdapter _mAdapter;
         private MvxRecyclerView _recyclerView;
-       
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override int FragmentId => Resource.Layout.ListItemsLayout;
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+            var view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            SetContentView(Resource.Layout.ListItemsLayout);
-            _mToolbar = FindViewById<Toolbar>(Resource.Id.toolbar1);
-            SetSupportActionBar(_mToolbar);
-            _recyclerView = FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);
-            _layoutManager = new LinearLayoutManager(this);
+            _mToolbar = view.FindViewById<Toolbar>(Resource.Id.toolbar1);
+            ParentActivity.SetSupportActionBar(_mToolbar);
+            _recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.recyclerView);
+            _layoutManager = new LinearLayoutManager(this.Context);
             _recyclerView.SetLayoutManager(_layoutManager);
             _mAdapter = new TasksItemAdapter((IMvxAndroidBindingContext)BindingContext);
             _recyclerView.Adapter = _mAdapter;
-
+            return view;
         }
 
         

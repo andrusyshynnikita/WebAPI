@@ -6,7 +6,7 @@ using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.ViewModels;
 
-namespace StarWarsSample.Droid.Views
+namespace TestProject.Droid.Views
 {
     public abstract class BaseFragment : MvxFragment
     {
@@ -32,10 +32,12 @@ namespace StarWarsSample.Droid.Views
 
         public override void OnConfigurationChanged(Configuration newConfig)
         {
+            base.OnConfigurationChanged(newConfig);
         }
 
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
+            base.OnActivityCreated(savedInstanceState);
         }
     }
 

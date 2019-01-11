@@ -1,35 +1,41 @@
 ﻿using Android.App;
 using Android.OS;
-using MvvmCross.Droid.Support.V7.AppCompat;
 using Android.Widget;
 using Xamarin.Auth;
 using System;
+using Android.Support.V4.View;
+using Android.Support.V4.Widget;
 using TestProject.Core.Models;
-using TestProject.Core.ViewModels;
 using System.Linq;
 using Newtonsoft.Json;
-using System.Json;
-using TestProject.Core.Interface;
 using TestProject.Droid.Helper;
+using TestProject.Core.ViewModels;
+using Android.Views;
+using MvvmCross.Platforms.Android.Presenters.Attributes;
+using Android.Runtime;
+using TestProject.Droid.Views;
 
 namespace TestProject.Droid
 {
-    [Activity(Label = "LoginActivity", MainLauncher = true)]
-    public class LoginView : MvxAppCompatActivity<LoginViewModel>
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [Register("TestProject.droid.views.LoginView")]
+    public class LoginView : BaseFragment<LoginViewModel>
     {
         private Button _twitter_button;
         private TwitterUser _twitterUser;
         private Button _logout_button;
         public Action OnLoggedInHandler;
-        protected override void OnCreate(Bundle savedInstanceState)
+
+        protected override int FragmentId => Resource.Layout.LoginLayout;
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.LoginLayout);
-            _twitter_button = FindViewById<Button>(Resource.Id.twitterButton);
-            _logout_button = FindViewById<Button>(Resource.Id.LogoutButton);
+            var view = base.OnCreateView(inflater, container, savedInstanceState);
+            _twitter_button = view.FindViewById<Button>(Resource.Id.twitterButton);
+            _logout_button = view.FindViewById<Button>(Resource.Id.LogoutButton);
             CachedUserData();
             _twitter_button.Click += delegate { LoginTwitter(); };
             _logout_button.Click += Logout;
+            return view;
         }
 
         private void LoginTwitter()
@@ -44,7 +50,7 @@ namespace TestProject.Droid
 
             auth.AllowCancel = true;
             auth.Completed += twitter_auth_Completed;
-            StartActivity(auth.GetUI(this));
+            StartActivity(auth.GetUI(View.Context));
         }
 
         async private void twitter_auth_Completed(object sender, AuthenticatorCompletedEventArgs eventArgs)
@@ -54,7 +60,7 @@ namespace TestProject.Droid
             {
                 Account loggedInAccount = eventArgs.Account;
 
-                AccountStore.Create(this).Save(loggedInAccount, "Twitter");
+                AccountStore.Create(View.Context).Save(loggedInAccount, "Twitter");
 
                 var request = new OAuth1Request("GET",
                     new Uri("https://api.twitter.com/1.1/account/verify_credentials.json"),
@@ -66,7 +72,7 @@ namespace TestProject.Droid
                 var json = response.GetResponseText();
 
                 _twitterUser = JsonConvert.DeserializeObject<TwitterUser>(json);
-                var data = AccountStore.Create(this).FindAccountsForService("Twitter").FirstOrDefault();
+                var data = AccountStore.Create(View.Context).FindAccountsForService("Twitter").FirstOrDefault();
                 data.Username = _twitterUser.name;
                 TwitterUserId.Id_User= data.Properties["user_id"];
                   _twitter_button.Enabled = false;
@@ -109,15 +115,15 @@ namespace TestProject.Droid
 
         void Logout(object sender, EventArgs e)
         {
-            var data = AccountStore.Create(this).FindAccountsForService("Twitter").FirstOrDefault();
+            var data = AccountStore.Create(View.Context).FindAccountsForService("Twitter").FirstOrDefault();
             //var d= data.Properties["user_id"];
             if (data != null)
             {
-                AccountStore.Create(this).Delete(data, "Twitter");
+                AccountStore.Create(View.Context).Delete(data, "Twitter");
                 TwitterUserId.Id_User = null;
                 _twitter_button.Enabled = true;
                 _logout_button.Enabled = false;
-                Toast.MakeText(this, "You are LoggedOut!!", ToastLength.Short).Show();
+                Toast.MakeText(View.Context, "You are LoggedOut!!", ToastLength.Short).Show();
             }
         }
     }

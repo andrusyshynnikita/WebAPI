@@ -6746,6 +6746,9 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f0a003a
 			public const int always = 2131361850;
 			
+			// aapt resource value: 0x7f0a00c2
+			public const int appbar = 2131361986;
+			
 			// aapt resource value: 0x7f0a0058
 			public const int async = 2131361880;
 			
@@ -6938,8 +6941,8 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f0a00a8
 			public const int main_frame = 2131361960;
 			
-			// aapt resource value: 0x7f0a00c3
-			public const int masked = 2131361987;
+			// aapt resource value: 0x7f0a00c6
+			public const int masked = 2131361990;
 			
 			// aapt resource value: 0x7f0a00b0
 			public const int media_actions = 2131361968;
@@ -7130,6 +7133,9 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f0a0021
 			public const int tabMode = 2131361825;
 			
+			// aapt resource value: 0x7f0a00c3
+			public const int tabs = 2131361987;
+			
 			// aapt resource value: 0x7f0a0019
 			public const int tag_transition_group = 2131361817;
 			
@@ -7214,11 +7220,14 @@ namespace TestProject.Droid
 			// aapt resource value: 0x7f0a0028
 			public const int useLogo = 2131361832;
 			
+			// aapt resource value: 0x7f0a00c4
+			public const int viewPager1 = 2131361988;
+			
 			// aapt resource value: 0x7f0a0016
 			public const int view_offset_helper = 2131361814;
 			
-			// aapt resource value: 0x7f0a00c2
-			public const int visible = 2131361986;
+			// aapt resource value: 0x7f0a00c5
+			public const int visible = 2131361989;
 			
 			// aapt resource value: 0x7f0a008d
 			public const int webview = 2131361933;
@@ -7488,6 +7497,9 @@ namespace TestProject.Droid
 			
 			// aapt resource value: 0x7f040043
 			public const int tooltip = 2130968643;
+			
+			// aapt resource value: 0x7f040044
+			public const int ViewPager = 2130968644;
 			
 			static Layout()
 			{

@@ -61,6 +61,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\MvxViewPagerFragmentAdapter.cs" />
     <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\DatabaseConnectionService.cs" />
     <Compile Include="Helper\TaskItemAdapter.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Views\ListItemsView.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\MainView.cs" />
+    <Compile Include="Views\ViewPagerView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\13159.otf" />
@@ -128,6 +130,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\twitter_login_button.png" />
     <AndroidResource Include="Resources\layout\MainView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ViewPager.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <Content Include="Resources\mipmap\twotone_add_box_24.png">

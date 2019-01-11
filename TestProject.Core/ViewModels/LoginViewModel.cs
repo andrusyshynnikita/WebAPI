@@ -19,9 +19,9 @@ namespace TestProject.Core.ViewModels
 
         public LoginViewModel(IMvxNavigationService mvxNavigationService, ILoginService loginService)
         {
-            _loginService = loginService;
-            _userDate = _loginService.GetActiveTwitterUser();
-            TwitterUserId.Id_User = _userDate.Username;
+            //_loginService = loginService;
+            //_userDate = _loginService.GetActiveTwitterUser();
+            //TwitterUserId.Id_User = _userDate.Username;
             _mvxNavigationService = mvxNavigationService;
             ShowListItems = new MvxAsyncCommand(async () => await _mvxNavigationService.Navigate<ListItemsViewModel>());
         }
