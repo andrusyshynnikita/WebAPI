@@ -34,8 +34,10 @@ namespace TestProject.Droid.Views
                 }
             };
             _viewPager.Adapter = new MvxViewPagerFragmentAdapter(Activity, ChildFragmentManager, fragments);
+
             var tabLayout = view.FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.tabs);
             tabLayout.SetupWithViewPager(_viewPager);
+
             return view;
         }
     }

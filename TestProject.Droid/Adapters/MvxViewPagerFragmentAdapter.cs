@@ -1,4 +1,5 @@
 ﻿using Android.Content;
+using Android.Runtime;
 using Android.Support.V4.App;
 using Java.Lang;
 using MvvmCross.Droid.Support.V4;
@@ -14,11 +15,17 @@ namespace TaskDropper.Droid.ViewAdapters
         : FragmentStatePagerAdapter
     {
         private readonly Context _context;
+
         public IEnumerable<FragmentInfo> Fragments { get; private set; }
 
         public override int Count
         {
             get { return Fragments.Count(); }
+        }
+
+        protected MvxViewPagerFragmentAdapter(IntPtr javaReference, JniHandleOwnership transfer)
+    : base(javaReference, transfer)
+        {
         }
 
         public MvxViewPagerFragmentAdapter(
@@ -48,7 +55,7 @@ namespace TaskDropper.Droid.ViewAdapters
 
         public override ICharSequence GetPageTitleFormatted(int position)
         {
-            return new String(Fragments.ElementAt(position).Title);
+            return new Java.Lang.String(Fragments.ElementAt(position).Title);
         }
 
         public class FragmentInfo

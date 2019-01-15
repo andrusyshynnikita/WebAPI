@@ -14,10 +14,12 @@ namespace TestProject.Core.ViewModels
         private ITaskService _taskService;
         private MvxCommand _refreshCommand;
         private bool _isRefreshing;
+        private ILoginService _loginService;
 
-        public ListItemsViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService)
+        public ListItemsViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService, ILoginService loginService)
         {
             _navigationService = mvxNavigationService;
+            _loginService = loginService;
             ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
             _taskService = taskService;
             TaskViewCommand = new MvxAsyncCommand<TaskInfo>(NavigateMethod);
@@ -37,6 +39,14 @@ namespace TestProject.Core.ViewModels
         public IMvxCommand ShowSecondPage { get; set; }
 
         public IMvxCommand<TaskInfo> TaskViewCommand { get; set; }
+        
+        public IMvxCommand LogoutCommand
+        {
+            get
+            {
+                return new MvxAsyncCommand(LogOut);
+            }
+        }
           
         private async Task NavigateMethod(TaskInfo taskInfo)
         {
@@ -70,6 +80,13 @@ namespace TestProject.Core.ViewModels
                 _isRefreshing = value;
                 RaisePropertyChanged(() => IsRefreshing);
             }
+        }
+
+        private async Task LogOut()
+        {
+
+           _loginService.Logout();
+            await _navigationService.Close(this);
         }
 
     }

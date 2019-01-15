@@ -74,6 +74,7 @@ namespace TestProject.Core.services
             }
             set { }
         }
+
         public void Logout()
         {
             var data = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();

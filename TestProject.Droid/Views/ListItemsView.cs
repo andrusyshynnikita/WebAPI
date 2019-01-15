@@ -16,7 +16,7 @@ using Android.Runtime;
 
 namespace TestProject.Droid
 {
-    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true), ]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, false)]
     [Register("TestProject.droid.views.ListItemsView")]
     public class ListItemsView :BaseFragment<ListItemsViewModel>
     {

@@ -33,7 +33,7 @@ namespace TestProject.Core.ViewModels
         public IMvxCommand ShowListItems { get; set; }
         public IMvxCommand ShowViewPager { get; set; }
         public IMvxCommand LoginCommand => new MvxCommand(_loginService.LoginTwitter);
-        public IMvxCommand LogoutCommand => new MvxCommand(_loginService.Logout);
+        //public IMvxCommand LogoutCommand => new MvxCommand(_loginService.Logout);
         
         public OAuth1Authenticator Authenticator
         {
