@@ -29,7 +29,7 @@ namespace TestProject.Droid.Views
 
             if (bundle == null)
             {
-                ViewModel.ShowLoginView.Execute(null);
+               // ViewModel.ShowLoginView.Execute(null);
             }
         }
 

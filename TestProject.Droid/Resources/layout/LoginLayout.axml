@@ -29,7 +29,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/buttonPanel"
-        android:text="Logout" />
+        android:text="Logout"
+	    local:MvxBind="Click LogoutCommand"/>
+			    <Button
+        android:id="@+id/viewpagerlogin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="ViewPager"
+	    local:MvxBind="Click ShowViewPager"/>
 	</LinearLayout>
 
 

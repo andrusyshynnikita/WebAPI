@@ -32,74 +32,35 @@ namespace TestProject.Droid
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             _twitter_button = view.FindViewById<Button>(Resource.Id.twitterButton);
             _logout_button = view.FindViewById<Button>(Resource.Id.LogoutButton);
-            CachedUserData();
+           // CachedUserData();
             _twitter_button.Click += delegate { LoginTwitter(); };
-            _logout_button.Click += Logout;
+           // _logout_button.Click += Logout;
             return view;
         }
 
         private void LoginTwitter()
         {
-            var auth = new OAuth1Authenticator(
-                                Constants.TWITTER_KEY,
-                                Constants.TWITTE_SECRET,
-                                new Uri(Constants.TWITTE_REQ_TOKEN),
-                                new Uri(Constants.TWITTER_AUTH),
-                                new Uri(Constants.TWITTER_ACCESS_TOKEN),
-                                new Uri(Constants.TWITTE_CALLBACKURL));
-
-            auth.AllowCancel = true;
-            auth.Completed += twitter_auth_Completed;
-            StartActivity(auth.GetUI(View.Context));
+            ViewModel.LoginCommand.Execute();
+            StartActivity(ViewModel.Authenticator.GetUI(View.Context));
         }
 
-        async private void twitter_auth_Completed(object sender, AuthenticatorCompletedEventArgs eventArgs)
-        {
 
-            if (eventArgs.IsAuthenticated)
-            {
-                Account loggedInAccount = eventArgs.Account;
-
-                AccountStore.Create(View.Context).Save(loggedInAccount, "Twitter");
-
-                var request = new OAuth1Request("GET",
-                    new Uri("https://api.twitter.com/1.1/account/verify_credentials.json"),
-                    null,
-                    eventArgs.Account);
-
-                var response = await request.GetResponseAsync();
-
-                var json = response.GetResponseText();
-
-                _twitterUser = JsonConvert.DeserializeObject<TwitterUser>(json);
-                var data = AccountStore.Create(View.Context).FindAccountsForService("Twitter").FirstOrDefault();
-                data.Username = _twitterUser.name;
-                TwitterUserId.Id_User= data.Properties["user_id"];
-                  _twitter_button.Enabled = false;
-                  _logout_button.Enabled = true;
-                
-                //TwitterUserId.Id_User = _twitterUser.id;
-                // StoringDataIntoCache(_twitterUser);
-
-            }
-        }
-
-        void CachedUserData()
-        {
-            var cache = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
-            if (cache != null)
-            {
-                //Toast.MakeText(this, Constants.HELLO + cache.Properties[Constants.USER_KEY], ToastLength.Long).Show();
-                _twitter_button.Enabled = false;
-                _logout_button.Enabled = true;
-                TwitterUserId.Id_User = cache.Properties["user_id"];
-            }
-            else
-            {
-                _twitter_button.Enabled = true;
-                _logout_button.Enabled = false;
-            }
-        }
+        //void CachedUserData()
+        //{
+        //    var cache = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
+        //    if (cache != null)
+        //    {
+        //        //Toast.MakeText(this, Constants.HELLO + cache.Properties[Constants.USER_KEY], ToastLength.Long).Show();
+        //        _twitter_button.Enabled = false;
+        //        _logout_button.Enabled = true;
+        //        TwitterUserId.Id_User = cache.Properties["user_id"];
+        //    }
+        //    else
+        //    {
+        //        _twitter_button.Enabled = true;
+        //        _logout_button.Enabled = false;
+        //    }
+        //}
 
         //void StoringDataIntoCache(TwitterUser userData)
         //{
@@ -113,18 +74,18 @@ namespace TestProject.Droid
         //    _logout_button.Enabled = true;
         //}
 
-        void Logout(object sender, EventArgs e)
-        {
-            var data = AccountStore.Create(View.Context).FindAccountsForService("Twitter").FirstOrDefault();
-            //var d= data.Properties["user_id"];
-            if (data != null)
-            {
-                AccountStore.Create(View.Context).Delete(data, "Twitter");
-                TwitterUserId.Id_User = null;
-                _twitter_button.Enabled = true;
-                _logout_button.Enabled = false;
-                Toast.MakeText(View.Context, "You are LoggedOut!!", ToastLength.Short).Show();
-            }
-        }
+        //void Logout(object sender, EventArgs e)
+        //{
+        //    var data = AccountStore.Create(View.Context).FindAccountsForService("Twitter").FirstOrDefault();
+        //    //var d= data.Properties["user_id"];
+        //    if (data != null)
+        //    {
+        //        AccountStore.Create(View.Context).Delete(data, "Twitter");
+        //        TwitterUserId.Id_User = null;
+        //        _twitter_button.Enabled = true;
+        //        _logout_button.Enabled = false;
+        //        Toast.MakeText(View.Context, "You are LoggedOut!!", ToastLength.Short).Show();
+        //    }
+        //}
     }
 }

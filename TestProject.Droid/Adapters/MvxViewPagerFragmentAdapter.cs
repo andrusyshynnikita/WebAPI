@@ -11,7 +11,7 @@ using String = Java.Lang.String;
 namespace TaskDropper.Droid.ViewAdapters
 {
     public class MvxViewPagerFragmentAdapter
-         : FragmentPagerAdapter
+        : FragmentStatePagerAdapter
     {
         private readonly Context _context;
         public IEnumerable<FragmentInfo> Fragments { get; private set; }

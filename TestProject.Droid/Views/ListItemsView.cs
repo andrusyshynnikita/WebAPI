@@ -16,7 +16,7 @@ using Android.Runtime;
 
 namespace TestProject.Droid
 {
-    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true), ]
     [Register("TestProject.droid.views.ListItemsView")]
     public class ListItemsView :BaseFragment<ListItemsViewModel>
     {
@@ -24,7 +24,10 @@ namespace TestProject.Droid
         private RecyclerView.LayoutManager _layoutManager;
         private TasksItemAdapter _mAdapter;
         private MvxRecyclerView _recyclerView;
+        public ListItemsView()
+        {
 
+        }
         protected override int FragmentId => Resource.Layout.ListItemsLayout;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
