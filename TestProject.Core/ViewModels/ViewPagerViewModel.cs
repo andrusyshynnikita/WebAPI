@@ -17,6 +17,6 @@ namespace TestProject.Core.ViewModels
             _navigationService = navigationService;
             ListItemsViewModel = Mvx.IoCConstruct<ListItemsViewModel>();
         }
-        public IMvxViewModel ListItemsViewModel { get; set; }
+        public ListItemsViewModel ListItemsViewModel { get; set; }
     }
 }

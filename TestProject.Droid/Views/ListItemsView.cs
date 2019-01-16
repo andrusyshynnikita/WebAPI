@@ -24,10 +24,12 @@ namespace TestProject.Droid
         private RecyclerView.LayoutManager _layoutManager;
         private TasksItemAdapter _mAdapter;
         private MvxRecyclerView _recyclerView;
+
         public ListItemsView()
         {
 
         }
+
         protected override int FragmentId => Resource.Layout.ListItemsLayout;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

@@ -20,17 +20,19 @@ namespace TestProject.Core.ViewModels
 
         public LoginViewModel(IMvxNavigationService mvxNavigationService, ILoginService loginService)
         {
-            ShowListItems = new MvxAsyncCommand(async () => await _mvxNavigationService.Navigate<ListItemsViewModel>());
+          //  ShowListItems = new MvxAsyncCommand(async () => await _mvxNavigationService.Navigate<ListItemsViewModel>());
             _loginService = loginService;
+
             _loginService.OnLoggedInHandler = new Action(() =>
             {
                 ShowListItems.Execute();
             });
+
             _mvxNavigationService = mvxNavigationService;
             ShowViewPager = new MvxAsyncCommand(async () => await _mvxNavigationService.Navigate<ViewPagerViewModel>());
         }
 
-        public IMvxCommand ShowListItems { get; set; }
+        //public IMvxCommand ShowListItems { get; set; }
         public IMvxCommand ShowViewPager { get; set; }
         public IMvxCommand LoginCommand => new MvxCommand(_loginService.LoginTwitter);
         //public IMvxCommand LogoutCommand => new MvxCommand(_loginService.Logout);
@@ -40,6 +42,16 @@ namespace TestProject.Core.ViewModels
             get
             {
                 return _loginService.Authenticator();
+            }
+        }
+        public IMvxAsyncCommand ShowListItems
+        {
+            get
+            {
+                return new MvxAsyncCommand(async () => {
+                    await _mvxNavigationService.Navigate<ListItemsViewModel>();
+                    await _mvxNavigationService.Close(this);
+            });
             }
         }
 

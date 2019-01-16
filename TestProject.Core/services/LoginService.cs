@@ -70,7 +70,7 @@ namespace TestProject.Core.services
         {
             get
             {
-                return _currentUserAccount= AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
+                return _currentUserAccount = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
             }
             set { }
         }

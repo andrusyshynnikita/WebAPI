@@ -6,7 +6,7 @@ using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
-using TaskDropper.Droid.ViewAdapters;
+using TestProject.Droid.ViewAdapters;
 using TestProject.Core.ViewModels;
 
 namespace TestProject.Droid.Views

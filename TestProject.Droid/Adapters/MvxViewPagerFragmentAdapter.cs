@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using String = Java.Lang.String;
 
-namespace TaskDropper.Droid.ViewAdapters
+namespace TestProject.Droid.ViewAdapters
 {
     public class MvxViewPagerFragmentAdapter
         : FragmentStatePagerAdapter
@@ -40,17 +40,15 @@ namespace TaskDropper.Droid.ViewAdapters
         {
             var fragmentInfo = Fragments.ElementAt(position);
             var fragment = Fragment.Instantiate(_context,
-                FragmentJavaName(fragmentInfo.FragmentType));
+             FragmentJavaName(fragmentInfo.FragmentType));
             ((MvxFragment)fragment).ViewModel = fragmentInfo.ViewModel;
             return fragment;
+            //return new  ListItemsView();
         }
 
         protected static string FragmentJavaName(Type fragmentType)
         {
-            var namespaceText = fragmentType.Namespace ?? "";
-            if (namespaceText.Length > 0)
-                namespaceText = namespaceText.ToLowerInvariant() + ".";
-            return namespaceText + fragmentType.Name;
+            return Java.Lang.Class.FromType(fragmentType).Name;
         }
 
         public override ICharSequence GetPageTitleFormatted(int position)

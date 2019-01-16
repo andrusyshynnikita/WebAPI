@@ -36,6 +36,11 @@ namespace TestProject.Droid.Views
             return view;
         }
 
+        public override void OnDestroyView()
+        {
+            base.OnDestroyView();
+            HideSoftKeyboard();
+        }
         public void HideSoftKeyboard()
         {
             InputMethodManager close = (InputMethodManager)Activity.GetSystemService(Context.InputMethodService);

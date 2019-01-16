@@ -84,8 +84,9 @@ namespace TestProject.Core.ViewModels
 
         private async Task LogOut()
         {
-
+           
            _loginService.Logout();
+            await _navigationService.Navigate<LoginViewModel>();
             await _navigationService.Close(this);
         }
 

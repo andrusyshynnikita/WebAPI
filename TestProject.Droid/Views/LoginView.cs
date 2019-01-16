@@ -17,7 +17,7 @@ using TestProject.Droid.Views;
 
 namespace TestProject.Droid
 {
-    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.login_frame, false)]
     [Register("TestProject.droid.views.LoginView")]
     public class LoginView : BaseFragment<LoginViewModel>
     {
