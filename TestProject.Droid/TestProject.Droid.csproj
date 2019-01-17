@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\MvxViewPagerFragmentAdapter.cs" />
-    <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\DatabaseConnectionService.cs" />
     <Compile Include="Helper\TaskItemAdapter.cs" />
     <Compile Include="Helper\TaskItemHolder.cs" />
@@ -235,6 +234,9 @@
     </PackageReference>
     <PackageReference Include="MvvmCross.Droid.Support.V7.RecyclerView">
       <Version>6.2.2</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Compat">
+      <Version>27.0.2.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Design">
       <Version>27.0.2.1</Version>

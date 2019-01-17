@@ -20,6 +20,6 @@
 			android:layout_height="wrap_content"
 			android:layout_centerInParent="true"
 			android:fontWeight="800"
-		    local:MvxBind = "Text Title"/>
+		    android:text="TaskyDrop"/>
 		</RelativeLayout>
 	</android.support.v7.widget.Toolbar>

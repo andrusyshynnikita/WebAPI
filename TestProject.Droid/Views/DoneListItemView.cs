@@ -1,20 +1,14 @@
-﻿using Android.App;
-using Android.OS;
+﻿using Android.OS;
 using TestProject.Core.ViewModels;
 using Android.Support.V7.Widget;
-using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using testproject.droid;
-using Android.Graphics;
-using Xamarin.Auth;
-using System;
-using TestProject.Droid.Views;
 using Android.Views;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using Android.Runtime;
 
-namespace TestProject.Droid
+namespace TestProject.Droid.Views
 {
     [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, false)]
     [Register("TestProject.droid.views.DoneListItemView")]

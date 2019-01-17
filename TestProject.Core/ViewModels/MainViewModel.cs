@@ -19,7 +19,6 @@ namespace TestProject.Core.ViewModels
         {
             _mvxNavigationService = mvxNavigationService;
             _loginService = loginService;
-           // ShowLoginView = new MvxAsyncCommand(async () => await _mvxNavigationService.Navigate<LoginViewModel>());
         }
 
         public IMvxCommand ShowCommand

@@ -1,16 +1,14 @@
 ﻿using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using Newtonsoft.Json;
 using System;
-using System.Linq;
 using TestProject.Core.Interface;
 using TestProject.Core.Models;
 using Xamarin.Auth;
 
 namespace TestProject.Core.ViewModels
 {
-    public class LoginViewModel : MvxViewModel//, ILoginHandler
+    public class LoginViewModel : MvxViewModel
     {
         private IMvxNavigationService _mvxNavigationService;
         private ILoginService _loginService;
@@ -20,7 +18,6 @@ namespace TestProject.Core.ViewModels
 
         public LoginViewModel(IMvxNavigationService mvxNavigationService, ILoginService loginService)
         {
-          //  ShowListItems = new MvxAsyncCommand(async () => await _mvxNavigationService.Navigate<ListItemsViewModel>());
             _loginService = loginService;
 
             _loginService.OnLoggedInHandler = new Action(() =>
@@ -31,9 +28,7 @@ namespace TestProject.Core.ViewModels
             _mvxNavigationService = mvxNavigationService;
         }
 
-        //public IMvxCommand ShowListItems { get; set; }
         public IMvxCommand LoginCommand => new MvxCommand(_loginService.LoginTwitter);
-        //public IMvxCommand LogoutCommand => new MvxCommand(_loginService.Logout);
         
         public OAuth1Authenticator Authenticator
         {
@@ -42,16 +37,6 @@ namespace TestProject.Core.ViewModels
                 return _loginService.Authenticator();
             }
         }
-        //public IMvxAsyncCommand ShowListItems
-        //{
-        //    get
-        //    {
-        //        return new MvxAsyncCommand(async () => {
-        //            await _mvxNavigationService.Navigate<ListItemsViewModel>();
-        //            await _mvxNavigationService.Close(this);
-        //    });
-        //    }
-        //}
 
         public IMvxAsyncCommand ShowViewPager
         {

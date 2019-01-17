@@ -3,8 +3,6 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using TestProject.Core.Interface;
 
@@ -27,8 +25,11 @@ namespace TestProject.Core.ViewModels
                 LogoutCommand.Execute();
             });
         }
+
         public DoneListItemViewModel DoneListItemViewModel { get; set; }
+
         public NotDoneListItemViewModel NotDoneListItemViewModel { get; set; }
+
         public AboutViewModel AboutViewModel { get; set; }
 
         public IMvxCommand LogoutCommand

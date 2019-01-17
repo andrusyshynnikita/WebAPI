@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TestProject.Core.Helper;
 using TestProject.Core.Interface;
 using TestProject.Core.Models;
 using Xamarin.Auth;
-using TestProject.Core.ViewModels;
 
 namespace TestProject.Core.services
 {
@@ -33,7 +30,6 @@ namespace TestProject.Core.services
 
             _auth.AllowCancel = true;
             _auth.Completed += twitter_auth_Completed;
-           // return true;
         }
 
         async private void twitter_auth_Completed(object sender, AuthenticatorCompletedEventArgs eventArgs)
@@ -59,9 +55,6 @@ namespace TestProject.Core.services
                 _currentUserAccount.Username = _twitterUser.name;
                 TwitterUserId.Id_User = _currentUserAccount.Properties["user_id"];
                 OnLoggedInHandler();
-                //TwitterUserId.Id_User = _twitterUser.id;
-                // StoringDataIntoCache(_twitterUser);
-
             }
 
         }
@@ -78,14 +71,11 @@ namespace TestProject.Core.services
         public void Logout()
         {
             var data = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
-            //var d= data.Properties["user_id"];
+
             if (data != null)
             {
                 AccountStore.Create().Delete(data, "Twitter");
                 TwitterUserId.Id_User = null;
-                // _twitter_button.Enabled = true;
-                // _logout_button.Enabled = false;
-                //  Toast.MakeText(View.Context, "You are LoggedOut!!", ToastLength.Short).Show();
             }
         }
 
