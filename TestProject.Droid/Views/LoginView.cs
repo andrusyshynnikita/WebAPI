@@ -31,7 +31,6 @@ namespace TestProject.Droid
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             _twitter_button = view.FindViewById<Button>(Resource.Id.twitterButton);
-            _logout_button = view.FindViewById<Button>(Resource.Id.LogoutButton);
            // CachedUserData();
             _twitter_button.Click += delegate { LoginTwitter(); };
            // _logout_button.Click += Logout;

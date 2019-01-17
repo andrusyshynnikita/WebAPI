@@ -11,7 +11,7 @@ using TestProject.Core.ViewModels;
 
 namespace TestProject.Droid.Views
 {
-    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, true)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, false)]
     [Register("TestProject.droid.views.ViewPagerView")]
     public class ViewPagerView : BaseFragment<ViewPagerViewModel>
     {
@@ -28,9 +28,21 @@ namespace TestProject.Droid.Views
             {
                 new MvxViewPagerFragmentAdapter.FragmentInfo
                 {
-                    FragmentType = typeof(ListItemsView),
-                    Title="TaskyDrop",
-                    ViewModel= ViewModel.ListItemsViewModel
+                    FragmentType = typeof(DoneListItemView),
+                    Title="DoneTasks",
+                    ViewModel= ViewModel.DoneListItemViewModel
+                },
+                new MvxViewPagerFragmentAdapter.FragmentInfo
+                {
+                    FragmentType = typeof(NotDoneListItemView),
+                    Title="NotDoneTasks",
+                    ViewModel= ViewModel.NotDoneListItemViewModel
+                },
+                new MvxViewPagerFragmentAdapter.FragmentInfo
+                {
+                    FragmentType = typeof(AboutView),
+                    Title = "About",
+                    ViewModel= ViewModel.AboutViewModel
                 }
             };
             _viewPager.Adapter = new MvxViewPagerFragmentAdapter(Activity, ChildFragmentManager, fragments);

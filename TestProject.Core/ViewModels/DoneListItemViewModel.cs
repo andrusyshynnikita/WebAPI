@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestProject.Core.ViewModels
 {
-    public class ListItemsViewModel : MvxViewModel
+    public class DoneListItemViewModel : MvxViewModel
     {
         private readonly IMvxNavigationService _navigationService;
         private MvxObservableCollection<TaskInfo> _taskCollection;
@@ -16,7 +16,7 @@ namespace TestProject.Core.ViewModels
         private bool _isRefreshing;
         private ILoginService _loginService;
 
-        public ListItemsViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService, ILoginService loginService)
+        public DoneListItemViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService, ILoginService loginService)
         {
             _navigationService = mvxNavigationService;
             _loginService = loginService;
@@ -31,7 +31,7 @@ namespace TestProject.Core.ViewModels
         private void DoRefreshCommand()
         {
             IsRefreshing = true;
-            var items = _taskService.GetAllUserTasks(TwitterUserId.Id_User);
+            var items = _taskService.GetAllDoneUserTasks(TwitterUserId.Id_User);
             TaskCollection = new MvxObservableCollection<TaskInfo>(items);
             IsRefreshing = false;
         }
@@ -68,7 +68,7 @@ namespace TestProject.Core.ViewModels
 
         public override void ViewAppearing()
         {
-            var items = _taskService.GetAllUserTasks(TwitterUserId.Id_User);
+            var items = _taskService.GetAllDoneUserTasks(TwitterUserId.Id_User);
             TaskCollection = new MvxObservableCollection<TaskInfo>(items);
         }
 

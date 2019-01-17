@@ -26,10 +26,20 @@ namespace TestProject.Core.services
 
         }
 
-        public List<TaskInfo> GetAllUserTasks(string twitterUserId)
+        public List<TaskInfo> GetAllDoneUserTasks(string twitterUserId)
+        {
+            var result = (from data in _sQLiteConnection.Table<TaskInfo>()
+                          where data.User_Id == twitterUserId 
+                          where data.Status == true
+                          select data).ToList();
+            return result;
+        }
+
+        public List<TaskInfo> GetAllNotDoneUserTasks(string twitterUserId)
         {
             var result = (from data in _sQLiteConnection.Table<TaskInfo>()
                           where data.User_Id == twitterUserId
+                          where data.Status == false
                           select data).ToList();
             return result;
         }

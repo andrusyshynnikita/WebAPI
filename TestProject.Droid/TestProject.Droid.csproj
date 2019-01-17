@@ -74,9 +74,11 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\BaseFragment.cs" />
     <Compile Include="Views\ItemView.cs" />
-    <Compile Include="Views\ListItemsView.cs" />
+    <Compile Include="Views\DoneListItemView.cs" />
     <Compile Include="Views\LoginView.cs" />
+    <Compile Include="Views\AboutView.cs" />
     <Compile Include="Views\MainView.cs" />
+    <Compile Include="Views\NotDoneListItemView.cs" />
     <Compile Include="Views\ViewPagerView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +142,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\car_967470_640.png" />
+    <AndroidResource Include="Resources\layout\Fragmentlayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NotDoneListItemsLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="Resources\mipmap\twotone_add_box_24.png">
       <SubType>Designer</SubType>
     </Content>
@@ -242,7 +250,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\ListItemsLayout.axml">
+    <AndroidResource Include="Resources\layout\DoneListItemsLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

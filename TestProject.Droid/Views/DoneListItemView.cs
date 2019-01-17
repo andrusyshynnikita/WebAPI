@@ -17,20 +17,20 @@ using Android.Runtime;
 namespace TestProject.Droid
 {
     [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, false)]
-    [Register("TestProject.droid.views.ListItemsView")]
-    public class ListItemsView :BaseFragment<ListItemsViewModel>
+    [Register("TestProject.droid.views.DoneListItemView")]
+    public class DoneListItemView :BaseFragment<DoneListItemViewModel>
     {
         private Toolbar _mToolbar;
         private RecyclerView.LayoutManager _layoutManager;
         private TasksItemAdapter _mAdapter;
         private MvxRecyclerView _recyclerView;
 
-        public ListItemsView()
+        public DoneListItemView()
         {
 
         }
 
-        protected override int FragmentId => Resource.Layout.ListItemsLayout;
+        protected override int FragmentId => Resource.Layout.DoneListItemsLayout;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {

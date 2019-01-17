@@ -12,7 +12,7 @@
 		android:layout_height="20dp"
 		android:text="Login To Twitter"
 		android:layout_gravity="center"
-		android:layout_marginTop="20dp"
+		android:layout_marginTop="40dp"
 		android:background="#87ceeb"/>
 	<Button
 		android:id="@+id/twitterButton"
@@ -22,21 +22,6 @@
 		android:layout_gravity="center"
 		android:layout_marginTop="200dp"
 		android:background="#32CD32"
-	    local:MvxBind="Click ShowListItems"/>
-	    <Button
-        android:id="@+id/LogoutButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/buttonPanel"
-        android:text="Logout"
-	    local:MvxBind="Click LogoutCommand"/>
-			    <Button
-        android:id="@+id/viewpagerlogin"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="ViewPager"
 	    local:MvxBind="Click ShowViewPager"/>
 	</LinearLayout>
 
