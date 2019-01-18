@@ -12,7 +12,6 @@ namespace TestProject.Droid
         public MainApplication()
         {
         }
-
         public MainApplication(IntPtr javaReference, JniHandleOwnership transfer)
             : base(javaReference, transfer)
         {

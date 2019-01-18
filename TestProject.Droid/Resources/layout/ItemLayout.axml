@@ -4,7 +4,8 @@
     android:orientation="vertical"
 	android:id="@+id/item_Layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+	android:background="#808080">
 	<include
 		layout="@layout/toolbar_2"/>
 	<LinearLayout
@@ -16,7 +17,10 @@
 		android:id = "@+id/name_text"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
+		android:layout_marginTop="5dp"
+		android:layout_margin="5dp"
 		android:lines = "1"
+		android:textSize="25dp"
 		android:hint = "Title"
 		android:textColorHint = "@android:color/background_dark"
 		android:background="@drawable/shapeedittext"
@@ -28,33 +32,54 @@
 		android:id = "@+id/task_text"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_margin="5dp"
 		android:hint = "Description"
 		android:lines = "5"
 		android:gravity = "center"
+	    android:background="@drawable/shapeedittext"
 		android:textColorHint = "@android:color/background_dark"
 		android:textColor = "@android:color/background_dark"
 	    local:MvxBind = "Text Description"/>
-	<RelativeLayout
+	<LinearLayout
 		android:id="@+id/liner_layout2"
 		android:orientation="horizontal"
 		android:layout_width="match_parent"
-		android:layout_height="20dp">
+		android:layout_height="wrap_content"
+		android:weightSum="100"
+		android:layout_marginTop="10dp">
 		<CheckBox
 			android:id = "@+id/togglebutton"
 			android:layout_width = "wrap_content"
 			android:layout_height = "wrap_content"
+			android:layout_weight="7"
 			android:textColor = "@android:color/black"
 		    local:MvxBind = "Checked Status"/>
 		<TextView
 			android:text = "Done"
-				android:layout_marginLeft="40dp"
+			android:layout_weight="50"
 			android:layout_width = "wrap_content"
 			android:layout_height = "wrap_content"/>
-	</RelativeLayout>
+		<ToggleButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:textOff="Record"
+			android:textOn="Stop"
+			local:MvxBind = "Checked REcordCheck; Click StartRecordingCommand; BackgroundColor Color(REcordCheck)"/>
+			<ToggleButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="2"
+			android:layout_marginLeft="5dp"
+			android:textOff="Play"
+			android:textOn="Stop"
+			local:MvxBind = "Checked PlayCheck; Click PlayRecordingCommand; BackgroundColor Color(PlayCheck); Enabled PlayRecordEnable"/>
+	</LinearLayout>
 	<LinearLayout
 		android:orientation="horizontal"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
 		<Button
 			android:id = "@+id/Savetask"
 			android:layout_width="wrap_content"
@@ -67,7 +92,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="Delete"
-		    local:MvxBind = "Click DeleteCommand"/>
+		    local:MvxBind = "Click DeleteCommand;Enabled DeleteTaskEnable"/>
 	</LinearLayout>
 	</LinearLayout>
 </LinearLayout>

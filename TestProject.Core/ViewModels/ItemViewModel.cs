@@ -4,6 +4,7 @@ using MvvmCross.Commands;
 using System.Threading.Tasks;
 using TestProject.Core.Interface;
 using TestProject.Core.Models;
+using System;
 
 namespace TestProject.Core.ViewModels
 {
@@ -11,12 +12,17 @@ namespace TestProject.Core.ViewModels
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly ITaskService _taskService;
+        private readonly IAudioService _audioService;
         private int _id;
         private string _title;
         private string _description;
         private bool _status;
         private bool _titleEnableStatus;
         private bool _saveTaskEnable;
+        private bool _deleteTaskEnable;
+        private bool _recordcheck;
+        private bool _playdcheck;
+        private bool _playRecordEnable;
 
         public override async Task Initialize()
         {
@@ -24,22 +30,34 @@ namespace TestProject.Core.ViewModels
 
         }
 
-        public ItemViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService)
+        public ItemViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService, IAudioService audioService)
         {
             _taskService = taskService;
             _navigationService = mvxNavigationService;
-            CloseCommand = new MvxAsyncCommand(async () => await _navigationService.Close(this)); 
+            _audioService = audioService;
+            CloseCommand = new MvxAsyncCommand(async () => await _navigationService.Close(this));
+
+            PlayRecordEnable = false;
+
+            _audioService.OnRecordHandler = new Action(() =>
+            {
+                PlayRecordEnable = true;
+            });
         }
         public IMvxAsyncCommand CloseCommand { get; set; }
 
         public int Id
         {
-            get => _id;
+            get
+            {
+                return _id;
+            }
 
             set
             {
                 _id = value;
                 RaisePropertyChanged(() => Id);
+                RaisePropertyChanged(() => DeleteTaskEnable);
             }
         }
 
@@ -88,12 +106,54 @@ namespace TestProject.Core.ViewModels
             get { return new MvxCommand(DeleteTask); }
         }
 
+        public IMvxCommand StartRecordingCommand
+        {
+            get { return new MvxCommand(StartRecording); }
+        }
+
+        public IMvxCommand PlayRecordingCommand
+        {
+            get { return new MvxCommand(PlayRecording); }
+        }
+
+        private void PlayRecording()
+        {
+            if (PlayCheck == true)
+            {
+                _audioService.PlayRecording(Id);
+            }
+            
+            if(PlayCheck== false)
+            {
+                _audioService.StopPlayRecording();
+            }
+        }
+
+
+        private void StartRecording()
+        {
+            if (REcordCheck == true)
+            {
+                _audioService.StartRecording(Id);
+            }
+           if(REcordCheck== false)
+            {
+                _audioService.StopRecording();
+            }
+        }
+
+
         private void SaveTask()
         {
             TaskInfo taskInfo = new TaskInfo(Id, TwitterUserId.Id_User, Title, Description, Status);
             if (Title != null)
             {
                 _taskService.InsertTask(taskInfo);
+            }
+
+            if (Id == 0 &&  _audioService.CheckAudioFile(taskInfo.Id)==true)
+            {
+                _audioService.RenameFile(taskInfo.Id);
             }
 
             _navigationService.Close(this);
@@ -119,6 +179,16 @@ namespace TestProject.Core.ViewModels
             Title = _taskInfo.Title;
             Description = _taskInfo.Description;
             Status = _taskInfo.Status;
+
+            if(_audioService.CheckAudioFile(Id)== true)
+            {
+                PlayRecordEnable = true;
+            }
+            else
+            {
+                PlayRecordEnable = false;
+            }
+
         }
 
         public bool TitleEnableStatus
@@ -153,6 +223,58 @@ namespace TestProject.Core.ViewModels
                 return _saveTaskEnable;
             }
         }
-        
+
+        public bool DeleteTaskEnable
+        {
+            get
+            {
+                if (_taskService.CurrentTask(Id)==null)
+                {
+                    _deleteTaskEnable = false;
+                }
+                else
+                {
+                    _deleteTaskEnable = true;
+                }
+                return _deleteTaskEnable;
+            }
+        }
+
+        public bool REcordCheck
+        {
+            get => _recordcheck;
+
+            set
+            {
+                _recordcheck = value;
+                RaisePropertyChanged(() => REcordCheck);
+            }
+        }
+
+        public bool PlayCheck
+        {
+            get => _playdcheck;
+
+            set
+            {
+                _playdcheck = value;
+                RaisePropertyChanged(() => PlayCheck);
+            }
+        }
+
+        public bool PlayRecordEnable
+        {
+            get
+            {
+                return _playRecordEnable;
+            }
+
+            set
+            {
+                _playRecordEnable = value;
+                RaisePropertyChanged(() => PlayRecordEnable);
+            }
+        }
+
     }
 }

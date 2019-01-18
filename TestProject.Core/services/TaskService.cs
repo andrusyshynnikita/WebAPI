@@ -65,6 +65,10 @@ namespace TestProject.Core.services
 
             _sQLiteConnection.DeleteAll<TaskInfo>();
         }
+        public TaskInfo CurrentTask(int id)
+        {
+            return _sQLiteConnection.Table<TaskInfo>().FirstOrDefault(x => x.Id == id);
+        }
 
     }
 }
