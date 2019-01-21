@@ -68,7 +68,6 @@ namespace TestProject.Droid.Services
             {
                 _recorder.Stop();
                 _recorder.Reset();
-                //  _player.SetDataSource(path);
                 OnRecordHandler();
             }
             catch (Exception e)
@@ -99,6 +98,8 @@ namespace TestProject.Droid.Services
                await  _player.SetDataSourceAsync(fis.FD);
                 _player.Prepare();
                 _player.Start();
+
+                _player.Completion += PlayCompletion;
             }
 
             catch (Exception ex)
@@ -106,6 +107,11 @@ namespace TestProject.Droid.Services
                 Console.Out.WriteLine(ex.StackTrace);
             }
 
+        }
+
+        private void PlayCompletion(object sender, EventArgs e)
+        {
+            OnPlaydHandler();
         }
 
         public void StopPlayRecording()
@@ -130,6 +136,14 @@ namespace TestProject.Droid.Services
             File.Delete(path);
         }
 
+        public void DeleteNullFile()
+        {
+            File.Move(path, Path.Combine(System.Environment.
+                GetFolderPath(System.Environment.
+                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp"));
+            File.Delete(path);
+        }
+
         public bool CheckAudioFile(int id)
         {
           var  path = Path.Combine(System.Environment.
@@ -140,6 +154,12 @@ namespace TestProject.Droid.Services
             return result;
 
         }
+
+        public Action OnPlaydHandler
+        {
+            get; set;
+        }
+
         public Action OnRecordHandler
         {
             get; set;

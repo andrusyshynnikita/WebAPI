@@ -38,6 +38,10 @@ namespace TestProject.Core.ViewModels
             CloseCommand = new MvxAsyncCommand(async () => await _navigationService.Close(this));
 
             PlayRecordEnable = false;
+            _audioService.OnPlaydHandler = new Action(() =>
+            {
+                PlayCheck = false;
+            });
 
             _audioService.OnRecordHandler = new Action(() =>
             {
@@ -142,6 +146,11 @@ namespace TestProject.Core.ViewModels
             }
         }
 
+        private void CloseTask()
+        {
+            _audioService.DeleteNullFile();
+            _navigationService.Close(this);
+        }
 
         private void SaveTask()
         {
@@ -151,7 +160,7 @@ namespace TestProject.Core.ViewModels
                 _taskService.InsertTask(taskInfo);
             }
 
-            if (Id == 0 &&  _audioService.CheckAudioFile(taskInfo.Id)==true)
+            if (Id == 0 &&  _audioService.CheckAudioFile(Id)==true)
             {
                 _audioService.RenameFile(taskInfo.Id);
             }

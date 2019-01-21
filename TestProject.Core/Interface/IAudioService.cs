@@ -14,5 +14,7 @@ namespace TestProject.Core.Interface
         void RenameFile(int newName);
         Action OnRecordHandler { get; set; }
         bool CheckAudioFile(int id);
+        void DeleteNullFile();
+        Action OnPlaydHandler { get; set; }
     }
 }
