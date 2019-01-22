@@ -35,20 +35,23 @@ namespace TestProject.Core.ViewModels
             _taskService = taskService;
             _navigationService = mvxNavigationService;
             _audioService = audioService;
-            CloseCommand = new MvxAsyncCommand(async () => await _navigationService.Close(this));
-
-            PlayRecordEnable = false;
+            IsPlayRecordingEnable = false;
             _audioService.OnPlaydHandler = new Action(() =>
             {
-                PlayCheck = false;
+                IsPlayChecking = false;
             });
 
             _audioService.OnRecordHandler = new Action(() =>
             {
-                PlayRecordEnable = true;
+                IsPlayRecordingEnable = true;
             });
         }
-        public IMvxAsyncCommand CloseCommand { get; set; }
+
+        public IMvxCommand CloseCommand
+        {
+            get { return new MvxCommand(CloseTask); }
+        }
+        
 
         public int Id
         {
@@ -61,7 +64,7 @@ namespace TestProject.Core.ViewModels
             {
                 _id = value;
                 RaisePropertyChanged(() => Id);
-                RaisePropertyChanged(() => DeleteTaskEnable);
+                RaisePropertyChanged(() => IsDeletingTaskEnable);
             }
         }
 
@@ -73,7 +76,7 @@ namespace TestProject.Core.ViewModels
             {
                 _title = value;
                 RaisePropertyChanged(() => Title);
-                RaisePropertyChanged(() => SaveTaskEnable);
+                RaisePropertyChanged(() => IsSavingTaskEnable);
             }
         }
 
@@ -122,12 +125,12 @@ namespace TestProject.Core.ViewModels
 
         private void PlayRecording()
         {
-            if (PlayCheck == true)
+            if (IsPlayChecking == true)
             {
                 _audioService.PlayRecording(Id);
             }
             
-            if(PlayCheck== false)
+            if(IsPlayChecking== false)
             {
                 _audioService.StopPlayRecording();
             }
@@ -136,11 +139,11 @@ namespace TestProject.Core.ViewModels
 
         private void StartRecording()
         {
-            if (REcordCheck == true)
+            if (IsREcordChecking == true)
             {
                 _audioService.StartRecording(Id);
             }
-           if(REcordCheck== false)
+           if(IsREcordChecking== false)
             {
                 _audioService.StopRecording();
             }
@@ -191,16 +194,16 @@ namespace TestProject.Core.ViewModels
 
             if(_audioService.CheckAudioFile(Id)== true)
             {
-                PlayRecordEnable = true;
+                IsPlayRecordingEnable = true;
             }
             else
             {
-                PlayRecordEnable = false;
+                IsPlayRecordingEnable = false;
             }
 
         }
 
-        public bool TitleEnableStatus
+        public bool IsTitleEnable
         {
             get
             {
@@ -216,8 +219,8 @@ namespace TestProject.Core.ViewModels
             }
 
         }
-        
-        public bool SaveTaskEnable
+
+        public bool IsSavingTaskEnable
         {
             get
             {
@@ -233,7 +236,7 @@ namespace TestProject.Core.ViewModels
             }
         }
 
-        public bool DeleteTaskEnable
+        public bool IsDeletingTaskEnable
         {
             get
             {
@@ -249,29 +252,29 @@ namespace TestProject.Core.ViewModels
             }
         }
 
-        public bool REcordCheck
+        public bool IsREcordChecking
         {
             get => _recordcheck;
 
             set
             {
                 _recordcheck = value;
-                RaisePropertyChanged(() => REcordCheck);
+                RaisePropertyChanged(() => IsREcordChecking);
             }
         }
 
-        public bool PlayCheck
+        public bool IsPlayChecking
         {
             get => _playdcheck;
 
             set
             {
                 _playdcheck = value;
-                RaisePropertyChanged(() => PlayCheck);
+                RaisePropertyChanged(() => IsPlayChecking);
             }
         }
 
-        public bool PlayRecordEnable
+        public bool IsPlayRecordingEnable
         {
             get
             {
@@ -281,7 +284,7 @@ namespace TestProject.Core.ViewModels
             set
             {
                 _playRecordEnable = value;
-                RaisePropertyChanged(() => PlayRecordEnable);
+                RaisePropertyChanged(() => IsPlayRecordingEnable);
             }
         }
 

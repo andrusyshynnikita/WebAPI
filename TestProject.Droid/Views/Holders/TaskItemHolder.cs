@@ -8,8 +8,7 @@ using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using TestProject.Core.Models;
 
-
-namespace TestProject.Droid
+namespace TestProject.Droid.Views.Holders
 {
     public class TaskItemHolder : MvxRecyclerViewHolder
     {
@@ -19,7 +18,7 @@ namespace TestProject.Droid
         public TaskItemHolder(View itemview, IMvxAndroidBindingContext context) : base(itemview, context)
         {
             Title = itemview.FindViewById<TextView>(Resource.Id.item_text_view);
-            
+
             Status = itemview.FindViewById<CheckBox>(Resource.Id.statusInfo);
             this.DelayBind(() =>
             {

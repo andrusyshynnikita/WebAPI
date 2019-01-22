@@ -8,17 +8,17 @@
 	android:background="#808080">
 	<include
 		layout="@layout/toolbar_2"/>
-	<LinearLayout
-	android:layout_width="match_parent"
-    android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:id="@+id/item_Layout2">
+	<LinearLayout android:orientation="vertical"
+	android:id="@+id/item_Layout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 	<EditText
 		android:id = "@+id/name_text"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
 		android:layout_marginTop="5dp"
 		android:layout_margin="5dp"
+		android:padding="5dp"
 		android:lines = "1"
 		android:textSize="25dp"
 		android:hint = "Title"
@@ -26,7 +26,7 @@
 		android:background="@drawable/shapeedittext"
 		android:gravity = "center"
 		android:textColor = "@android:color/background_dark"
-		local:MvxBind = "Text Title; Enabled TitleEnableStatus"
+		local:MvxBind = "Text Title; Enabled IsTitleEnable"
 	/>
 	<EditText
 		android:id = "@+id/task_text"
@@ -34,6 +34,7 @@
 		android:layout_height = "wrap_content"
 		android:layout_marginTop="10dp"
 		android:layout_margin="5dp"
+		android:padding="5dp"
 		android:hint = "Description"
 		android:lines = "5"
 		android:gravity = "center"
@@ -52,6 +53,7 @@
 			android:id = "@+id/togglebutton"
 			android:layout_width = "wrap_content"
 			android:layout_height = "wrap_content"
+			android:layout_marginLeft="20dp"
 			android:layout_weight="7"
 			android:textColor = "@android:color/black"
 		    local:MvxBind = "Checked Status"/>
@@ -60,39 +62,66 @@
 			android:layout_weight="50"
 			android:layout_width = "wrap_content"
 			android:layout_height = "wrap_content"/>
-		<ToggleButton
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="2"
-			android:textOff="Record"
-			android:textOn="Stop"
-			local:MvxBind = "Checked REcordCheck; Click StartRecordingCommand; BackgroundColor Color(REcordCheck)"/>
-			<ToggleButton
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="2"
-			android:layout_marginLeft="5dp"
-			android:textOff="Play"
-			android:textOn="Stop"
-			local:MvxBind = "Checked PlayCheck; Click PlayRecordingCommand; BackgroundColor Color(PlayCheck); Enabled PlayRecordEnable"/>
 	</LinearLayout>
 	<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content">
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp">
 		<Button
 			android:id = "@+id/Savetask"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginLeft="0dip"
+			android:layout_marginLeft="5dp"
+			android:background="#008000"
 			android:text="Save"
-		    local:MvxBind = "Click SaveCommand; Enabled SaveTaskEnable"/>
+		    local:MvxBind = "Click SaveCommand; Enabled IsSavingTaskEnable"/>
 		<Button
 			android:id = "@+id/Deletetask"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
 			android:text="Delete"
-		    local:MvxBind = "Click DeleteCommand;Enabled DeleteTaskEnable"/>
+			android:background="#FF0000"
+		    local:MvxBind = "Click DeleteCommand;Enabled IsDeletingTaskEnable"/>
+	</LinearLayout>
+		<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp">
+		<TextView
+			android:text = "Audio Note"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+		    android:layout_marginTop="15dp"
+			android:layout_marginLeft="15dp"
+	        android:textSize="@dimen/abc_action_bar_content_inset_material"/>
+			</LinearLayout>
+	<LinearLayout
+		android:id="@+id/liner_layout2"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:weightSum="100"
+		android:layout_marginTop="10dp">
+		<ToggleButton
+			android:id="@+id/recording"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="10"
+			android:layout_marginLeft="10dp"
+			android:textOff="Record"
+			android:textOn="Stop"
+			local:MvxBind = "Checked IsREcordChecking; BackgroundColor Color(IsREcordChecking)"/>
+			<ToggleButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="10"
+			android:layout_marginLeft="5dp"
+			android:textOff="Play"
+			android:textOn="Stop"
+			local:MvxBind = "Checked IsPlayChecking; Click PlayRecordingCommand; BackgroundColor Color(IsPlayChecking); Enabled IsPlayRecordingEnable"/>
 	</LinearLayout>
 	</LinearLayout>
 </LinearLayout>

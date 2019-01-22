@@ -4,11 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Android;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Media;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Widget;
+using Android.Support.V4.App;
+using Android.Support.V4.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -23,12 +28,16 @@ namespace TestProject.Droid.Services
         MediaRecorder _recorder;
         MediaPlayer _player;
         string path;
+        Context _context;
         private bool _checkAudioFile;
+        static readonly int REQUEST_STORAGE = 0;
+        private View _layout;
 
 
 
-        public AudioService()
+        public AudioService(Context context)
         {
+            _context = context;
             _recorder = new MediaRecorder();
             _player = new MediaPlayer();
 
@@ -38,11 +47,18 @@ namespace TestProject.Droid.Services
             };
         }
 
+        public void PermissionsRecording()
+        {
+            if (ActivityCompat.CheckSelfPermission(_context, Manifest.Permission.RecordAudio) == (int)Permission.Granted)
+            {
+            }
+        }
+
         public void StartRecording(int id)
         {
-            path = Path.Combine(System.Environment.
+                path = Path.Combine(System.Environment.
                 GetFolderPath(System.Environment.
-                SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp");
+                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
             try
             {
                 if (File.Exists(path))
@@ -80,7 +96,7 @@ namespace TestProject.Droid.Services
         {
             path = Path.Combine(System.Environment.
                 GetFolderPath(System.Environment.
-                SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp");
+                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
 
             try
             {
@@ -93,13 +109,31 @@ namespace TestProject.Droid.Services
                     _player.Reset();
                 }
 
-                Java.IO.File file = new Java.IO.File(path);
-                Java.IO.FileInputStream fis = new Java.IO.FileInputStream(file);
-               await  _player.SetDataSourceAsync(fis.FD);
-                _player.Prepare();
-                _player.Start();
+                if (File.Exists(path))
+                {
+                    Java.IO.File file1 = new Java.IO.File(path);
+                    Java.IO.FileInputStream fis1 = new Java.IO.FileInputStream(file1);
+                    await _player.SetDataSourceAsync(fis1.FD);
+                    _player.Prepare();
+                    _player.Start();
+                    _player.Completion += PlayCompletion;
+                }
 
-                _player.Completion += PlayCompletion;
+                else
+                {
+                    path = Path.Combine(System.Environment.
+                GetFolderPath(System.Environment.
+                SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp");
+
+                    Java.IO.File file2 = new Java.IO.File(path);
+                    Java.IO.FileInputStream fis2 = new Java.IO.FileInputStream(file2);
+                    await _player.SetDataSourceAsync(fis2.FD);
+                    _player.Prepare();
+                    _player.Start();
+
+                    _player.Completion += PlayCompletion;
+                }
+                
             }
 
             catch (Exception ex)
@@ -129,6 +163,10 @@ namespace TestProject.Droid.Services
 
         public void RenameFile(int id)
         {
+            path = Path.Combine(System.Environment.
+                GetFolderPath(System.Environment.
+                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
+
             File.Move(path, Path.Combine(System.Environment.
                 GetFolderPath(System.Environment.
                 SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp"));
@@ -138,9 +176,10 @@ namespace TestProject.Droid.Services
 
         public void DeleteNullFile()
         {
-            File.Move(path, Path.Combine(System.Environment.
+            path = Path.Combine(System.Environment.
                 GetFolderPath(System.Environment.
-                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp"));
+                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
+
             File.Delete(path);
         }
 

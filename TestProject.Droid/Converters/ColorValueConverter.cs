@@ -1,14 +1,10 @@
-﻿using MvvmCross.Converters;
-using MvvmCross.Plugin.Color;
+﻿using MvvmCross.Plugin.Color;
 using MvvmCross.UI;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
-namespace TestProject.Core.Converters
+namespace TestProject.Droid.Converters
 {
-  public  class ColorValueConverter: MvxColorValueConverter<bool>
+    public class ColorValueConverter : MvxColorValueConverter<bool>
 
     {
 

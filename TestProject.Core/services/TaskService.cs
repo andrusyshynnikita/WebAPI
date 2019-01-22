@@ -18,29 +18,21 @@ namespace TestProject.Core.services
 
         }
 
-        public List<TaskInfo> GetAllTaskData()
-        {
-            var result = (from data in _sQLiteConnection.Table<TaskInfo>()
-                    select data).ToList();
-            return result;
-
-        }
-
         public List<TaskInfo> GetAllDoneUserTasks(string twitterUserId)
         {
-            var result = (from data in _sQLiteConnection.Table<TaskInfo>()
-                          where data.User_Id == twitterUserId 
-                          where data.Status == true
-                          select data).ToList();
+            var result=  _sQLiteConnection.Table<TaskInfo>()
+                .Where(x => x.User_Id == twitterUserId)
+                .Where(x => x.Status == true).Select(x => x).ToList();
+
             return result;
         }
 
         public List<TaskInfo> GetAllNotDoneUserTasks(string twitterUserId)
         {
-            var result = (from data in _sQLiteConnection.Table<TaskInfo>()
-                          where data.User_Id == twitterUserId
-                          where data.Status == false
-                          select data).ToList();
+            var result = _sQLiteConnection.Table<TaskInfo>()
+                 .Where(x => x.User_Id == twitterUserId)
+                 .Where(x => x.Status == false).Select(x => x).ToList();
+
             return result;
         }
 
@@ -65,6 +57,7 @@ namespace TestProject.Core.services
 
             _sQLiteConnection.DeleteAll<TaskInfo>();
         }
+
         public TaskInfo CurrentTask(int id)
         {
             return _sQLiteConnection.Table<TaskInfo>().FirstOrDefault(x => x.Id == id);

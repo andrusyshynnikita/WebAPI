@@ -1,12 +1,11 @@
 ﻿using System.IO;
-using TestProject.Core;
 using TestProject.Core.Interface;
 using SQLite;
 
-namespace TestProject.Droid
+namespace TestProject.Droid.Services
 {
     public class DatabaseConnectionService
-           : IDatabaseConnectionService
+          : IDatabaseConnectionService
     {
         public DatabaseConnectionService()
         {

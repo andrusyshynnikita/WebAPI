@@ -27,13 +27,13 @@ namespace TestProject.Droid.Views
                 new MvxViewPagerFragmentAdapter.FragmentInfo
                 {
                     FragmentType = typeof(DoneListItemView),
-                    Title="DoneTasks",
+                    Title="Done Tasks",
                     ViewModel= ViewModel.DoneListItemViewModel
                 },
                 new MvxViewPagerFragmentAdapter.FragmentInfo
                 {
                     FragmentType = typeof(NotDoneListItemView),
-                    Title="NotDoneTasks",
+                    Title="Not Done Tasks",
                     ViewModel= ViewModel.NotDoneListItemViewModel
                 },
                 new MvxViewPagerFragmentAdapter.FragmentInfo

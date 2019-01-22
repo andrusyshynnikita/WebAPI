@@ -20,28 +20,5 @@ namespace TestProject.Core.ViewModels
             _mvxNavigationService = mvxNavigationService;
             _loginService = loginService;
         }
-
-        public IMvxCommand ShowCommand
-        {
-            get
-            {
-                return new MvxAsyncCommand(Showmathod);
-            }
-        }
-        private async Task Showmathod()
-        {
-            if (_loginService.CurrentUserAccount != null)
-            {
-                TwitterUserId.Id_User = _loginService.CurrentUserAccount.Properties["user_id"];
-                await _mvxNavigationService.Navigate<ViewPagerViewModel>();
-            }
-
-            if (_loginService.CurrentUserAccount == null)
-            {
-                await _mvxNavigationService.Navigate<LoginViewModel>();
-            }
-               
-        }
-
     }
 }

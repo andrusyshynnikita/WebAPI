@@ -3,10 +3,10 @@ using TestProject.Core.ViewModels;
 using Android.Support.V7.Widget;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
-using testproject.droid;
 using Android.Views;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using Android.Runtime;
+using TestProject.Droid.Adapters;
 
 namespace TestProject.Droid.Views
 {

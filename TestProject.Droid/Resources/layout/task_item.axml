@@ -29,7 +29,8 @@
 	local:MvxBind="Text Title"/>  
 	<CheckBox
 	android:layout_width="match_parent"  
-    android:layout_height="match_parent"  
+    android:layout_height="match_parent"
+	android:layout_weight = "90"
     android:textAppearance="?android:attr/textAppearanceMedium"  
     android:textColor="#333333"   
     android:id="@+id/statusInfo"

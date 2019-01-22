@@ -12,16 +12,28 @@ namespace TestProject.Core
 
     public class AppStart : MvxAppStart
     {
-        IMvxNavigationService _mvxNavigationService;
+        private IMvxNavigationService _mvxNavigationService;
+        private ILoginService _loginService;
 
-        public AppStart(IMvxApplication app, IMvxNavigationService mvxNavigationService)
+        public AppStart(IMvxApplication app, IMvxNavigationService mvxNavigationService, ILoginService loginService)
             : base(app, mvxNavigationService)
         {
+            _mvxNavigationService = mvxNavigationService;
+            _loginService = loginService;
         }
 
         protected override Task NavigateToFirstViewModel(object hint = null)
         {
-            return NavigationService.Navigate<MainViewModel>();
+            if (_loginService.CurrentUserAccount != null)
+            {
+                TwitterUserId.Id_User = _loginService.CurrentUserAccount.Properties["user_id"];
+                NavigationService.Navigate<MainViewModel>();
+                return _mvxNavigationService.Navigate<ViewPagerViewModel>();
+            }
+
+            NavigationService.Navigate<MainViewModel>();
+            return _mvxNavigationService.Navigate<LoginViewModel>();
+
         }
     }
 

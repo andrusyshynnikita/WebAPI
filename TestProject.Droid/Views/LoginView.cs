@@ -23,11 +23,11 @@ namespace TestProject.Droid.Views
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             _twitter_button = view.FindViewById<Button>(Resource.Id.twitterButton);
-            _twitter_button.Click += delegate { LoginTwitter(); };
+            _twitter_button.Click +=  LoginTwitter;
             return view;
         }
 
-        private void LoginTwitter()
+        private void LoginTwitter(object sender, EventArgs e)
         {
             ViewModel.LoginCommand.Execute();
             StartActivity(ViewModel.Authenticator.GetUI(View.Context));

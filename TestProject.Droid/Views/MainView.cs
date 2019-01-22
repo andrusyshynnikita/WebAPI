@@ -23,7 +23,7 @@ namespace TestProject.Droid.Views
 
             if (bundle == null)
             {
-                ViewModel.ShowCommand.Execute(null);
+               // ViewModel.ShowCommand.Execute(null);
             }
         }
     }

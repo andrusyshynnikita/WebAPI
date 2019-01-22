@@ -20,15 +20,15 @@ namespace TestProject.Core.ViewModels
         {
             _navigationService = mvxNavigationService;
             _loginService = loginService;
-            ShowSecondPage = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
+            ShowSecondPageCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
             _taskService = taskService;
             TaskViewCommand = new MvxAsyncCommand<TaskInfo>(NavigateMethod);
 
         }
 
-        public IMvxCommand RefreshCommand => _refreshCommand = _refreshCommand ?? new MvxCommand(DoRefreshCommand);
+        public IMvxCommand RefreshCommand => _refreshCommand = _refreshCommand ?? new MvxCommand(DoRefresh);
 
-        private void DoRefreshCommand()
+        private void DoRefresh()
         {
             IsRefreshing = true;
             var items = _taskService.GetAllDoneUserTasks(TwitterUserId.Id_User);
@@ -36,7 +36,7 @@ namespace TestProject.Core.ViewModels
             IsRefreshing = false;
         }
 
-        public IMvxCommand ShowSecondPage { get; set; }
+        public IMvxCommand ShowSecondPageCommand { get; set; }
 
         public IMvxCommand<TaskInfo> TaskViewCommand { get; set; }
         

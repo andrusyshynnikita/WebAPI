@@ -5,8 +5,9 @@ using MvvmCross.Droid.Support.V7.RecyclerView;
 using TestProject.Droid;
 using Resource = TestProject.Droid.Resource;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
+using TestProject.Droid.Views.Holders;
 
-namespace testproject.droid
+namespace TestProject.Droid.Adapters
 {
     public class TasksItemAdapter : MvxRecyclerAdapter
     {
@@ -20,10 +21,8 @@ namespace testproject.droid
         {
             var itemBindingContext = new MvxAndroidBindingContext(parent.Context, this.BindingContext.LayoutInflaterHolder);
             View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.task_item, parent, false);
-            return new TaskItemHolder(itemView, itemBindingContext) { Click=ItemClick }; 
+            return new TaskItemHolder(itemView, itemBindingContext) { Click = ItemClick };
         }
-        
+
     }
-
-
 }
