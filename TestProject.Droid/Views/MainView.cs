@@ -1,18 +1,12 @@
 ﻿using Android.App;
-using Android.Content.PM;
 using Android.OS;
-using Android.Support.V4.View;
-using Android.Support.V4.Widget;
-using Android.Views;
-using Android.Views.InputMethods;
-using Android.Widget;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using TestProject.Core.ViewModels;
 
 namespace TestProject.Droid.Views
 {
-    [MvxActivityPresentation]
+    [MvxActivityPresentation()]
     [Activity]
     public class MainView : MvxAppCompatActivity<MainViewModel>
     {

@@ -2,6 +2,7 @@
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System;
+using System.Threading.Tasks;
 using TestProject.Core.Interface;
 using TestProject.Core.Models;
 using Xamarin.Auth;
@@ -16,6 +17,7 @@ namespace TestProject.Core.ViewModels
         private TwitterUser _twitterUser;
         private OAuth1Authenticator _auth;
 
+
         public LoginViewModel(IMvxNavigationService mvxNavigationService, ILoginService loginService)
         {
             _loginService = loginService;
@@ -26,6 +28,11 @@ namespace TestProject.Core.ViewModels
             });
 
             _mvxNavigationService = mvxNavigationService;
+        }
+
+        public override Task Initialize()
+        {
+            return base.Initialize();
         }
 
         public IMvxCommand LoginCommand => new MvxCommand(_loginService.LoginTwitter);

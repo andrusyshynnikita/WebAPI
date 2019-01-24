@@ -4,6 +4,7 @@ using MvvmCross.Navigation;
 using MvvmCross.Commands;
 using TestProject.Core.Interface;
 using System.Threading.Tasks;
+using System;
 
 namespace TestProject.Core.ViewModels
 {
@@ -50,7 +51,15 @@ namespace TestProject.Core.ViewModels
           
         private async Task NavigateMethod(TaskInfo taskInfo)
         {
-            var result = await _navigationService.Navigate<ItemViewModel, TaskInfo>(taskInfo);
+            try
+            {
+                var result = await _navigationService.Navigate<ItemViewModel, TaskInfo>(taskInfo);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message); 
+            }
+            
         }
 
         public MvxObservableCollection<TaskInfo> TaskCollection

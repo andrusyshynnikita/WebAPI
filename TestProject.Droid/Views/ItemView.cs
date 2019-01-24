@@ -78,22 +78,22 @@ namespace TestProject.Droid.Views
 
         void RequestStoragePermission()
         {
-            Log.Info("TaskDropper", "Microphone permission has NOT been granted. Requesting permission.");
+            //Log.Info("TaskDropper", "Microphone permission has NOT been granted. Requesting permission.");
 
-            if (ActivityCompat.ShouldShowRequestPermissionRationale(ParentActivity, Manifest.Permission.WriteExternalStorage))
-            {
-                Log.Info("TaskDropper", "Displaying storage permission rationale to provide additional context.");
+            //if (ActivityCompat.ShouldShowRequestPermissionRationale(ParentActivity, Manifest.Permission.WriteExternalStorage))
+            //{
+            //    Log.Info("TaskDropper", "Displaying storage permission rationale to provide additional context.");
 
-                Snackbar.Make(_layout, "Storage Permission",
-                     Snackbar.LengthIndefinite).SetAction(Resource.String.ok, new Action<View>(delegate (View obj) {
-                         ActivityCompat.RequestPermissions(ParentActivity, new String[] { Manifest.Permission.WriteExternalStorage }, REQUEST_STORAGE);
-                     })).Show();
-            }
-            else
-            {
+            //    //Snackbar.Make(_layout, "Storage Permission",
+            //    //     Snackbar.LengthIndefinite).SetAction(Resource.String.ok, new Action<View>(delegate (View obj) {
+            //    //         ActivityCompat.RequestPermissions(ParentActivity, new String[] { Manifest.Permission.WriteExternalStorage }, REQUEST_STORAGE);
+            //    //     })).Show();
+            //}
+           // else
+          //  {
                 // Microphone permission has not been granted yet. Request it directly.
                 ActivityCompat.RequestPermissions(ParentActivity, new String[] { Manifest.Permission.RecordAudio }, REQUEST_STORAGE);
-            }
+          //  }
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)

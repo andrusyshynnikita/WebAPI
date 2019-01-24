@@ -1,22 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Android;
-using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Media;
-using Android.OS;
-using Android.Runtime;
-using Android.Support.Design.Widget;
 using Android.Support.V4.App;
-using Android.Support.V4.Content;
-using Android.Util;
 using Android.Views;
-using Android.Widget;
 using TestProject.Core.Interface;
 using TestProject.Core.Models;
 
@@ -35,9 +25,8 @@ namespace TestProject.Droid.Services
 
 
 
-        public AudioService(Context context)
+        public AudioService()
         {
-            _context = context;
             _recorder = new MediaRecorder();
             _player = new MediaPlayer();
 

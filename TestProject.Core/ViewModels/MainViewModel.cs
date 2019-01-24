@@ -19,6 +19,9 @@ namespace TestProject.Core.ViewModels
         {
             _mvxNavigationService = mvxNavigationService;
             _loginService = loginService;
+
         }
+
+
     }
 }
