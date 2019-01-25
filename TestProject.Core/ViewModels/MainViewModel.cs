@@ -13,15 +13,32 @@ namespace TestProject.Core.ViewModels
     public class MainViewModel : MvxViewModel
     {
         private IMvxNavigationService _mvxNavigationService;
-        ILoginService _loginService;
+        private ILoginService _loginService;
 
         public MainViewModel( IMvxNavigationService mvxNavigationService, ILoginService loginService)
         {
-            _mvxNavigationService = mvxNavigationService;
             _loginService = loginService;
-
+            _mvxNavigationService = mvxNavigationService;
+            ShowCurrentViewModelCommand = new MvxAsyncCommand(ShowCurrentViewModel);
         }
 
+        public IMvxAsyncCommand ShowCurrentViewModelCommand { get; private set; }
 
+        private async Task ShowCurrentViewModel()
+        {
+
+            //if (_loginService.CurrentUserAccount != null)
+            //{
+            //    TwitterUserId.Id_User = _loginService.CurrentUserAccount.Properties["user_id"];
+            //   _mvxNavigationService.Navigate<ViewPagerViewModel>();
+            //}
+
+         //   if (_loginService.CurrentUserAccount == null)
+          //  {
+                _mvxNavigationService.Navigate<LoginViewModel>();
+           // }
+               
+
+        }
     }
 }

@@ -24,15 +24,17 @@ namespace TestProject.Core
 
         protected override  Task NavigateToFirstViewModel(object hint = null)
         {
-            if (_loginService.CurrentUserAccount != null)
-            {
-                TwitterUserId.Id_User = _loginService.CurrentUserAccount.Properties["user_id"];
-               //NavigationService.Navigate<MainViewModel>();
-               return  _mvxNavigationService.Navigate<ViewPagerViewModel>();
-            }
+            //if (_loginService.CurrentUserAccount != null)
+            //{
+            //    TwitterUserId.Id_User = _loginService.CurrentUserAccount.Properties["user_id"];
+            //    //NavigationService.Navigate<MainViewModel>();
+            //    return _mvxNavigationService.Navigate<ViewPagerViewModel>();
+            //}
 
-            //NavigationService.Navigate<MainViewModel>();
-           return  _mvxNavigationService.Navigate<LoginViewModel>();
+            ////NavigationService.Navigate<MainViewModel>();
+            //return _mvxNavigationService.Navigate<LoginViewModel>();
+
+             return NavigationService.Navigate<MainViewModel>();
 
         }
     }

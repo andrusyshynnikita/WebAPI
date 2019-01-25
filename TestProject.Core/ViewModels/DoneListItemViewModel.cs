@@ -16,6 +16,7 @@ namespace TestProject.Core.ViewModels
         private MvxCommand _refreshCommand;
         private bool _isRefreshing;
         private ILoginService _loginService;
+        
 
         public DoneListItemViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService, ILoginService loginService)
         {

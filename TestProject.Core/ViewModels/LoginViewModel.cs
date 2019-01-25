@@ -30,10 +30,10 @@ namespace TestProject.Core.ViewModels
             _mvxNavigationService = mvxNavigationService;
         }
 
-        public override Task Initialize()
-        {
-            return base.Initialize();
-        }
+        //public override Task Initialize()
+        //{
+        //    return base.Initialize();
+        //}
 
         public IMvxCommand LoginCommand => new MvxCommand(_loginService.LoginTwitter);
         
@@ -51,6 +51,17 @@ namespace TestProject.Core.ViewModels
             {
                 return new MvxAsyncCommand(async () => {
                     await _mvxNavigationService.Navigate<ViewPagerViewModel>();
+                    await _mvxNavigationService.Close(this);
+                });
+            }
+        }
+
+        public IMvxCommand ShowDoneList
+        {
+            get
+            {
+                return new MvxAsyncCommand(async () => {
+                    await _mvxNavigationService.Navigate<DoneListItemViewModel>();
                     await _mvxNavigationService.Close(this);
                 });
             }

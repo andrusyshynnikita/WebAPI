@@ -10,19 +10,11 @@ using System.CodeDom.Compiler;
 
 namespace TestProject.IOS
 {
-    [Register ("LoginView")]
-    partial class LoginView
+    [Register ("AppDelegate")]
+    partial class AppDelegate
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton test { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
-            if (test != null) {
-                test.Dispose ();
-                test = null;
-            }
         }
     }
 }

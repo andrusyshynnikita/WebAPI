@@ -135,21 +135,26 @@
     <None Include="Entitlements.plist" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <None Include="packages.config" />
-    <InterfaceDefinition Include="Views\LoginView.xib" />
+    <InterfaceDefinition Include="Views\DoneListItemView.xib" />
+    <InterfaceDefinition Include="Views\LoginView.xib">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MvxBindings\NetworkIndicatorTargetBinding.cs" />
+    <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\LoginView.designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DoneListItemView.cs" />
+    <Compile Include="Views\DoneListItemView.designer.cs">
+      <DependentUpon>DoneListItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MvxBindings\NetworkIndicatorTargetBinding.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Views\MainView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\car_967470_640.png" />
