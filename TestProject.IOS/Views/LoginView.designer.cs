@@ -8,20 +8,24 @@ using Foundation;
 using System;
 using System.CodeDom.Compiler;
 
-namespace TestProject.IOS
+namespace TestProject.IOS.Views
 {
     [Register ("LoginView")]
     partial class LoginView
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton test { get; set; }
+        UIKit.UIButton LoginTwitter { get; set; }
+
+        [Action ("LoginButton_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void LoginButton_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (test != null) {
-                test.Dispose ();
-                test = null;
+            if (LoginTwitter != null) {
+                LoginTwitter.Dispose ();
+                LoginTwitter = null;
             }
         }
     }

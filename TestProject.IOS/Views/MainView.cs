@@ -4,7 +4,7 @@ using TestProject.Core.ViewModels;
 
 namespace StarWarsSample.iOS.Views
 {
-    [MvxRootPresentation]
+   // [MvxRootPresentation]
     public class MainView : MvxViewController<MainViewModel>
     {
         private bool _firstTimePresented = true;
@@ -19,9 +19,9 @@ namespace StarWarsSample.iOS.Views
 
         }
 
-        public override void ViewWillAppear(bool animated)
+        public override void ViewDidAppear(bool animated)
         {
-            base.ViewWillAppear(animated);
+            base.ViewDidAppear(animated);
 
             if (_firstTimePresented)
             {

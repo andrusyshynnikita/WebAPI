@@ -22,9 +22,9 @@ namespace TestProject.Core.ViewModels
         {
             _navigationService = mvxNavigationService;
             _loginService = loginService;
-            ShowSecondPageCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
+          //  ShowSecondPageCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
             _taskService = taskService;
-            TaskViewCommand = new MvxAsyncCommand<TaskInfo>(NavigateMethod);
+         //   TaskViewCommand = new MvxAsyncCommand<TaskInfo>(NavigateMethod);
 
         }
 

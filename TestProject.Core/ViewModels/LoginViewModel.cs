@@ -30,10 +30,10 @@ namespace TestProject.Core.ViewModels
             _mvxNavigationService = mvxNavigationService;
         }
 
-        //public override Task Initialize()
-        //{
-        //    return base.Initialize();
-        //}
+        public override Task Initialize()
+        {
+            return base.Initialize();
+        }
 
         public IMvxCommand LoginCommand => new MvxCommand(_loginService.LoginTwitter);
         

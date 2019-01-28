@@ -17,13 +17,17 @@ namespace TestProject.Core.ViewModels
         {
             _loginService = loginService;
             _navigationService = navigationService;
-            DoneListItemViewModel = Mvx.IoCConstruct<DoneListItemViewModel>();
-            NotDoneListItemViewModel = Mvx.IoCConstruct<NotDoneListItemViewModel>();
-            AboutViewModel = Mvx.IoCConstruct<AboutViewModel>();
-            AboutViewModel.OnLoggedInHandler= new Action(() =>
-            {
-                LogoutCommand.Execute();
-            });
+            //  DoneListItemViewModel = Mvx.IoCConstruct<DoneListItemViewModel>();
+            //  NotDoneListItemViewModel = Mvx.IoCConstruct<NotDoneListItemViewModel>();
+            //  AboutViewModel = Mvx.IoCConstruct<AboutViewModel>();
+            //  AboutViewModel.OnLoggedInHandler= new Action(() =>
+            //{
+            //    LogoutCommand.Execute();
+            //});
+
+            ShowDoneListItemViewModelCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<DoneListItemViewModel>());
+            ShowNotDoneListItemViewModelCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<NotDoneListItemViewModel>());
+            ShowAboutViewModelCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<AboutViewModel>());
         }
 
         public DoneListItemViewModel DoneListItemViewModel { get; set; }
@@ -39,6 +43,10 @@ namespace TestProject.Core.ViewModels
                 return new MvxAsyncCommand(LogOut);
             }
         }
+
+        public IMvxAsyncCommand ShowDoneListItemViewModelCommand { get; private set; }
+        public IMvxAsyncCommand ShowNotDoneListItemViewModelCommand { get; private set; }
+        public IMvxAsyncCommand ShowAboutViewModelCommand { get; private set; }
 
         private async Task LogOut()
         {

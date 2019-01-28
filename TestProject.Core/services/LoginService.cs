@@ -34,12 +34,12 @@ namespace TestProject.Core.services
 
         async private void twitter_auth_Completed(object sender, AuthenticatorCompletedEventArgs eventArgs)
         {
-
+            
             if (eventArgs.IsAuthenticated)
             {
                 Account loggedInAccount = eventArgs.Account;
 
-                AccountStore.Create().Save(loggedInAccount, "Twitter");
+               // AccountStore.Create().Save(loggedInAccount, "Twitter");
 
                 var request = new OAuth1Request("GET",
                     new Uri("https://api.twitter.com/1.1/account/verify_credentials.json"),
@@ -51,9 +51,9 @@ namespace TestProject.Core.services
                 var json = response.GetResponseText();
 
                 _twitterUser = JsonConvert.DeserializeObject<TwitterUser>(json);
-                _currentUserAccount = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
-                _currentUserAccount.Username = _twitterUser.name;
-                TwitterUserId.Id_User = _currentUserAccount.Properties["user_id"];
+               // _currentUserAccount = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
+               // _currentUserAccount.Username = _twitterUser.name;
+              //  TwitterUserId.Id_User = _currentUserAccount.Properties["user_id"];
                 OnLoggedInHandler();
             }
 

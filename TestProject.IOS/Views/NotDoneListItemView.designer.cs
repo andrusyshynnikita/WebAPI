@@ -10,18 +10,18 @@ using System.CodeDom.Compiler;
 
 namespace TestProject.IOS
 {
-    [Register ("DoneListItemView")]
-    partial class DoneListItemView
+    [Register ("NotDoneListItemView")]
+    partial class NotDoneListItemView
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton butt { get; set; }
+        UIKit.UIButton butt2 { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (butt != null) {
-                butt.Dispose ();
-                butt = null;
+            if (butt2 != null) {
+                butt2.Dispose ();
+                butt2 = null;
             }
         }
     }

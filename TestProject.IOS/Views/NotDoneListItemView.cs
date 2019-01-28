@@ -6,10 +6,10 @@ using TestProject.Core.ViewModels;
 
 namespace TestProject.IOS
 {
-    [MvxTabPresentation(WrapInNavigationController = true,TabName = " DoneTasks")]
-    public partial class DoneListItemView : MvxViewController<DoneListItemViewModel>
+    [MvxTabPresentation(WrapInNavigationController = true, TabName = "NotDoneTasks")]
+    public partial class NotDoneListItemView : MvxViewController<NotDoneListItemViewModel>
     {
-        public DoneListItemView () : base(nameof(DoneListItemView), null)
+        public NotDoneListItemView() : base(nameof(NotDoneListItemView), null)
         {
         }
 
