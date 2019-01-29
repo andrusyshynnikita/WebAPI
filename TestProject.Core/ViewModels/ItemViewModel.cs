@@ -163,10 +163,10 @@ namespace TestProject.Core.ViewModels
                 _taskService.InsertTask(taskInfo);
             }
 
-            if (Id == 0 &&  _audioService.CheckAudioFile(Id)==true)
-            {
-                _audioService.RenameFile(taskInfo.Id);
-            }
+            //if (Id == 0 &&  _audioService.CheckAudioFile(Id)==true)
+            //{
+            //    _audioService.RenameFile(taskInfo.Id);
+            //}
 
             _navigationService.Close(this);
         }

@@ -15,13 +15,13 @@ namespace TestProject.IOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton butt { get; set; }
+        UIKit.UITableView DoneTasksTableView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (butt != null) {
-                butt.Dispose ();
-                butt = null;
+            if (DoneTasksTableView != null) {
+                DoneTasksTableView.Dispose ();
+                DoneTasksTableView = null;
             }
         }
     }

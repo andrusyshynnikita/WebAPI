@@ -154,7 +154,6 @@
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
@@ -172,12 +171,25 @@
     <InterfaceDefinition Include="Views\AboutView.xib">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
+    <InterfaceDefinition Include="Views\Cells\TasksViewCell.xib" />
+    <InterfaceDefinition Include="Views\ItemView.xib">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\ItemView.cs" />
+    <Compile Include="Views\ItemView.designer.cs">
+      <DependentUpon>ItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AudioService.cs" />
     <Compile Include="Sources\TasksTableViewSource.cs" />
     <Compile Include="Views\AboutView.cs" />
     <Compile Include="Views\AboutView.designer.cs">
       <DependentUpon>AboutView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cells\TasksViewCell.cs" />
+    <Compile Include="Views\Cells\TasksViewCell.designer.cs">
+      <DependentUpon>TasksViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NotDoneListItemView.cs" />
     <Compile Include="Views\NotDoneListItemView.designer.cs">
@@ -208,6 +220,9 @@
       <Project>{8e65bc79-5147-49fb-8384-7ddf920922a0}</Project>
       <Name>TestProject.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icons8_checkmark_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

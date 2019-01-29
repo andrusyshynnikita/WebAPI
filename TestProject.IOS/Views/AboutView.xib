@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutView">
             <connections>
-              <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
                 <outlet property="butt3" destination="153" id="name-outlet-153"/>
             </connections>
         </placeholder>
