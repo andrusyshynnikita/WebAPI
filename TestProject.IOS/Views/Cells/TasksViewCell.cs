@@ -29,7 +29,7 @@ namespace TestProject.IOS.Views.Cells
             {
                 var set = this.CreateBindingSet<TasksViewCell, TaskInfo>();
                 set.Bind(TitleTask).To(m => m.Title);
-                set.Bind(StatusTask).To(m => m.Status);
+              //  set.Bind(StatusTask).To(m => m.Status);
                 set.Apply();
             });
         }

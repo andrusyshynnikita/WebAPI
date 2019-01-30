@@ -15,19 +15,10 @@ namespace TestProject.IOS.Views.Cells
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView StatusTask { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel TitleTask { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (StatusTask != null) {
-                StatusTask.Dispose ();
-                StatusTask = null;
-            }
-
             if (TitleTask != null) {
                 TitleTask.Dispose ();
                 TitleTask = null;

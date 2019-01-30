@@ -23,19 +23,17 @@ namespace TestProject.IOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            var controller = new UINavigationController();
 
             _btnCAdd = new UIBarButtonItem(UIBarButtonSystemItem.Add, null);
             NavigationItem.SetRightBarButtonItem(_btnCAdd, false);
-
             var source = new TasksTableViewSource(DoneTasksTableView);
             DoneTasksTableView.Source = source;
-
             var set = this.CreateBindingSet<DoneListItemView, DoneListItemViewModel>();
             set.Bind(source).To(vm => vm.TaskCollection);
             set.Bind(source).For(v => v.SelectionChangedCommand).To(vm => vm.TaskViewCommand);
             set.Bind(_btnCAdd).For("Clicked").To(vm => vm.ShowSecondPageCommand);
             set.Apply();
-
             DoneTasksTableView.ReloadData();
         }
     }

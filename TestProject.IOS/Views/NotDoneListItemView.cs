@@ -9,7 +9,7 @@ using UIKit;
 
 namespace TestProject.IOS
 {
-    [MvxTabPresentation(WrapInNavigationController = false, TabName = "NotDoneTasks")]
+    [MvxTabPresentation(WrapInNavigationController = true, TabName = "NotDoneTasks")]
     public partial class NotDoneListItemView : MvxViewController<NotDoneListItemViewModel>
     {
         private UIBarButtonItem _btnCAdd;
@@ -27,7 +27,6 @@ namespace TestProject.IOS
 
             var source = new TasksTableViewSource(NotDoneTasksTableView);
             NotDoneTasksTableView.Source = source;
-
             var set = this.CreateBindingSet<NotDoneListItemView, NotDoneListItemViewModel>();
             set.Bind(source).To(vm => vm.TaskCollection);
             set.Bind(source).For(v => v.SelectionChangedCommand).To(vm => vm.TaskViewCommand);
