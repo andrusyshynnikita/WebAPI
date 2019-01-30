@@ -4,10 +4,11 @@ using MvvmCross.Navigation;
 using MvvmCross.Commands;
 using TestProject.Core.Interface;
 using System.Threading.Tasks;
+using System;
 
 namespace TestProject.Core.ViewModels
 {
-    public class NotDoneListItemViewModel : MvxViewModel
+    public class NotDoneListItemViewModel : MvxViewModel<Action>
     {
         private readonly IMvxNavigationService _navigationService;
         private MvxObservableCollection<TaskInfo> _taskCollection;
@@ -20,8 +21,8 @@ namespace TestProject.Core.ViewModels
         {
             _navigationService = mvxNavigationService;
             _loginService = loginService;
-            ShowSecondPageCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
             _taskService = taskService;
+            ShowSecondPageCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
             TaskViewCommand = new MvxAsyncCommand<TaskInfo>(NavigateMethod);
 
         }
@@ -90,6 +91,10 @@ namespace TestProject.Core.ViewModels
             await _navigationService.Close(this);
         }
 
+        public override void Prepare(Action parameter)
+        {
+           
+        }
     }
 
 }

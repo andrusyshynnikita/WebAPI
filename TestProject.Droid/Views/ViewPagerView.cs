@@ -40,7 +40,7 @@ namespace TestProject.Droid.Views
                 {
                     FragmentType = typeof(AboutView),
                     Title = "About",
-                    ViewModel= ViewModel.AboutViewModel
+                    ViewModel= ViewModel.AboutViewModel1
                 }
             };
             _viewPager.Adapter = new MvxViewPagerFragmentAdapter(Activity, ChildFragmentManager, fragments);

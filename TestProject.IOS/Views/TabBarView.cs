@@ -11,7 +11,7 @@ using UIKit;
 
 namespace TestProject.IOS.Views
 {
-    [MvxRootPresentation]
+    [MvxRootPresentation(WrapInNavigationController =false)]
     public class TabBarView : MvxTabBarViewController<ViewPagerViewModel>
     {
         private bool _firstTimePresented = true;
@@ -32,12 +32,13 @@ namespace TestProject.IOS.Views
         {
             base.ViewWillAppear(animated);
 
+            var logOutHandler = new Action(()=> ViewModel.LogoutCommand.Execute());
             if (_firstTimePresented)
             {
                 _firstTimePresented = false;
-                ViewModel.ShowDoneListItemViewModelCommand.Execute(null);
-                ViewModel.ShowNotDoneListItemViewModelCommand.Execute(null);
-                ViewModel.ShowAboutViewModelCommand.Execute(null);
+                ViewModel.ShowDoneListItemViewModelCommand.Execute(logOutHandler);
+                ViewModel.ShowNotDoneListItemViewModelCommand.Execute(logOutHandler);
+                ViewModel.ShowAboutViewModelCommand.Execute(logOutHandler);
             }
         }
     }

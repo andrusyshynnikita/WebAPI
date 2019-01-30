@@ -5,6 +5,8 @@ using TestProject.Core.Helper;
 using TestProject.Core.Interface;
 using TestProject.Core.Models;
 using Xamarin.Auth;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 
 namespace TestProject.Core.services
 {
@@ -38,22 +40,20 @@ namespace TestProject.Core.services
             if (eventArgs.IsAuthenticated)
             {
                 Account loggedInAccount = eventArgs.Account;
-
-               // AccountStore.Create().Save(loggedInAccount, "Twitter");
-
+                // AccountStore.Create().Save(loggedInAccount, "Twitter");
                 var request = new OAuth1Request("GET",
                     new Uri("https://api.twitter.com/1.1/account/verify_credentials.json"),
                     null,
                     eventArgs.Account);
-
                 var response = await request.GetResponseAsync();
                 
                 var json = response.GetResponseText();
 
                 _twitterUser = JsonConvert.DeserializeObject<TwitterUser>(json);
-               // _currentUserAccount = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
-               // _currentUserAccount.Username = _twitterUser.name;
-              //  TwitterUserId.Id_User = _currentUserAccount.Properties["user_id"];
+                CrossSettings.Current.AddOrUpdateValue("Twitter", _twitterUser.id_str);
+                // _currentUserAccount = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
+                // _currentUserAccount.Username = _twitterUser.name;
+                TwitterUserId.Id_User = _twitterUser.id_str;
                 OnLoggedInHandler();
             }
 
@@ -70,11 +70,11 @@ namespace TestProject.Core.services
 
         public void Logout()
         {
-            var data = AccountStore.Create().FindAccountsForService("Twitter").FirstOrDefault();
+            var data = CrossSettings.Current.Contains("Twitter");
 
-            if (data != null)
+            if (data == true)
             {
-                AccountStore.Create().Delete(data, "Twitter");
+                CrossSettings.Current.Clear();
                 TwitterUserId.Id_User = null;
             }
         }

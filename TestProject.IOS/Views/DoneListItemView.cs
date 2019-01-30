@@ -11,7 +11,7 @@ using UIKit;
 
 namespace TestProject.IOS
 {
-    [MvxTabPresentation(WrapInNavigationController = true,TabName = " DoneTasks")]
+    [MvxTabPresentation(WrapInNavigationController = true, TabName = " DoneTasks")]
     public partial class DoneListItemView : MvxViewController<DoneListItemViewModel>
     {
         private UIBarButtonItem _btnCAdd;

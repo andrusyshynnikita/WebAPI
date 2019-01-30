@@ -47,9 +47,9 @@ namespace TestProject.Core.ViewModels
             });
         }
 
-        public IMvxCommand CloseCommand
+        public IMvxAsyncCommand CloseCommand
         {
-            get { return new MvxCommand(CloseTask); }
+            get { return new MvxAsyncCommand(CloseTask); }
         }
         
 
@@ -149,10 +149,11 @@ namespace TestProject.Core.ViewModels
             }
         }
 
-        private void CloseTask()
+        private async Task CloseTask()
         {
             _audioService.DeleteNullFile();
-            _navigationService.Close(this);
+          //  await _navigationService.Navigate<ViewPagerViewModel>();
+           await _navigationService.Close(this);
         }
 
         private void SaveTask()

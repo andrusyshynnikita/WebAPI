@@ -8,7 +8,7 @@ using System;
 
 namespace TestProject.Core.ViewModels
 {
-    public class DoneListItemViewModel : MvxViewModel
+    public class DoneListItemViewModel : MvxViewModel<Action>
     {
         private readonly IMvxNavigationService _navigationService;
         private MvxObservableCollection<TaskInfo> _taskCollection;
@@ -100,6 +100,9 @@ namespace TestProject.Core.ViewModels
             await _navigationService.Close(this);
         }
 
+        public override void Prepare(Action parameter)
+        { 
+        }
     }
 
 }

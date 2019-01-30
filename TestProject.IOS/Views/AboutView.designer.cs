@@ -15,13 +15,13 @@ namespace TestProject.IOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton butt3 { get; set; }
+        UIKit.UIButton Logout_button { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (butt3 != null) {
-                butt3.Dispose ();
-                butt3 = null;
+            if (Logout_button != null) {
+                Logout_button.Dispose ();
+                Logout_button = null;
             }
         }
     }
