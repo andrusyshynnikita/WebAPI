@@ -25,6 +25,7 @@ namespace TestProject.IOS.Views.Cells
 
         protected TasksViewCell(IntPtr handle) : base(handle)
         {
+            
             this.DelayBind(() =>
             {
                 var set = this.CreateBindingSet<TasksViewCell, TaskInfo>();

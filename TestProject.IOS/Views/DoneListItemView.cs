@@ -15,6 +15,7 @@ namespace TestProject.IOS
     public partial class DoneListItemView : MvxViewController<DoneListItemViewModel>
     {
         private UIBarButtonItem _btnCAdd;
+        private nfloat _cellSpacingHeight = 5;
 
         public DoneListItemView () : base(nameof(DoneListItemView), null)
         {
@@ -28,6 +29,7 @@ namespace TestProject.IOS
             _btnCAdd = new UIBarButtonItem(UIBarButtonSystemItem.Add, null);
             NavigationItem.SetRightBarButtonItem(_btnCAdd, false);
             var source = new TasksTableViewSource(DoneTasksTableView);
+            //DoneTasksTableView.SectionFooterHeight = _cellSpacingHeight;
             DoneTasksTableView.Source = source;
             var set = this.CreateBindingSet<DoneListItemView, DoneListItemViewModel>();
             set.Bind(source).To(vm => vm.TaskCollection);

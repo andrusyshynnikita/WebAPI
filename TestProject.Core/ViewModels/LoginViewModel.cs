@@ -56,16 +56,16 @@ namespace TestProject.Core.ViewModels
             }
         }
 
-        public IMvxCommand ShowDoneList
-        {
-            get
-            {
-                return new MvxAsyncCommand(async () => {
-                    await _mvxNavigationService.Navigate<DoneListItemViewModel>();
-                    await _mvxNavigationService.Close(this);
-                });
-            }
-        }
+        //public IMvxCommand ShowDoneList
+        //{
+        //    get
+        //    {
+        //        return new MvxAsyncCommand(async () => {
+        //            await _mvxNavigationService.Navigate<DoneListItemViewModel>();
+        //            await _mvxNavigationService.Close(this);
+        //        });
+        //    }
+        //}
 
     }
 }

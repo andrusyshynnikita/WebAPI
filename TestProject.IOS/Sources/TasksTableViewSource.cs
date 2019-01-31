@@ -27,7 +27,6 @@ namespace TestProject.IOS.Sources
             //var item = group.ElementAt(indexPath.Row) as TaskInfo;
 
             var cell = GetOrCreateCellFor(tableView, indexPath, group);
-
             return cell;
         }
 

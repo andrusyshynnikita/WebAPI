@@ -15,8 +15,6 @@ namespace TestProject.IOS.Views
         {
         }
 
-
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -29,6 +27,7 @@ namespace TestProject.IOS.Views
             base.ViewWillAppear(animated);
 
             var logOutHandler = new Action(() => ViewModel.LogoutCommand.Execute());
+
             if (_firstTimePresented)
             {
                 _firstTimePresented = false;

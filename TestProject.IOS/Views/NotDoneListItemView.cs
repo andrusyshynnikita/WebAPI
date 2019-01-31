@@ -9,7 +9,7 @@ using UIKit;
 
 namespace TestProject.IOS
 {
-    [MvxTabPresentation(WrapInNavigationController = true, TabName = "NotDoneTasks")]
+    [MvxTabPresentation(WrapInNavigationController = true, TabName = "Not DoneTasks")]
     public partial class NotDoneListItemView : MvxViewController<NotDoneListItemViewModel>
     {
         private UIBarButtonItem _btnCAdd;

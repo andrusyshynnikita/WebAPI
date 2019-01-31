@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AVFoundation;
 using Foundation;
 using TestProject.Core.Interface;
 using UIKit;
@@ -11,6 +12,9 @@ namespace TestProject.IOS.Services
 {
     public class AudioService : IAudioService
     {
+        AVAudioSession _recordingSession;
+        AVAudioRecorder _audioRecorder;
+
         public Action OnRecordHandler { get; set; }
         public Action OnPlaydHandler { get ; set ; }
 
@@ -39,6 +43,7 @@ namespace TestProject.IOS.Services
 
         public void StartRecording(int id)
         {
+
         }
 
         public void StopPlayRecording()
