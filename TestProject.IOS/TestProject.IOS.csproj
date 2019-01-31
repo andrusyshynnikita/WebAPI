@@ -177,13 +177,17 @@
     <InterfaceDefinition Include="Views\AboutView.xib">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
-    <InterfaceDefinition Include="Views\Cells\TasksViewCell.xib" />
     <InterfaceDefinition Include="Views\ItemView.xib">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
+    <InterfaceDefinition Include="Views\Cells\TasksViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Converters\IconValueConverter.cs" />
+    <Compile Include="Views\Cells\TasksViewCell.cs" />
+    <Compile Include="Views\Cells\TasksViewCell.designer.cs">
+      <DependentUpon>TasksViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ItemView.cs" />
     <Compile Include="Views\ItemView.designer.cs">
       <DependentUpon>ItemView.cs</DependentUpon>
@@ -193,10 +197,6 @@
     <Compile Include="Views\AboutView.cs" />
     <Compile Include="Views\AboutView.designer.cs">
       <DependentUpon>AboutView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Cells\TasksViewCell.cs" />
-    <Compile Include="Views\Cells\TasksViewCell.designer.cs">
-      <DependentUpon>TasksViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NotDoneListItemView.cs" />
     <Compile Include="Views\NotDoneListItemView.designer.cs">
@@ -229,7 +229,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\icons8_checkmark_48.png" />
+    <BundleResource Include="Resources\icons8_unchecked_checkbox_50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icons8_checked_checkbox_filled_50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

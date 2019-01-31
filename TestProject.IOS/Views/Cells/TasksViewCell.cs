@@ -11,7 +11,7 @@ namespace TestProject.IOS.Views.Cells
     public partial class TasksViewCell : MvxTableViewCell
     {
         public static readonly NSString Key = new NSString("TasksViewCell");
-        public static readonly UINib Nib= UINib.FromName("TasksViewCell", NSBundle.MainBundle);
+        public static readonly UINib Nib = UINib.FromName("TasksViewCell", NSBundle.MainBundle);
 
         //static TasksViewCell()
         //{
@@ -29,7 +29,8 @@ namespace TestProject.IOS.Views.Cells
             {
                 var set = this.CreateBindingSet<TasksViewCell, TaskInfo>();
                 set.Bind(TitleTask).To(m => m.Title);
-              //  set.Bind(StatusTask).To(m => m.Status);
+                //  set.Bind(StatusTask).To(m => m.Status);
+                 set.Bind(StatusTask).For(v => v.Image).To(vm => vm.Status).WithConversion("Icon");
                 set.Apply();
             });
         }
