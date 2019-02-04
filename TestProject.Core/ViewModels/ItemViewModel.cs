@@ -36,6 +36,9 @@ namespace TestProject.Core.ViewModels
             _navigationService = mvxNavigationService;
             _audioService = audioService;
             IsPlayRecordingEnable = false;
+            IsREcordChecking = true;
+            IsPlayChecking = true;
+
             _audioService.OnPlaydHandler = new Action(() =>
             {
                 IsPlayChecking = false;
@@ -128,12 +131,14 @@ namespace TestProject.Core.ViewModels
             if (IsPlayChecking == true)
             {
                 _audioService.PlayRecording(Id);
+                IsPlayChecking = false;
             }
-            
-            if(IsPlayChecking== false)
+
+            else
             {
                 _audioService.StopPlayRecording();
             }
+          //  _audioService.PlayRecording(Id);
         }
 
 
@@ -142,11 +147,14 @@ namespace TestProject.Core.ViewModels
             if (IsREcordChecking == true)
             {
                 _audioService.StartRecording(Id);
+                IsREcordChecking = false;
             }
-           if(IsREcordChecking== false)
+            else
             {
                 _audioService.StopRecording();
+                IsREcordChecking = true;
             }
+            //  _audioService.RenameFile(2);
         }
 
         private async Task CloseTask()

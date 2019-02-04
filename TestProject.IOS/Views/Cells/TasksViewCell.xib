@@ -13,34 +13,47 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="186" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" text="Title">
-                        <rect key="frame" x="7" y="0.0" width="256" height="44"/>
-                        <color key="textColor" colorSpace="calibratedRGB" red="0" green="0.50196078431372548" blue="0" alpha="1"/>
-                        <nil key="highlightedColor"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="188" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                        <rect key="frame" x="252" y="0.0" width="58" height="44"/>
-                    </imageView>
-                </subviews>
-                <constraints>
-                    <constraint id="486" firstItem="186" firstAttribute="trailing" secondItem="188" secondAttribute="leading" constant="1"/>
-                    <constraint id="858" firstItem="186" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="7"/>
-                    <constraint id="1018" firstAttribute="trailing" secondItem="188" secondAttribute="trailing" constant="10"/>
-                    <constraint id="1223" firstAttribute="bottom" secondItem="186" secondAttribute="bottom" constant="5"/>
-                    <constraint id="1224" firstItem="186" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top"/>
-                    <constraint id="1225" firstAttribute="bottom" secondItem="188" secondAttribute="bottom" constant="5"/>
-                    <constraint id="1226" firstItem="188" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top"/>
-                    <constraint id="1227" firstAttribute="trailing" secondItem="188" secondAttribute="trailing" constant="10"/>
-                </constraints>
                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="1"/>
+                <subviews>
+                    <view contentMode="scaleToFill" id="2654" translatesAutoresizingMaskIntoConstraints="NO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2655" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="8" y="0.0" width="246" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2661" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="262" y="0.0" width="50" height="40"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint id="3020" firstItem="2655" firstAttribute="leading" secondItem="2654" secondAttribute="leading" constant="8"/>
+                            <constraint id="3021" firstItem="2655" firstAttribute="bottom" secondItem="2654" secondAttribute="bottom"/>
+                            <constraint id="3022" firstItem="2655" firstAttribute="top" secondItem="2654" secondAttribute="top"/>
+                            <constraint id="3023" firstAttribute="trailing" secondItem="2661" secondAttribute="trailing" constant="8"/>
+                            <constraint id="3024" firstItem="2661" firstAttribute="top" secondItem="2654" secondAttribute="top"/>
+                            <constraint id="3025" firstItem="2661" firstAttribute="bottom" secondItem="2654" secondAttribute="bottom"/>
+                            <constraint id="3026" firstItem="2661" firstAttribute="leading" secondItem="2655" secondAttribute="trailing" constant="8"/>
+                            <constraint id="3027" firstItem="2661" firstAttribute="leading" secondItem="2655" secondAttribute="trailing" constant="8"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                <constraints>
+                    <constraint id="2656" firstAttribute="bottom" secondItem="2654" secondAttribute="bottom" constant="9"/>
+                    <constraint id="2657" firstItem="2654" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading"/>
+                    <constraint id="2658" firstItem="2654" firstAttribute="trailing" secondItem="YTl-1W-gDM" secondAttribute="trailing"/>
+                    <constraint id="2659" firstItem="2654" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top"/>
+                </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="21" y="-13"/>
-            <connections>
-                <outlet property="TitleTask" destination="186" id="name-outlet-186"/>
-                <outlet property="StatusTask" destination="188" id="name-outlet-188"/>
-            </connections>
             <rect key="contentStretch" x="0.0" y="0.0" width="1" height="1"/>
             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
             <userDefinedRuntimeAttributes>
@@ -48,6 +61,10 @@
                     <real key="value" value="15"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="TitleTask" destination="2655" id="name-outlet-2655"/>
+                <outlet property="StatusTask" destination="2661" id="name-outlet-2661"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

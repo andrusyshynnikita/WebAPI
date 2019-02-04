@@ -9,7 +9,7 @@ namespace TestProject.Core.Interface
     {
         void StartRecording(int id);
         void StopRecording();
-        Task PlayRecording(int id);
+        void PlayRecording(int id); //android use return Task
         void StopPlayRecording();
         void RenameFile(int newName);
         Action OnRecordHandler { get; set; }

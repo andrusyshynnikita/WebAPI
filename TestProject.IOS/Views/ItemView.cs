@@ -30,6 +30,10 @@ namespace TestProject.IOS
             set.Bind(Delete_button).To(vm => vm.DeleteCommand);
             set.Bind(Delete_button).For(v => v.Enabled).To(vm => vm.IsDeletingTaskEnable);
             set.Bind(_btnCBack).For("Clicked").To(vm => vm.CloseCommand);
+            set.Bind(recording).To(vm => vm.StartRecordingCommand);
+          //  set.Bind(recording).For(vm => vm.Checked).To(vm => vm.IsREcordChecking);
+            set.Bind(Play).To(vm => vm.PlayRecordingCommand);
+
             set.Apply();
 
         }

@@ -15,18 +15,18 @@
         <view contentMode="scaleToFill" id="2">
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" customColorSpace="sRGB" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="309" translatesAutoresizingMaskIntoConstraints="NO" separatorStyle="none" estimatedRowHeight="-1" estimatedSectionHeaderHeight="-1" estimatedSectionFooterHeight="-1">
-                    <rect key="frame" x="0.0" y="46" width="414" height="690"/>
+                    <rect key="frame" x="0.0" y="74" width="414" height="662"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                 </tableView>
             </subviews>
             <constraints>
-                <constraint id="1016" firstItem="309" firstAttribute="top" secondItem="2" secondAttribute="top" constant="46"/>
-                <constraint id="1017" firstItem="309" firstAttribute="leading" secondItem="2" secondAttribute="leading"/>
-                <constraint id="1018" firstItem="309" firstAttribute="trailing" secondItem="2" secondAttribute="trailing"/>
-                <constraint id="2394" firstItem="309" firstAttribute="bottom" secondItem="2" secondAttribute="bottom"/>
+                <constraint id="2949" firstItem="309" firstAttribute="top" secondItem="2" secondAttribute="top" constant="74"/>
+                <constraint id="2964" firstItem="309" firstAttribute="leading" secondItem="2" secondAttribute="leading"/>
+                <constraint id="2979" firstItem="309" firstAttribute="bottom" secondItem="2" secondAttribute="bottom"/>
+                <constraint id="2994" firstItem="309" firstAttribute="trailing" secondItem="2" secondAttribute="trailing"/>
             </constraints>
         </view>
     </objects>

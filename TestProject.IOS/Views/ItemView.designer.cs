@@ -23,6 +23,14 @@ namespace TestProject.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton Play { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton recording { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton Save_button { get; set; }
 
         [Outlet]
@@ -43,6 +51,16 @@ namespace TestProject.IOS
             if (Description_text != null) {
                 Description_text.Dispose ();
                 Description_text = null;
+            }
+
+            if (Play != null) {
+                Play.Dispose ();
+                Play = null;
+            }
+
+            if (recording != null) {
+                recording.Dispose ();
+                recording = null;
             }
 
             if (Save_button != null) {

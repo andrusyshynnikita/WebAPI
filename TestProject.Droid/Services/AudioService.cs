@@ -81,7 +81,7 @@ namespace TestProject.Droid.Services
             }
         }
 
-        public async Task PlayRecording(int id)
+        public async void PlayRecording(int id)
         {
             path = Path.Combine(System.Environment.
                 GetFolderPath(System.Environment.
