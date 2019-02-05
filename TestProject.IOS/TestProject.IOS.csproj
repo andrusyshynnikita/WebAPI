@@ -76,6 +76,9 @@
     <Reference Include="MvvmCross, Version=6.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.6.2.2\lib\xamarinios10\MvvmCross.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Plugin.Color, Version=6.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.Color.6.2.2\lib\xamarinios10\MvvmCross.Plugin.Color.dll</HintPath>
+    </Reference>
     <Reference Include="MvvmCross.Plugin.Json, Version=6.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Plugin.Json.6.2.2\lib\netstandard2.0\MvvmCross.Plugin.Json.dll</HintPath>
     </Reference>
@@ -163,7 +166,9 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Info.plist" />
+    <None Include="Info.plist">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Entitlements.plist" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <None Include="packages.config" />
@@ -183,10 +188,16 @@
       <SubType>Designer</SubType>
     </InterfaceDefinition>
     <InterfaceDefinition Include="Views\Cells\TasksViewCell.xib" />
+    <InterfaceDefinition Include="Views\View1.xib" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\ColorValueConverter.cs" />
     <Compile Include="Converters\IconValueConverter.cs" />
     <Compile Include="CustomControls\AudioButton.cs" />
+    <Compile Include="Views\View1.cs" />
+    <Compile Include="Views\View1.designer.cs">
+      <DependentUpon>View1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Cells\TasksViewCell.cs" />
     <Compile Include="Views\Cells\TasksViewCell.designer.cs">
       <DependentUpon>TasksViewCell.cs</DependentUpon>

@@ -161,6 +161,7 @@ namespace TestProject.Droid.Services
                 SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp"));
 
             File.Delete(path);
+
         }
 
         public void DeleteNullFile()

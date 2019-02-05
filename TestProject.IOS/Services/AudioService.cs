@@ -21,26 +21,41 @@ namespace TestProject.IOS.Services
         private AVPermissionGranted _permissionGranted;
         private NSUrl _url;
         private NSError _error;
+        private string _path;
 
         public Action OnRecordHandler { get; set; }
         public Action OnPlaydHandler { get ; set ; }
 
         public AudioService()
         {
-
         }
 
         public bool CheckAudioFile(int id)
         {
-            return true;
+            var path = Path.Combine(System.Environment.
+                GetFolderPath(System.Environment.
+                SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp");
+            var result = File.Exists(path);
+
+            return result;
         }
 
         public void DeleteNullFile()
         {
+            _path = Path.Combine(System.Environment.
+               GetFolderPath(System.Environment.
+               SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
+
+            File.Delete(_path);
         }
 
         public void PlayRecording(int id)
         {
+            if (_audioPlayer != null)
+            {
+                _audioPlayer.Dispose();
+            }
+
             var path = Path.Combine(System.Environment.
                GetFolderPath(System.Environment.
                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
@@ -48,31 +63,61 @@ namespace TestProject.IOS.Services
             if (File.Exists(path))
             {
                 _url = NSUrl.FromFilename(path);
-                _audioPlayer = new AVAudioPlayer(_url, ".3gpp", out _error);
+                _audioPlayer =  AVAudioPlayer.FromUrl(_url, out _error);
                 _audioPlayer.Play();
+                _audioPlayer.FinishedPlaying += PlayCompletion;
+            }
+
+            else
+            {
+                path = Path.Combine(System.Environment.
+                GetFolderPath(System.Environment.
+                SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp");
+                _url = NSUrl.FromFilename(path);
+                _audioPlayer = AVAudioPlayer.FromUrl(_url, out _error);
+                _audioPlayer.Play();
+                _audioPlayer.FinishedPlaying += PlayCompletion;
+
             }
 
         }
 
-        public void StopPlayRecording()
+        private void PlayCompletion(object sender, AVStatusEventArgs e)
         {
-            _audioPlayer.Stop();
-            _audioPlayer.Dispose();
+            OnPlaydHandler();
         }
 
-        public void RenameFile(int newName)
+        public void StopPlayRecording()
         {
+            if ((_audioPlayer != null))
+            {
+                if (_audioPlayer.Playing)
+                {
+                    _audioPlayer.Stop();
+                }
+               
+                _audioPlayer = null;
+               // _audioPlayer.Dispose();
+            }
+        }
 
+        public void RenameFile(int id)
+        {
+            _path = Path.Combine(System.Environment.
+                GetFolderPath(System.Environment.
+                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
+
+            File.Move(_path, Path.Combine(System.Environment.
+                GetFolderPath(System.Environment.
+                SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp"));
+
+            File.Delete(_path);
         }
 
         public void StartRecording(int id)
         {
-            //_recordingSession = AVAudioSession.SharedInstance();
-            //_recordingSession.SetCategory(AVAudioSessionCategory.PlayAndRecord);
-            //_recordingSession.RequestRecordPermission(delegate (bool granted) {
-            //    Console.WriteLine("Audio Permission:" + granted);
-            //});
-            //_recordingSession.SetActive(true);
+            if (File.Exists(_path))
+                File.Delete(_path);
 
             var settings = new AudioSettings()
             {
@@ -95,7 +140,9 @@ namespace TestProject.IOS.Services
         {
             _audioRecorder.Stop();
             _audioRecorder = null;
+            OnRecordHandler();
         }
+
     }
 
 }

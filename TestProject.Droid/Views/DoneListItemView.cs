@@ -19,6 +19,7 @@ namespace TestProject.Droid.Views
         private TasksItemAdapter _mAdapter;
         private MvxRecyclerView _recyclerView;
 
+
         public DoneListItemView()
         {
 

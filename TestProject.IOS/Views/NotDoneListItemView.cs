@@ -13,6 +13,7 @@ namespace TestProject.IOS
     public partial class NotDoneListItemView : MvxViewController<NotDoneListItemViewModel>
     {
         private UIBarButtonItem _btnCAdd;
+        private MvxUIRefreshControl _refreshControl;
 
         public NotDoneListItemView() : base(nameof(NotDoneListItemView), null)
         {
@@ -21,6 +22,8 @@ namespace TestProject.IOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            _refreshControl = new MvxUIRefreshControl();
+            NotDoneTasksTableView.AddSubview(_refreshControl);
 
             _btnCAdd = new UIBarButtonItem(UIBarButtonSystemItem.Add, null);
             NavigationItem.SetRightBarButtonItem(_btnCAdd, false);
@@ -31,8 +34,9 @@ namespace TestProject.IOS
             set.Bind(source).To(vm => vm.TaskCollection);
             set.Bind(source).For(v => v.SelectionChangedCommand).To(vm => vm.TaskViewCommand);
             set.Bind(_btnCAdd).For("Clicked").To(vm => vm.ShowSecondPageCommand);
+            set.Bind(_refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
+            set.Bind(_refreshControl).For(r => r.RefreshCommand).To(vm => vm.RefreshCommand);
             set.Apply();
-
             NotDoneTasksTableView.ReloadData();
         }
     }

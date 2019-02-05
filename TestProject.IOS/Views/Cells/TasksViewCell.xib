@@ -19,12 +19,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2655" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2655" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="8" y="0.0" width="246" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2661" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2661" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="262" y="0.0" width="50" height="40"/>
                             </imageView>
                         </subviews>
@@ -36,7 +36,7 @@
                             <constraint id="3024" firstItem="2661" firstAttribute="top" secondItem="2654" secondAttribute="top"/>
                             <constraint id="3025" firstItem="2661" firstAttribute="bottom" secondItem="2654" secondAttribute="bottom"/>
                             <constraint id="3026" firstItem="2661" firstAttribute="leading" secondItem="2655" secondAttribute="trailing" constant="8"/>
-                            <constraint id="3027" firstItem="2661" firstAttribute="leading" secondItem="2655" secondAttribute="trailing" constant="8"/>
+                            <constraint id="3337" firstAttribute="trailing" secondItem="2655" secondAttribute="trailing" constant="66"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">

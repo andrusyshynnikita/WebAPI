@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" customColorSpace="sRGB" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="bezel" minimumFontSize="17" id="162" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="bezel" minimumFontSize="17" id="162" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center" placeholder="Title">
                     <rect key="frame" x="8" y="70" width="398" height="56"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -100,23 +100,22 @@
                     <nil key="highlightedColor"/>
                     <constraints>
                         <constraint id="4770" firstAttribute="width" secondItem="501" secondAttribute="height" multiplier="2:1"/>
+                        <constraint id="13463" firstAttribute="width" secondItem="501" secondAttribute="height" multiplier="2:1"/>
                     </constraints>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6764" translatesAutoresizingMaskIntoConstraints="NO" text="Audio Note" misplaced="YES">
-                    <rect key="frame" x="16" y="462" width="136" height="34"/>
+                    <rect key="frame" x="16" y="462" width="150" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8099" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                    <rect key="frame" x="241" y="540" width="46" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8099" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="160" y="533" width="81" height="44"/>
                     <state key="normal" title="Button"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9830" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                    <rect key="frame" x="75" y="547" width="46" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9830" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="29" y="533" width="81" height="44"/>
                     <state key="normal" title="Button"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </button>
             </subviews>
             <constraints>
@@ -134,10 +133,15 @@
                 <constraint id="5733" firstItem="329" firstAttribute="top" secondItem="328" secondAttribute="bottom" constant="48"/>
                 <constraint id="5735" firstItem="330" firstAttribute="leading" secondItem="329" secondAttribute="trailing" constant="14"/>
                 <constraint id="5736" firstItem="330" firstAttribute="top" secondItem="501" secondAttribute="bottom" constant="53"/>
-                <constraint id="6562" firstItem="501" firstAttribute="top" secondItem="327" secondAttribute="bottom" constant="30"/>
-                <constraint id="6765" firstItem="6764" firstAttribute="top" secondItem="329" secondAttribute="bottom" constant="40"/>
-                <constraint id="6766" firstItem="6764" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="16"/>
-                <constraint id="6767" firstAttribute="trailing" secondItem="6764" secondAttribute="trailing" constant="262"/>
+                <constraint id="11192" firstItem="328" firstAttribute="top" secondItem="327" secondAttribute="bottom" constant="25"/>
+                <constraint id="11193" firstItem="501" firstAttribute="top" secondItem="327" secondAttribute="bottom" constant="30"/>
+                <constraint id="11403" firstItem="6764" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="16"/>
+                <constraint id="11405" firstItem="9830" firstAttribute="top" secondItem="6764" secondAttribute="bottom" constant="37"/>
+                <constraint id="11406" firstItem="9830" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="29"/>
+                <constraint id="11407" firstItem="8099" firstAttribute="top" secondItem="6764" secondAttribute="bottom" constant="37"/>
+                <constraint id="11409" firstItem="8099" firstAttribute="leading" secondItem="9830" secondAttribute="trailing" constant="50"/>
+                <constraint id="11410" firstItem="8099" firstAttribute="leading" secondItem="9830" secondAttribute="trailing" constant="50"/>
+                <constraint id="14174" firstItem="6764" firstAttribute="top" secondItem="329" secondAttribute="bottom" constant="40"/>
             </constraints>
         </view>
     </objects>

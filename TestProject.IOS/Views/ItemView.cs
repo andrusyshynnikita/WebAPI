@@ -10,12 +10,14 @@ namespace TestProject.IOS
     public partial class ItemView : MvxViewController<ItemViewModel>
     {
         private UIBarButtonItem _btnCBack;
-        public ItemView () :  base(nameof(ItemView), null)
+        
+        public ItemView() : base(nameof(ItemView), null)
         {
         }
 
         public override void ViewDidLoad()
         {
+
             base.ViewDidLoad();
             NavigationController.Toolbar.BackgroundColor = UIColor.Blue;
             _btnCBack = new UIBarButtonItem(UIBarButtonSystemItem.Reply, null);
@@ -31,11 +33,27 @@ namespace TestProject.IOS
             set.Bind(Delete_button).For(v => v.Enabled).To(vm => vm.IsDeletingTaskEnable);
             set.Bind(_btnCBack).For("Clicked").To(vm => vm.CloseCommand);
             set.Bind(recording).To(vm => vm.StartRecordingCommand);
-          //  set.Bind(recording).For(vm => vm.Checked).To(vm => vm.IsREcordChecking);
+            set.Bind(recording).For(v => v.BackgroundColor).To(vm => vm.IsREcordChecking).WithConversion("Color");
             set.Bind(Play).To(vm => vm.PlayRecordingCommand);
-
+            set.Bind(Play).For(v => v.Enabled).To(vm => vm.IsPlayRecordingEnable);
+            set.Bind(Play).For(v => v.BackgroundColor).To(vm => vm.IsPlayChecking).WithConversion("Color");
             set.Apply();
 
+            this.Title_text.ShouldReturn += (textField) =>
+            {
+                textField.ResignFirstResponder();
+                return true;
+
+            };
+
+            this.Description_text.ShouldEndEditing += (textField) =>
+            {
+                textField.ResignFirstResponder();
+                return true;
+            };
+
+            var g = new UITapGestureRecognizer(() => View.EndEditing(true));
+            View.AddGestureRecognizer(g);
         }
     }
 }
