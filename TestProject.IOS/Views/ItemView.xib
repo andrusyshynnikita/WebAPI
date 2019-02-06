@@ -17,6 +17,7 @@
                 <outlet property="Title_text" destination="162" id="name-outlet-162"/>
                 <outlet property="Status_switch1" destination="18506" id="name-outlet-18506"/>
                 <outlet property="MainUIView" destination="2" id="name-outlet-2"/>
+                <outlet property="Scrollview" destination="14702" id="name-outlet-14702"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,11 +26,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" customColorSpace="sRGB" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="14702" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="14702" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="0.0" y="109" width="414" height="627"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="14703" translatesAutoresizingMaskIntoConstraints="NO">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                        <view contentMode="scaleToFill" id="14703" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <rect key="frame" x="0.0" y="60" width="414" height="676"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="bezel" minimumFontSize="17" id="162" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center" placeholder="Title">
@@ -198,19 +199,19 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint id="15717" firstItem="14703" firstAttribute="top" secondItem="14702" secondAttribute="top"/>
-                        <constraint id="15942" firstItem="14703" firstAttribute="leading" secondItem="14702" secondAttribute="leading"/>
-                        <constraint id="15943" firstItem="14703" firstAttribute="trailing" secondItem="14702" secondAttribute="trailing"/>
+                        <constraint id="15942" firstItem="14703" firstAttribute="leadingMargin" secondItem="14702" secondAttribute="leadingMargin"/>
+                        <constraint id="15943" firstItem="14703" firstAttribute="trailingMargin" secondItem="14702" secondAttribute="trailingMargin"/>
                         <constraint id="15944" firstItem="14703" firstAttribute="bottom" secondItem="14702" secondAttribute="bottom"/>
                         <constraint id="22483" firstItem="14703" firstAttribute="centerX" secondItem="14702" secondAttribute="centerX"/>
+                        <constraint id="27303" firstItem="14703" firstAttribute="top" secondItem="14702" secondAttribute="top"/>
                     </constraints>
                 </scrollView>
             </subviews>
             <constraints>
-                <constraint id="14918" firstItem="14702" firstAttribute="leading" secondItem="2" secondAttribute="leading"/>
-                <constraint id="14919" firstItem="14702" firstAttribute="top" secondItem="2" secondAttribute="top"/>
-                <constraint id="14920" firstAttribute="trailing" secondItem="14702" secondAttribute="trailing"/>
+                <constraint id="14918" firstItem="14702" firstAttribute="left" secondItem="2" secondAttribute="left"/>
+                <constraint id="14920" firstAttribute="right" secondItem="14702" secondAttribute="right"/>
                 <constraint id="14921" firstAttribute="bottom" secondItem="14702" secondAttribute="bottom"/>
+                <constraint id="27015" firstItem="14702" firstAttribute="top" secondItem="2" secondAttribute="top"/>
             </constraints>
         </view>
     </objects>

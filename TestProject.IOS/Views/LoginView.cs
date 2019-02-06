@@ -1,10 +1,5 @@
-using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Views;
-using System;
-using TestProject.Core.Helper;
 using TestProject.Core.ViewModels;
-using UIKit;
-using Xamarin.Auth;
 
 namespace TestProject.IOS.Views
 {
@@ -14,13 +9,9 @@ namespace TestProject.IOS.Views
         {
         }
 
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            //var set = this.CreateBindingSet<LoginView, LoginViewModel>();
-            //set.Bind(test).To(vm => vm.ShowDoneList);
-            //set.Apply();
         }
 
         partial void LoginButton_TouchUpInside(UIKit.UIButton sender)
@@ -29,10 +20,5 @@ namespace TestProject.IOS.Views
             var ui = ViewModel.Authenticator.GetUI();
             PresentViewController(ui, true, null);
         }
-
-
-        }
-
-
-    
+    }
 }

@@ -10,8 +10,8 @@ using System.CodeDom.Compiler;
 
 namespace TestProject.IOS
 {
-    [Register ("View1")]
-    partial class View1
+    [Register ("test")]
+    partial class test
     {
         void ReleaseDesignerOutlets ()
         {

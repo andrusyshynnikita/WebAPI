@@ -6,7 +6,7 @@ using System;
 using TestProject.Core.ViewModels;
 using UIKit;
 
-namespace TestProject.IOS
+namespace TestProject.IOS.Views
 {
     [MvxTabPresentation(WrapInNavigationController = false, TabName = "About")]
     public partial class AboutView : MvxViewController<AboutViewModel>

@@ -13,11 +13,6 @@ namespace TestProject.IOS.Views.Cells
         public static readonly NSString Key = new NSString("TasksViewCell");
         public static readonly UINib Nib = UINib.FromName("TasksViewCell", NSBundle.MainBundle);
 
-        //static TasksViewCell()
-        //{
-        //    Nib = UINib.FromName("TasksViewCell", NSBundle.MainBundle);
-        //}
-
         public static TasksViewCell Create()
         {
             return Nib.Instantiate(null, null)[0] as TasksViewCell;
@@ -25,12 +20,10 @@ namespace TestProject.IOS.Views.Cells
 
         protected TasksViewCell(IntPtr handle) : base(handle)
         {
-            
             this.DelayBind(() =>
             {
                 var set = this.CreateBindingSet<TasksViewCell, TaskInfo>();
                 set.Bind(TitleTask).To(m => m.Title);
-                //  set.Bind(StatusTask).To(m => m.Status);
                  set.Bind(StatusTask).For(v => v.Image).To(vm => vm.Status).WithConversion("Icon");
                 set.Apply();
             });

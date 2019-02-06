@@ -188,7 +188,7 @@
       <SubType>Designer</SubType>
     </InterfaceDefinition>
     <InterfaceDefinition Include="Views\Cells\TasksViewCell.xib" />
-    <InterfaceDefinition Include="Views\View1.xib" />
+    <InterfaceDefinition Include="Views\test.xib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\ColorValueConverter.cs" />
@@ -196,9 +196,9 @@
     <Compile Include="Converters\PlayingButtonValueConverter.cs" />
     <Compile Include="Converters\RecordingButtonValueConverter.cs" />
     <Compile Include="CustomControls\AudioButton.cs" />
-    <Compile Include="Views\View1.cs" />
-    <Compile Include="Views\View1.designer.cs">
-      <DependentUpon>View1.cs</DependentUpon>
+    <Compile Include="Views\test.cs" />
+    <Compile Include="Views\test.designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Cells\TasksViewCell.cs" />
     <Compile Include="Views\Cells\TasksViewCell.designer.cs">

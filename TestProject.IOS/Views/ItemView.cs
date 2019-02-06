@@ -4,7 +4,7 @@ using MvvmCross.Platforms.Ios.Views;
 using TestProject.Core.ViewModels;
 using UIKit;
 
-namespace TestProject.IOS
+namespace TestProject.IOS.Views
 {
     [MvxModalPresentation(WrapInNavigationController = true, ModalTransitionStyle = UIModalTransitionStyle.FlipHorizontal)]
     public partial class ItemView : MvxViewController<ItemViewModel>
@@ -13,7 +13,6 @@ namespace TestProject.IOS
 
         public ItemView() : base(nameof(ItemView), null)
         {
-            this.AdditionalSafeAreaInsets =  new UIEdgeInsets(5, 5, 5, 5);
         }
 
         public override void ViewDidLoad()
@@ -22,6 +21,8 @@ namespace TestProject.IOS
             base.ViewDidLoad();
 
             Title = "TaskyDrop";
+
+            //MainUIView.InsetsLayoutMarginsFromSafeArea = true;
 
             NavigationController.Toolbar.BackgroundColor = UIColor.Blue;
             NavigationController.NavigationBar.BarTintColor = UIColor.Purple;
@@ -63,5 +64,6 @@ namespace TestProject.IOS
             var g = new UITapGestureRecognizer(() => View.EndEditing(true));
             View.AddGestureRecognizer(g);
         }
+       
     }
 }

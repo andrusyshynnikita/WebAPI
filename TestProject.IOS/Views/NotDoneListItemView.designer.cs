@@ -8,7 +8,7 @@ using Foundation;
 using System;
 using System.CodeDom.Compiler;
 
-namespace TestProject.IOS
+namespace TestProject.IOS.Views
 {
     [Register ("NotDoneListItemView")]
     partial class NotDoneListItemView

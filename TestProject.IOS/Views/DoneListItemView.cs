@@ -1,15 +1,11 @@
-using Foundation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
-using System;
 using TestProject.Core.ViewModels;
 using TestProject.IOS.Sources;
-using TestProject.IOS.Views.Cells;
 using UIKit;
 
-namespace TestProject.IOS
+namespace TestProject.IOS.Views
 {
     [MvxTabPresentation(WrapInNavigationController = true, TabName = " DoneTasks")]
     public partial class DoneListItemView : MvxViewController<DoneListItemViewModel>
@@ -23,7 +19,6 @@ namespace TestProject.IOS
         
         public override void ViewDidLoad()
         {
-          //  DoneTasksTableView.
             base.ViewDidLoad();
             Title = "TaskyDrop";
 

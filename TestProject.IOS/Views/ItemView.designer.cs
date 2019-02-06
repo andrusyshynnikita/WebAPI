@@ -8,7 +8,7 @@ using Foundation;
 using System;
 using System.CodeDom.Compiler;
 
-namespace TestProject.IOS
+namespace TestProject.IOS.Views
 {
     [Register ("ItemView")]
     partial class ItemView
@@ -36,6 +36,10 @@ namespace TestProject.IOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton Save_button { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIScrollView Scrollview { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -75,6 +79,11 @@ namespace TestProject.IOS
             if (Save_button != null) {
                 Save_button.Dispose ();
                 Save_button = null;
+            }
+
+            if (Scrollview != null) {
+                Scrollview.Dispose ();
+                Scrollview = null;
             }
 
             if (Status_switch1 != null) {

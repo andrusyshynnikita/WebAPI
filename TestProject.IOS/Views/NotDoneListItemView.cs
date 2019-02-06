@@ -1,13 +1,11 @@
-using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
-using System;
 using TestProject.Core.ViewModels;
 using TestProject.IOS.Sources;
 using UIKit;
 
-namespace TestProject.IOS
+namespace TestProject.IOS.Views
 {
     [MvxTabPresentation(WrapInNavigationController = true, TabName = "Not DoneTasks")]
     public partial class NotDoneListItemView : MvxViewController<NotDoneListItemViewModel>

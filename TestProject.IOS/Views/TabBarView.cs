@@ -2,7 +2,6 @@
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using TestProject.Core.ViewModels;
-using UIKit;
 
 namespace TestProject.IOS.Views
 {
@@ -18,8 +17,6 @@ namespace TestProject.IOS.Views
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-          
         }
 
         public override void ViewWillAppear(bool animated)
