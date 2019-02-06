@@ -78,50 +78,33 @@ namespace TestProject.Droid.Views
 
         void RequestStoragePermission()
         {
-            //Log.Info("TaskDropper", "Microphone permission has NOT been granted. Requesting permission.");
-
-            //if (ActivityCompat.ShouldShowRequestPermissionRationale(ParentActivity, Manifest.Permission.WriteExternalStorage))
-            //{
-            //    Log.Info("TaskDropper", "Displaying storage permission rationale to provide additional context.");
-
-            //    //Snackbar.Make(_layout, "Storage Permission",
-            //    //     Snackbar.LengthIndefinite).SetAction(Resource.String.ok, new Action<View>(delegate (View obj) {
-            //    //         ActivityCompat.RequestPermissions(ParentActivity, new String[] { Manifest.Permission.WriteExternalStorage }, REQUEST_STORAGE);
-            //    //     })).Show();
-            //}
-           // else
-          //  {
-                // Microphone permission has not been granted yet. Request it directly.
                 ActivityCompat.RequestPermissions(ParentActivity, new String[] { Manifest.Permission.RecordAudio }, REQUEST_STORAGE);
-          //  }
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-        {
+        //public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        //{
 
-            if (requestCode == REQUEST_STORAGE)
-            {
-                // Received permission result for camera permission.
-                Log.Info("TaskDropper", "Received response for Microphone  permission request.");
+        //    if (requestCode == REQUEST_STORAGE)
+        //    {
+        //        Log.Info("TaskDropper", "Received response for Microphone  permission request.");
 
-                // Check if the only required permission has been granted
-                if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
-                {
-                    // Microphone permission has been granted, preview can be displayed
-                    Log.Info("TaskDropper", "Microphone permission has now been granted. Showing preview.");
-                    Snackbar.Make(_layout, Resource.String.permission_available_microphone, Snackbar.LengthShort).Show();
-                }
-                else
-                {
-                    Log.Info("TaskDropper", "Microphone permission was NOT granted.");
-                    Snackbar.Make(_layout, Resource.String.permissions_not_granted, Snackbar.LengthShort).Show();
-                }
-            }
-            else
-            {
-                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            }
-        }
+        //        if (grantResults.Length == 1 && grantResults[0] == Permission.Granted)
+        //        {
+                   
+        //            Log.Info("TaskDropper", "Microphone permission has now been granted. Showing preview.");
+        //            Snackbar.Make(_layout, Resource.String.permission_available_microphone, Snackbar.LengthShort).Show();
+        //        }
+        //        else
+        //        {
+        //            Log.Info("TaskDropper", "Microphone permission was NOT granted.");
+        //            Snackbar.Make(_layout, Resource.String.permissions_not_granted, Snackbar.LengthShort).Show();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        //    }
+        //}
 
     }
 }

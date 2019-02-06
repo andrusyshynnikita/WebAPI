@@ -23,13 +23,18 @@ namespace TestProject.IOS
         
         public override void ViewDidLoad()
         {
+          //  DoneTasksTableView.
             base.ViewDidLoad();
+            Title = "TaskyDrop";
 
             _refreshControl = new MvxUIRefreshControl();
             DoneTasksTableView.AddSubview(_refreshControl);
 
             _btnCAdd = new UIBarButtonItem(UIBarButtonSystemItem.Add, null);
             NavigationItem.SetRightBarButtonItem(_btnCAdd, false);
+            NavigationController.NavigationBar.BarTintColor = UIColor.Purple;
+            NavigationController.NavigationBar.TintColor = UIColor.Black;
+
             var source = new TasksTableViewSource(DoneTasksTableView);
             DoneTasksTableView.Source = source;
             var set = this.CreateBindingSet<DoneListItemView, DoneListItemViewModel>();

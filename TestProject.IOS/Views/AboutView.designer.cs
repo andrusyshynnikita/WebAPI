@@ -17,11 +17,20 @@ namespace TestProject.IOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton Logout_button { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint LogoutBottomConstraint { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (Logout_button != null) {
                 Logout_button.Dispose ();
                 Logout_button = null;
+            }
+
+            if (LogoutBottomConstraint != null) {
+                LogoutBottomConstraint.Dispose ();
+                LogoutBottomConstraint = null;
             }
         }
     }

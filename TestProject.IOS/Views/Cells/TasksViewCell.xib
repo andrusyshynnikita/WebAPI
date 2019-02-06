@@ -16,16 +16,17 @@
                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="1"/>
                 <subviews>
                     <view contentMode="scaleToFill" id="2654" translatesAutoresizingMaskIntoConstraints="NO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                        <rect key="frame" x="0.0" y="6" width="320" height="34.5"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2655" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="8" y="0.0" width="246" height="40"/>
+                                <rect key="frame" x="8" y="0.0" width="246" height="34.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
+                                <color key="textColor" colorSpace="calibratedRGB" red="0.0196078431372549" green="0.53333333333333333" blue="0.0196078431372549" alpha="1"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2661" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="262" y="0.0" width="50" height="40"/>
+                                <rect key="frame" x="262" y="0.0" width="50" height="34.5"/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -50,12 +51,12 @@
                     <constraint id="2656" firstAttribute="bottom" secondItem="2654" secondAttribute="bottom" constant="9"/>
                     <constraint id="2657" firstItem="2654" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading"/>
                     <constraint id="2658" firstItem="2654" firstAttribute="trailing" secondItem="YTl-1W-gDM" secondAttribute="trailing"/>
-                    <constraint id="2659" firstItem="2654" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top"/>
+                    <constraint id="2659" firstItem="2654" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="6"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="21" y="-13"/>
             <rect key="contentStretch" x="0.0" y="0.0" width="1" height="1"/>
-            <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
                     <real key="value" value="15"/>

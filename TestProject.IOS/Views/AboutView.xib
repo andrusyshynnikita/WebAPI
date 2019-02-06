@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
                 <outlet property="Logout_button" destination="153" id="name-outlet-153"/>
+                <outlet property="LogoutBottomConstraint" destination="686" id="name-outlet-686"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -17,12 +18,20 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="153" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                    <rect key="frame" x="156" y="345" width="102" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="153" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="156" y="634" width="102" height="30"/>
+                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0.31764705882352939" green="0.77647058823529413" blue="1" alpha="1"/>
                     <state key="normal" title="Logout"/>
+                    <constraints>
+                        <constraint id="684" firstAttribute="height" constant="50"/>
+                    </constraints>
                 </button>
             </subviews>
+            <constraints>
+                <constraint id="407" firstAttribute="trailing" secondItem="153" secondAttribute="trailing"/>
+                <constraint id="408" firstItem="153" firstAttribute="leading" secondItem="2" secondAttribute="leading"/>
+                <constraint id="686" firstAttribute="bottom" secondItem="153" secondAttribute="bottom" constant="50"/>
+            </constraints>
         </view>
     </objects>
 </document>

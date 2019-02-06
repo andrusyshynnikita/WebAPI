@@ -22,11 +22,14 @@ namespace TestProject.IOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            Title = "TaskyDrop";
             _refreshControl = new MvxUIRefreshControl();
             NotDoneTasksTableView.AddSubview(_refreshControl);
 
             _btnCAdd = new UIBarButtonItem(UIBarButtonSystemItem.Add, null);
             NavigationItem.SetRightBarButtonItem(_btnCAdd, false);
+            NavigationController.NavigationBar.BarTintColor = UIColor.Purple;
+            NavigationController.NavigationBar.TintColor = UIColor.Black;
 
             var source = new TasksTableViewSource(NotDoneTasksTableView);
             NotDoneTasksTableView.Source = source;

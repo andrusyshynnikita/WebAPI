@@ -23,6 +23,10 @@ namespace TestProject.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView MainUIView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton Play { get; set; }
 
         [Outlet]
@@ -35,7 +39,7 @@ namespace TestProject.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UISwitch Status_switch { get; set; }
+        UIKit.UISwitch Status_switch1 { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -53,6 +57,11 @@ namespace TestProject.IOS
                 Description_text = null;
             }
 
+            if (MainUIView != null) {
+                MainUIView.Dispose ();
+                MainUIView = null;
+            }
+
             if (Play != null) {
                 Play.Dispose ();
                 Play = null;
@@ -68,9 +77,9 @@ namespace TestProject.IOS
                 Save_button = null;
             }
 
-            if (Status_switch != null) {
-                Status_switch.Dispose ();
-                Status_switch = null;
+            if (Status_switch1 != null) {
+                Status_switch1.Dispose ();
+                Status_switch1 = null;
             }
 
             if (Title_text != null) {

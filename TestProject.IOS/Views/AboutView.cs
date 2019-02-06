@@ -4,6 +4,7 @@ using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using System;
 using TestProject.Core.ViewModels;
+using UIKit;
 
 namespace TestProject.IOS
 {
@@ -18,9 +19,18 @@ namespace TestProject.IOS
         {
             base.ViewDidLoad();
 
+            LogoutBottomConstraint.Constant = TabBarController.TabBar.Frame.Size.Height;
+            
             var set = this.CreateBindingSet<AboutView, AboutViewModel>();
             set.Bind(Logout_button).To(vm => vm.LogoutCommand);
             set.Apply();
+
+            UIDevice.Notifications.ObserveOrientationDidChange(OrientationsHandler);
+        }
+
+        private void OrientationsHandler(object sender, NSNotificationEventArgs e)
+        {
+            LogoutBottomConstraint.Constant = TabBarController.TabBar.Frame.Size.Height;
         }
     }
 }

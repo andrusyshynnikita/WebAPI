@@ -64,6 +64,7 @@
     <Compile Include="Adapters\MvxViewPagerFragmentAdapter.cs" />
     <Compile Include="Adapters\TaskItemAdapter.cs" />
     <Compile Include="Converters\ColorValueConverter.cs" />
+    <Compile Include="Converters\PlayingButtonValueConverter.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

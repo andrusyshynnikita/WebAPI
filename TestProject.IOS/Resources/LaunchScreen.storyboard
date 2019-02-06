@@ -17,17 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieq-bN-wsI" image="car_967470_640.png">
-                                <rect key="frame" x="-40" y="0.0" width="494" height="736"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieq-bN-wsI" image="car_967470_640.png" misplaced="YES">
+                                <rect key="frame" x="34" y="125" width="332" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Ieq-bN-wsI" secondAttribute="bottom" id="ZWh-cC-OL3"/>
-                            <constraint firstAttribute="trailing" secondItem="Ieq-bN-wsI" secondAttribute="trailing" constant="-40" id="ekt-64-noe"/>
-                            <constraint firstItem="Ieq-bN-wsI" firstAttribute="top" secondItem="yd7-JS-zBw" secondAttribute="top" id="iCm-VQ-Jnt"/>
-                            <constraint firstItem="Ieq-bN-wsI" firstAttribute="leading" secondItem="yd7-JS-zBw" secondAttribute="leading" constant="-40" id="uT1-0t-f10"/>
+                            <constraint id="1711" firstItem="Ieq-bN-wsI" firstAttribute="top" secondItem="Y8P-hJ-Z43" secondAttribute="bottom" constant="105"/>
+                            <constraint id="1784" firstItem="Ieq-bN-wsI" firstAttribute="leading" secondItem="yd7-JS-zBw" secondAttribute="leadingMargin" constant="14"/>
+                            <constraint id="1857" firstAttribute="trailingMargin" secondItem="Ieq-bN-wsI" secondAttribute="trailing" constant="28"/>
                         </constraints>
                     </view>
                 </viewController>

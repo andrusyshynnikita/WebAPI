@@ -21,7 +21,9 @@ namespace TestProject.IOS.Services
         private AVPermissionGranted _permissionGranted;
         private NSUrl _url;
         private NSError _error;
-        private string _path;
+        string _initialpath= Path.Combine(System.Environment.
+               GetFolderPath(System.Environment.
+               SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
 
         public Action OnRecordHandler { get; set; }
         public Action OnPlaydHandler { get ; set ; }
@@ -42,27 +44,20 @@ namespace TestProject.IOS.Services
 
         public void DeleteNullFile()
         {
-            _path = Path.Combine(System.Environment.
-               GetFolderPath(System.Environment.
-               SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
-
-            File.Delete(_path);
+            File.Delete(_initialpath);
         }
 
         public void PlayRecording(int id)
         {
             if (_audioPlayer != null)
             {
+                _audioPlayer.Stop();
                 _audioPlayer.Dispose();
             }
 
-            var path = Path.Combine(System.Environment.
-               GetFolderPath(System.Environment.
-               SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
-
-            if (File.Exists(path))
+            if (File.Exists(_initialpath))
             {
-                _url = NSUrl.FromFilename(path);
+                _url = NSUrl.FromFilename(_initialpath);
                 _audioPlayer =  AVAudioPlayer.FromUrl(_url, out _error);
                 _audioPlayer.Play();
                 _audioPlayer.FinishedPlaying += PlayCompletion;
@@ -70,7 +65,7 @@ namespace TestProject.IOS.Services
 
             else
             {
-                path = Path.Combine(System.Environment.
+                var path = Path.Combine(System.Environment.
                 GetFolderPath(System.Environment.
                 SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp");
                 _url = NSUrl.FromFilename(path);
@@ -84,6 +79,7 @@ namespace TestProject.IOS.Services
 
         private void PlayCompletion(object sender, AVStatusEventArgs e)
         {
+            _audioPlayer = null;
             OnPlaydHandler();
         }
 
@@ -103,21 +99,28 @@ namespace TestProject.IOS.Services
 
         public void RenameFile(int id)
         {
-            _path = Path.Combine(System.Environment.
+           var path = Path.Combine(System.Environment.
                 GetFolderPath(System.Environment.
-                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
+                SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp");
 
-            File.Move(_path, Path.Combine(System.Environment.
-                GetFolderPath(System.Environment.
-                SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp"));
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+                File.Move(_initialpath, path);
+            }
+            else
+            {
+                File.Move(_initialpath, path);
+            }
 
-            File.Delete(_path);
+
+            File.Delete(_initialpath);
         }
 
         public void StartRecording(int id)
         {
-            if (File.Exists(_path))
-                File.Delete(_path);
+            //if (File.Exists(_initialpath))
+            //    File.Delete(_initialpath);
 
             var settings = new AudioSettings()
             {
@@ -126,10 +129,8 @@ namespace TestProject.IOS.Services
                 SampleRate = 44100f,
                 NumberChannels = 1
             };
-            var path  = Path.Combine(System.Environment.
-                GetFolderPath(System.Environment.
-                SpecialFolder.Personal), "0" + TwitterUserId.Id_User + ".3gpp");
-            _url = NSUrl.FromFilename(path);
+
+            _url = NSUrl.FromFilename(_initialpath);
 
              _audioRecorder = AVAudioRecorder.Create(_url, settings, out _error);
             _audioRecorder.PrepareToRecord();

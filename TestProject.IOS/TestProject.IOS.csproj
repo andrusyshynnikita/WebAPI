@@ -193,6 +193,8 @@
   <ItemGroup>
     <Compile Include="Converters\ColorValueConverter.cs" />
     <Compile Include="Converters\IconValueConverter.cs" />
+    <Compile Include="Converters\PlayingButtonValueConverter.cs" />
+    <Compile Include="Converters\RecordingButtonValueConverter.cs" />
     <Compile Include="CustomControls\AudioButton.cs" />
     <Compile Include="Views\View1.cs" />
     <Compile Include="Views\View1.designer.cs">

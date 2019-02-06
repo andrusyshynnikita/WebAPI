@@ -8,6 +8,9 @@
 	android:background="#808080">
 	<include
 		layout="@layout/toolbar_2"/>
+	<ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 	<LinearLayout android:orientation="vertical"
 	android:id="@+id/item_Layout2"
     android:layout_width="match_parent"
@@ -20,6 +23,7 @@
 		android:layout_margin="5dp"
 		android:padding="5dp"
 		android:lines = "1"
+		android:maxLength="30"
 		android:textSize="25dp"
 		android:hint = "Title"
 		android:textColorHint = "@android:color/background_dark"
@@ -113,15 +117,14 @@
 			android:layout_marginLeft="10dp"
 			android:textOff="Record"
 			android:textOn="Stop"
-			local:MvxBind = "Checked IsREcordChecking; BackgroundColor Color(IsREcordChecking)"/>
+			local:MvxBind = " BackgroundColor Color(IsREcordChecking)"/>
 			<ToggleButton
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_weight="10"
 			android:layout_marginLeft="5dp"
-			android:textOff="Play"
-			android:textOn="Stop"
-			local:MvxBind = "Checked IsPlayChecking; Click PlayRecordingCommand; BackgroundColor Color(IsPlayChecking); Enabled IsPlayRecordingEnable"/>
+			local:MvxBind = "Click PlayRecordingCommand; BackgroundColor Color(IsPlayChecking); Text PlayingButton(IsPlayChecking); Enabled IsPlayRecordingEnable"/>
 	</LinearLayout>
 	</LinearLayout>
+</ScrollView>
 </LinearLayout>

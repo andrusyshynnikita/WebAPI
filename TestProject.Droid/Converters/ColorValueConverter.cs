@@ -12,10 +12,10 @@ namespace TestProject.Droid.Converters
         {
             if (value)
             {
-                return new MvxColor(255, 0, 0);
+                return new MvxColor(0, 100, 0);
             }
 
-            return new MvxColor(0, 100, 0);
+            return new MvxColor(255, 0, 0);
         }
     }
 }
