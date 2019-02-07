@@ -7,7 +7,7 @@ using UIKit;
 
 namespace TestProject.IOS.Views
 {
-    [MvxTabPresentation(WrapInNavigationController = true, TabName = "Not DoneTasks")]
+    [MvxTabPresentation(WrapInNavigationController = true, TabName = "Not Done Tasks")]
     public partial class NotDoneListItemView : MvxViewController<NotDoneListItemViewModel>
     {
         private UIBarButtonItem _btnCAdd;
@@ -20,7 +20,7 @@ namespace TestProject.IOS.Views
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            Title = "TaskyDrop";
+            NavigationItem.Title = "TaskyDrop";
             _refreshControl = new MvxUIRefreshControl();
             NotDoneTasksTableView.AddSubview(_refreshControl);
 

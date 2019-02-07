@@ -22,8 +22,6 @@ namespace TestProject.IOS.Views
 
             Title = "TaskyDrop";
 
-            //MainUIView.InsetsLayoutMarginsFromSafeArea = true;
-
             NavigationController.Toolbar.BackgroundColor = UIColor.Blue;
             NavigationController.NavigationBar.BarTintColor = UIColor.Purple;
             NavigationController.NavigationBar.TintColor = UIColor.Black;
@@ -63,6 +61,34 @@ namespace TestProject.IOS.Views
 
             var g = new UITapGestureRecognizer(() => View.EndEditing(true));
             View.AddGestureRecognizer(g);
+
+            var Placeholder = "Description";
+
+            if (string.IsNullOrEmpty(Description_text.Text) || Description_text.Text == Placeholder)
+            {
+                Description_text.Text = Placeholder;
+                Description_text.TextColor = new UIColor(0.78f, 0.78f, 0.8f, 1.0f);
+            }
+
+            Description_text.ShouldBeginEditing = t => {
+                if (Description_text.Text == Placeholder)
+                {
+                    Description_text.Text = string.Empty;
+                    Description_text.TextColor = UIColor.Black;
+                }
+                return true;
+            };
+
+            Description_text.ShouldEndEditing = t =>
+            {
+                if (string.IsNullOrEmpty(Description_text.Text))
+                {
+                    Description_text.TextColor = new UIColor(0.78f, 0.78f, 0.8f, 1.0f);
+                    Description_text.Text = Placeholder;
+                }
+
+                return true;
+            };
         }
        
     }

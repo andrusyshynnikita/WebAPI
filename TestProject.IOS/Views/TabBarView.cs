@@ -2,6 +2,7 @@
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using TestProject.Core.ViewModels;
+using UIKit;
 
 namespace TestProject.IOS.Views
 {
@@ -31,6 +32,18 @@ namespace TestProject.IOS.Views
                 ViewModel.ShowDoneListItemViewModelCommand.Execute(logOutHandler);
                 ViewModel.ShowNotDoneListItemViewModelCommand.Execute(logOutHandler);
                 ViewModel.ShowAboutViewModelCommand.Execute(logOutHandler);
+
+                UITextAttributes txtAttributes = new UITextAttributes
+                {
+                    Font = UIFont.FromName("HelveticaNeue-Light", 16),
+
+                };
+
+                for (int i = 0; i < ChildViewControllers.Length; i++)
+                {
+                    ChildViewControllers[i].TabBarItem.TitlePositionAdjustment = new UIOffset(0, -10);
+                    ChildViewControllers[i].TabBarItem.SetTitleTextAttributes(txtAttributes, UIControlState.Normal);
+                }
             }
         }
     }
