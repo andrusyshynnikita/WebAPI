@@ -1,4 +1,5 @@
 ﻿using System;
+using Foundation;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using TestProject.Core.ViewModels;
@@ -20,6 +21,7 @@ namespace TestProject.IOS.Views
             base.ViewDidLoad();
         }
 
+
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
@@ -32,17 +34,17 @@ namespace TestProject.IOS.Views
                 ViewModel.ShowDoneListItemViewModelCommand.Execute(logOutHandler);
                 ViewModel.ShowNotDoneListItemViewModelCommand.Execute(logOutHandler);
                 ViewModel.ShowAboutViewModelCommand.Execute(logOutHandler);
-
                 UITextAttributes txtAttributes = new UITextAttributes
                 {
                     Font = UIFont.FromName("HelveticaNeue-Light", 16),
-
+                    
                 };
 
                 for (int i = 0; i < ChildViewControllers.Length; i++)
                 {
-                    ChildViewControllers[i].TabBarItem.TitlePositionAdjustment = new UIOffset(0, -10);
+                    var size2 = ChildViewControllers[i].TabBarController.TabBar.Frame.Size.Height / 2;
                     ChildViewControllers[i].TabBarItem.SetTitleTextAttributes(txtAttributes, UIControlState.Normal);
+                    ChildViewControllers[i].TabBarItem.TitlePositionAdjustment = new UIOffset(0, -6);
                 }
             }
         }

@@ -158,10 +158,22 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Contents.json">
+    <ImageAsset Include="Assets.xcassets\CheckImage.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\LaunchImages.launchimage\Contents.json">
+    <ImageAsset Include="Assets.xcassets\CheckImage.imageset\icons8_checked_checkbox_filled_50.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaungScreen.imageset\car_967470_640.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaungScreen.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\UncheckImage.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\UncheckImage.imageset\icons8_unchecked_checkbox_50.png">
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
@@ -188,6 +200,7 @@
       <SubType>Designer</SubType>
     </InterfaceDefinition>
     <InterfaceDefinition Include="Views\Cells\TasksViewCell.xib" />
+    <InterfaceDefinition Include="Resources\LaunchScreen2.xib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\ColorValueConverter.cs" />
