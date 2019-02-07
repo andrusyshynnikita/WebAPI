@@ -170,11 +170,7 @@ namespace TestProject.Core.ViewModels
             {
                 _taskService.InsertTask(taskInfo);
             }
-
-            if ( _audioService.CheckAudioFile(Id) == true)
-            {
                 _audioService.RenameFile(taskInfo.Id);
-            }
 
             _navigationService.Close(this);
         }

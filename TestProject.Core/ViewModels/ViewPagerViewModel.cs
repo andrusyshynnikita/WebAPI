@@ -26,11 +26,6 @@ namespace TestProject.Core.ViewModels
                LogoutCommand.Execute();
            });
 
-            //AboutViewModel.OnLoggedInHandlerIOS = new Action(() =>
-            //{
-            //    LogoutCommand.Execute();
-            //});
-
             ShowDoneListItemViewModelCommand = new MvxAsyncCommand<Action>(async (closeHandler) => await _navigationService.Navigate<DoneListItemViewModel, Action>(closeHandler));
             ShowNotDoneListItemViewModelCommand = new MvxAsyncCommand<Action>(async (closeHandler) => await _navigationService.Navigate<NotDoneListItemViewModel, Action>(closeHandler));
             ShowAboutViewModelCommand = new MvxAsyncCommand<Action>(async (closeHandler) => await _navigationService.Navigate<AboutViewModel, Action>(closeHandler));

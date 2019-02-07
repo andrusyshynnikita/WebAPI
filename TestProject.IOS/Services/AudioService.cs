@@ -92,19 +92,20 @@ namespace TestProject.IOS.Services
             var path = Path.Combine(System.Environment.
                  GetFolderPath(System.Environment.
                  SpecialFolder.Personal), id.ToString() + TwitterUserId.Id_User + ".3gpp");
-
-            if (File.Exists(path))
+            if (File.Exists(_initialpath))
             {
-                File.Delete(path);
-                File.Move(_initialpath, path);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                    File.Move(_initialpath, path);
+                    File.Delete(_initialpath);
+                }
+                else
+                {
+                    File.Move(_initialpath, path);
+                    File.Delete(_initialpath);
+                }
             }
-            else
-            {
-                File.Move(_initialpath, path);
-            }
-
-
-            File.Delete(_initialpath);
         }
 
         public void StartRecording(int id)
