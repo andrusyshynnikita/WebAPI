@@ -10,7 +10,7 @@ namespace TestProject.IOS.Services
 {
     public class AudioService : IAudioService
     {
-        private AVAudioRecorder _audioRecorder;
+        private AVAudioRecorder _audioRecorder=null;
         private AVAudioPlayer _audioPlayer;
         private NSUrl _url;
         private NSError _error;
@@ -110,26 +110,77 @@ namespace TestProject.IOS.Services
 
         public void StartRecording(int id)
         {
-            var settings = new AudioSettings()
+            if (PrepareAudioRecording())
             {
-                Format = AudioFormatType.LinearPCM,
-                AudioQuality = AVAudioQuality.High,
-                SampleRate = 44100f,
-                NumberChannels = 1
-            };
-
-            _url = NSUrl.FromFilename(_initialpath);
-
-            _audioRecorder = AVAudioRecorder.Create(_url, settings, out _error);
-            _audioRecorder.PrepareToRecord();
-            _audioRecorder.Record();
+                _audioRecorder.Record();
+            }
         }
 
         public void StopRecording()
         {
             _audioRecorder.Stop();
-            _audioRecorder = null;
+            var hdf1 = File.ReadAllBytes(_initialpath);
             OnRecordHandler();
+        }
+
+        bool PrepareAudioRecording()
+        {
+
+            var audioSession = AVAudioSession.SharedInstance();
+            var err = audioSession.SetCategory(AVAudioSessionCategory.PlayAndRecord);
+            if (err != null)
+            {
+                Console.WriteLine("audioSession: {0}", err);
+                return false;
+            }
+            err = audioSession.SetActive(true);
+            if (err != null)
+            {
+                Console.WriteLine("audioSession: {0}", err);
+                return false;
+            }
+
+            NSObject[] values = new NSObject[]
+            {
+                NSNumber.FromFloat(44100.0f),
+                NSNumber.FromInt32((int)AudioToolbox.AudioFormatType.MPEG4AAC),
+                NSNumber.FromInt32(1),
+                NSNumber.FromInt32((int)AVAudioQuality.High)
+            };
+
+            NSObject[] keys = new NSObject[]
+            {
+                AVAudioSettings.AVSampleRateKey,
+                AVAudioSettings.AVFormatIDKey,
+                AVAudioSettings.AVNumberOfChannelsKey,
+                AVAudioSettings.AVEncoderAudioQualityKey
+            };
+          
+           var settings = NSDictionary.FromObjectsAndKeys(values, keys);
+
+            NSError error;
+           var _url = NSUrl.FromFilename(_initialpath);
+            _audioRecorder = AVAudioRecorder.Create(_url, new AudioSettings(settings), out error);
+            if ((_audioRecorder == null) || (error != null))
+            {
+                Console.WriteLine(error);
+                return false;
+            }
+           
+            if (!_audioRecorder.PrepareToRecord())
+            {
+                _audioRecorder.Dispose();
+                _audioRecorder = null;
+                return false;
+            }
+
+            _audioRecorder.FinishedRecording += delegate (object sender, AVStatusEventArgs e) {
+                _audioRecorder.Dispose();
+                _audioRecorder = null;
+                Console.WriteLine("Done Recording (status: {0})", e.Status);
+            };
+
+            return true;
         }
 
     }

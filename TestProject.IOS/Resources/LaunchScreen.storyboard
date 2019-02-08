@@ -17,16 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieq-bN-wsI" image="car_967470_640.png">
-                                <rect key="frame" x="34" y="125" width="332" height="512"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ieq-bN-wsI" image="screenimages">
+                                <rect key="frame" x="111" y="136" width="214" height="321"/>
+                                <constraints>
+                                    <constraint id="331" firstAttribute="width" constant="214"/>
+                                    <constraint id="332" firstAttribute="height" constant="321"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint id="550" firstAttribute="trailingMargin" secondItem="Ieq-bN-wsI" secondAttribute="trailing" constant="28"/>
-                            <constraint id="551" firstItem="Ieq-bN-wsI" firstAttribute="leading" secondItem="yd7-JS-zBw" secondAttribute="leadingMargin" constant="14"/>
-                            <constraint id="552" firstItem="Ieq-bN-wsI" firstAttribute="top" secondItem="Y8P-hJ-Z43" secondAttribute="bottom" constant="105"/>
-                            <constraint id="553" firstItem="9ZL-r4-8FZ" firstAttribute="top" secondItem="Ieq-bN-wsI" secondAttribute="bottom" constant="99"/>
+                            <constraint id="333" firstItem="Ieq-bN-wsI" firstAttribute="leading" secondItem="yd7-JS-zBw" secondAttribute="leadingMargin" constant="91"/>
+                            <constraint id="334" firstItem="Ieq-bN-wsI" firstAttribute="top" secondItem="Y8P-hJ-Z43" secondAttribute="bottom" constant="116"/>
+                            <constraint id="335" firstAttribute="trailingMargin" secondItem="Ieq-bN-wsI" secondAttribute="trailing" constant="69"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,6 +39,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="car_967470_640.png" width="640" height="336"/>
+        <image name="screenimages" width="640" height="336"/>
     </resources>
 </document>

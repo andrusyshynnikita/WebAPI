@@ -28,6 +28,11 @@ namespace TestProject.IOS.Views
             UIDevice.Notifications.ObserveOrientationDidChange(OrientationsHandler);
         }
 
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+        }
+
         private void OrientationsHandler(object sender, NSNotificationEventArgs e)
         {
             LogoutBottomConstraint.Constant = TabBarController.TabBar.Frame.Size.Height;

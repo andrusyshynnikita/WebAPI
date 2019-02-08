@@ -16,10 +16,10 @@ namespace TestProject.IOS.Converters
         {
             if (value == false)
             {
-                return new UIImage("icons8_unchecked_checkbox_50.png");
+                return UIImage.FromBundle("UncheckImage");
             }
 
-                return new UIImage("icons8_checked_checkbox_filled_50.png");
+                return  UIImage.FromBundle("CheckImage");
 
            
         }

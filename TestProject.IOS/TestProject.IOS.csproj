@@ -164,10 +164,13 @@
     <ImageAsset Include="Assets.xcassets\CheckImage.imageset\icons8_checked_checkbox_filled_50.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaungScreen.imageset\car_967470_640.png">
+    <ImageAsset Include="Assets.xcassets\LaunchImages.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaungScreen.imageset\Contents.json">
+    <ImageAsset Include="Assets.xcassets\screenimages.imageset\car_967470_640.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\screenimages.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\UncheckImage.imageset\Contents.json">
@@ -182,7 +185,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Entitlements.plist" />
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
     <None Include="packages.config" />
     <InterfaceDefinition Include="Views\LoginView.xib">
       <SubType>Designer</SubType>
@@ -200,7 +205,6 @@
       <SubType>Designer</SubType>
     </InterfaceDefinition>
     <InterfaceDefinition Include="Views\Cells\TasksViewCell.xib" />
-    <InterfaceDefinition Include="Resources\LaunchScreen2.xib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\ColorValueConverter.cs" />
@@ -244,22 +248,13 @@
     <Compile Include="Views\TabBarView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\car_967470_640.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\TestProject.Core\TestProject.Core.csproj">
       <Project>{8e65bc79-5147-49fb-8384-7ddf920922a0}</Project>
       <Name>TestProject.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\icons8_unchecked_checkbox_50.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Helpers\" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icons8_checked_checkbox_filled_50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Swift4.4.0.0.0\build\Xamarin.Swift4.targets" Condition="Exists('..\packages\Xamarin.Swift4.4.0.0.0\build\Xamarin.Swift4.targets')" />
