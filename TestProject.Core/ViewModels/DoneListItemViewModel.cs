@@ -16,10 +16,12 @@ namespace TestProject.Core.ViewModels
         private MvxCommand _refreshCommand;
         private bool _isRefreshing;
         private ILoginService _loginService;
-        
+        private IAPIService _apiService;
 
-        public DoneListItemViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService, ILoginService loginService)
+
+        public DoneListItemViewModel(IMvxNavigationService mvxNavigationService, ITaskService taskService, ILoginService loginService, IAPIService aPIService)
         {
+            _apiService = aPIService;
             _navigationService = mvxNavigationService;
             _loginService = loginService;
             ShowSecondPageCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<ItemViewModel>());
@@ -78,6 +80,7 @@ namespace TestProject.Core.ViewModels
 
         public override void ViewAppearing()
         {
+            _apiService.RefreshDataAsync();
             var items = _taskService.GetAllDoneUserTasks(TwitterUserId.Id_User);
             TaskCollection = new MvxObservableCollection<TaskInfo>(items);
         }
