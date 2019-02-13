@@ -1,62 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using TestProject.WebApp.EF;
 using TestProject.WebApp.Models;
+using TestProject.WebApp.Services;
 
 namespace TestProject.WebApp.Controllers
 {
-    public class ValuesController : ApiController
+    public class TasksController : ApiController
     {
-        TaskContext db = new TaskContext();
-        // GET api/values
-        public IEnumerable<TaskModel> GetTasks()
-        {
-           var d= db.Tasks;
-            return d;
-        }
+        TaskService _taskService;
 
-        // GET api/values/5
-        public TaskModel GetTask(int id)
+        public TasksController()
         {
-            TaskModel taskModel = db.Tasks.Find(id);
-            return taskModel;
+            _taskService = new TaskService();
+        }
+      
+        public IEnumerable<TaskModel> GetTasks(string id)
+        {
+            var tasks = _taskService.Tasks.GetTasks(id);
+            return tasks;
         }
 
         public void DeleteBook(int id)
         {
-            TaskModel book = db.Tasks.Find(id);
-            if (book != null)
-            {
-                db.Tasks.Remove(book);
-                db.SaveChanges();
-            }
+            _taskService.Tasks.Delete(id);
+            _taskService.Save();
         }
 
-        // POST api/values
-        public bool PostTask([FromBody]TaskModel value)
+        public bool PostTask([FromBody]TaskModel item)
         {
-            db.Tasks.Add(value);
-            if (db.SaveChanges() != 0)
-            {
-                return true;
-            }
-            return false;
+            _taskService.Tasks.Create(item);
+            _taskService.Save();
+            return true;
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]TaskModel value)
+        public void Put( [FromBody]TaskModel item)
         {
-            if (id == value.Id)
-            {
-                db.Entry(value).State = EntityState.Modified;
-
-                db.SaveChanges();
-            }
+            _taskService.Tasks.Update(item);
+            _taskService.Save();
         }
     }
 }
