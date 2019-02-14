@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using TestProject.WebApp.EF;
@@ -12,23 +14,66 @@ namespace TestProject.WebApp.Repository
     public class TaskRepository : ITaskRepository<TaskModel>
     {
         private TaskContext _db;
+        private TaskModel _taskModel;
 
         public TaskRepository(TaskContext taskContext)
         {
             _db = taskContext;
         }
 
-        public void Create(TaskModel item)
+        public string Create(HttpRequest httpRequest)
         {
-            _db.Tasks.Add(item);
+            try
+            {
+                if (httpRequest.Files.Count > 0)
+                {
+                    foreach (string file in httpRequest.Files)
+                    {
+                        var postedFile = httpRequest.Files[file];
+
+                        var fileName = postedFile.FileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
+
+                        var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
+
+                        postedFile.SaveAs(filePath);
+
+                        //  return "/Uploads/" + fileName;
+                    }
+                }
+
+                if (httpRequest["TaskModel"] != null)
+                {
+                    var postedForm = httpRequest.Form["TaskModel"];
+                    _taskModel = JsonConvert.DeserializeObject<TaskModel>(postedForm);
+                    _db.Tasks.Add(_taskModel);
+                }
+
+
+            }
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
+
+            return "no files";
+            
         }
 
         public void Delete(int id)
         {
-            TaskModel book = _db.Tasks.Find(id);
-            if (book != null)
+            TaskModel task = _db.Tasks.Find(id);
+            if (task.AudioFilePath != null)
             {
-                _db.Tasks.Remove(book);
+                var fileName = task.AudioFilePath.Split('\\').LastOrDefault().Split('/').LastOrDefault();
+
+                var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
+
+                File.Delete(filePath);
+            }
+
+            if (task != null)
+            {
+                _db.Tasks.Remove(task);
                 
             }
         }

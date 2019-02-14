@@ -10,7 +10,7 @@ namespace TestProject.WebApp.Controllers
 {
     public class UpLoadsController : ApiController
     {
-        [System.Web.Http.Route("api/Files/Upload")]
+       // [System.Web.Http.Route("api/Files/Upload")]
         public async Task<string> Post()
         {
             try

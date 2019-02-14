@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201902131357114_AddCompanyMigration.Designer.cs">
       <DependentUpon>201902131357114_AddCompanyMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902141236491_AddCompanyMigration1.cs" />
+    <Compile Include="Migrations\201902141236491_AddCompanyMigration1.Designer.cs">
+      <DependentUpon>201902141236491_AddCompanyMigration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902131357114_AddCompanyMigration.resx">
       <DependentUpon>201902131357114_AddCompanyMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902141236491_AddCompanyMigration1.resx">
+      <DependentUpon>201902141236491_AddCompanyMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
