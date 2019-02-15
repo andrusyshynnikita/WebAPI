@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using TestProject.WebApp.EF;
 using TestProject.WebApp.Interface;
@@ -15,6 +18,7 @@ namespace TestProject.WebApp.Repository
     {
         private TaskContext _db;
         private TaskModel _taskModel;
+        private string _filename;
 
         public TaskRepository(TaskContext taskContext)
         {
@@ -31,13 +35,12 @@ namespace TestProject.WebApp.Repository
                     {
                         var postedFile = httpRequest.Files[file];
 
-                        var fileName = postedFile.FileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
+                        _filename = postedFile.FileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
 
-                        var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
+                        var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + _filename);
 
                         postedFile.SaveAs(filePath);
 
-                        //  return "/Uploads/" + fileName;
                     }
                 }
 
@@ -47,16 +50,15 @@ namespace TestProject.WebApp.Repository
                     _taskModel = JsonConvert.DeserializeObject<TaskModel>(postedForm);
                     _db.Tasks.Add(_taskModel);
                 }
-
-
             }
+
             catch (Exception exception)
             {
                 return exception.Message;
             }
 
             return "no files";
-            
+
         }
 
         public void Delete(int id)
@@ -74,7 +76,7 @@ namespace TestProject.WebApp.Repository
             if (task != null)
             {
                 _db.Tasks.Remove(task);
-                
+
             }
         }
 
@@ -84,15 +86,56 @@ namespace TestProject.WebApp.Repository
             return tasks;
         }
 
-        public void Update(TaskModel item)
+        public string Update(HttpRequest httpRequest)
         {
-            //var oldTask = _db.Tasks.FirstOrDefault(x => x.Id == item.Id);
-            //if (oldTask != null)
-            //{
-            //    _db.Tasks.Remove(oldTask);
-            //    _db.Tasks.Add(item);
-            //}
-            _db.Entry(item).State = EntityState.Modified;
+            try
+            {
+                if (httpRequest.Files.Count > 0)
+                {
+                    foreach (string file in httpRequest.Files)
+                    {
+                        var postedFile = httpRequest.Files[file];
+
+                        var fileName = postedFile.FileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
+
+                        var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
+
+                        postedFile.SaveAs(filePath);
+                    }
+                }
+
+                if (httpRequest["TaskModel"] != null)
+                {
+                    var postedForm = httpRequest.Form["TaskModel"];
+                    _taskModel = JsonConvert.DeserializeObject<TaskModel>(postedForm);
+                    _db.Entry(_taskModel).State = EntityState.Modified;
+                }
+            }
+
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
+
+            return "no files";
+        }
+
+        public HttpResponseMessage DownloadAudioFile(int id)
+        {
+            var task = _db.Tasks.Where(x => x.Id == id).FirstOrDefault();
+
+            var fileName = task.AudioFilePath.Split('\\').LastOrDefault().Split('/').LastOrDefault();
+
+            var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
+
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            response.Content = new StreamContent(new FileStream(filePath, FileMode.Open, FileAccess.Read));
+            response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment");
+            response.Content.Headers.ContentDisposition.FileName = fileName;
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/3gpp");
+
+            return response;
         }
     }
 }
