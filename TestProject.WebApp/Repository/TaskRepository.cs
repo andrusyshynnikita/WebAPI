@@ -64,9 +64,9 @@ namespace TestProject.WebApp.Repository
         public void Delete(int id)
         {
             TaskModel task = _db.Tasks.Find(id);
-            if (task.AudioFilePath != null)
+            if (task.AudioFileName != null)
             {
-                var fileName = task.AudioFilePath.Split('\\').LastOrDefault().Split('/').LastOrDefault();
+                var fileName = task.AudioFileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
 
                 var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
 
@@ -124,7 +124,7 @@ namespace TestProject.WebApp.Repository
         {
             var task = _db.Tasks.Where(x => x.Id == id).FirstOrDefault();
 
-            var fileName = task.AudioFilePath.Split('\\').LastOrDefault().Split('/').LastOrDefault();
+            var fileName = task.AudioFileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
 
             var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
 
