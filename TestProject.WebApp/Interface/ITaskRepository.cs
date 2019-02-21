@@ -8,7 +8,7 @@ using System.Web;
 
 namespace TestProject.WebApp.Interface
 {
-    interface ITaskRepository<T> where T : class
+   public interface ITaskRepository<T> where T : class
     {
         IEnumerable<T> GetTasks(string id);
         string Create(HttpRequest httpRequest);

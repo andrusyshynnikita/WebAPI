@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using TestProject.WebApp.EF;
+using TestProject.WebApp.Interface;
 using TestProject.WebApp.Models;
 
 namespace TestProject.WebApp.Controllers
@@ -11,10 +8,14 @@ namespace TestProject.WebApp.Controllers
     public class HomeController : Controller
     {
         TaskContext db = new TaskContext();
+        ITaskRepository<TaskModel> _taskRepository;
 
+        public HomeController()
+        {
+        }
         public ActionResult Index()
         {
-            var a = View(db.Tasks);
+          //  var a = View(_taskRepository.GetTasks("fds"));
 
             return View(db.Tasks);
         }

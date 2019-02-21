@@ -20,9 +20,9 @@ namespace TestProject.WebApp.Repository
         private TaskModel _taskModel;
         private string _filename;
 
-        public TaskRepository(TaskContext taskContext)
+        public TaskRepository()
         {
-            _db = taskContext;
+            _db = new TaskContext() ;
         }
 
         public string Create(HttpRequest httpRequest)
@@ -49,6 +49,8 @@ namespace TestProject.WebApp.Repository
                     var postedForm = httpRequest.Form["TaskModel"];
                     _taskModel = JsonConvert.DeserializeObject<TaskModel>(postedForm);
                     _db.Tasks.Add(_taskModel);
+                    _db.SaveChanges();
+                    
                 }
             }
 
@@ -76,7 +78,7 @@ namespace TestProject.WebApp.Repository
             if (task != null)
             {
                 _db.Tasks.Remove(task);
-
+                _db.SaveChanges();
             }
         }
 
@@ -109,6 +111,7 @@ namespace TestProject.WebApp.Repository
                     var postedForm = httpRequest.Form["TaskModel"];
                     _taskModel = JsonConvert.DeserializeObject<TaskModel>(postedForm);
                     _db.Entry(_taskModel).State = EntityState.Modified;
+                    _db.SaveChanges();
                 }
             }
 

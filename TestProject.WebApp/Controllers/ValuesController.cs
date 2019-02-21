@@ -1,15 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using TestProject.WebApp.EF;
+using TestProject.WebApp.Interface;
 using TestProject.WebApp.Models;
 using TestProject.WebApp.Services;
 
@@ -19,10 +12,11 @@ namespace TestProject.WebApp.Controllers
     {
         private TaskService _taskService;
         private TaskModel _taskModel;
+        private ITaskRepository<TaskModel> _taskRepository;
 
-        public TasksController()
+        public TasksController(ITaskRepository<TaskModel> taskRepository)
         {
-            _taskService = new TaskService();
+            _taskService = new TaskService(taskRepository);
         }
 
         public IEnumerable<TaskModel> GetTasks(string id)
@@ -34,7 +28,6 @@ namespace TestProject.WebApp.Controllers
         public void DeleteTasks(int id)
         {
             _taskService.Tasks.Delete(id);
-            _taskService.Save();
         }
 
         [System.Web.Http.Route("api/Files/Upload")]
@@ -42,7 +35,7 @@ namespace TestProject.WebApp.Controllers
         {
             var httpRequest = HttpContext.Current.Request;
             _taskService.Tasks.Create(httpRequest);
-            _taskService.Save();
+
         }
 
         [System.Web.Http.Route("api/Files/Upload")]
@@ -51,7 +44,6 @@ namespace TestProject.WebApp.Controllers
            var httpRequest = HttpContext.Current.Request;
 
                     _taskService.Tasks.Update(httpRequest);
-                    _taskService.Save();
         }
 
         [Route("api/DownloadFile/{id}")]
