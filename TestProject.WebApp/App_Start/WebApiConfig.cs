@@ -2,7 +2,6 @@
 using TestProject.WebApp.DependencyResolver;
 using TestProject.WebApp.Interface;
 using TestProject.WebApp.Models;
-using TestProject.WebApp.RepositoryDapper;
 using Unity;
 using Unity.Lifetime;
 
@@ -18,9 +17,9 @@ namespace TestProject.WebApp
        
             var container = new UnityContainer();
 
-            container.RegisterType<ITaskRepository<TaskModel>, TaskRepository>(new HierarchicalLifetimeManager());
-
-            config.DependencyResolver =new UnityResolver(container);
+          //  container.RegisterType<ITaskRepository<TaskModel>, TestProject.WebApp.RepositoryDapper.TaskRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ITaskRepository<TaskModel>, TestProject.WebApp.Repository.TaskRepository>(new HierarchicalLifetimeManager());
+            config.DependencyResolver = new UnityResolver(container);
 
             config.MapHttpAttributeRoutes();
 
