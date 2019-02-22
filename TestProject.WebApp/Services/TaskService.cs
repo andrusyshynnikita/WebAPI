@@ -1,44 +1,68 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
 using TestProject.WebApp.EF;
 using TestProject.WebApp.Interface;
 using TestProject.WebApp.Models;
-using TestProject.WebApp.Repository;
 
 namespace TestProject.WebApp.Services
 {
-    public class TaskService : IDisposable
+    public class TaskService : ITaskService
     {
         private TaskContext _db = new TaskContext();
         private ITaskRepository<TaskModel> _taskRepository;
-        private bool _disposed = false;
         public TaskService(ITaskRepository<TaskModel> taskRepository)
         {
             _taskRepository = taskRepository;
         }
-        public ITaskRepository<TaskModel> Tasks
+
+        public IEnumerable<TaskModel> GetTasks(string id)
         {
-            get
+           var tasks= _taskRepository.GetTasks(id);
+
+            return tasks;
+        }
+
+        public void Create(TaskModel taskModel, byte[] audioFile, string audioFilePath)
+        {
+            _taskRepository.Create(taskModel);
+            if (taskModel.AudioFileName != null)
             {
-                return _taskRepository;
+                File.WriteAllBytes(audioFilePath, audioFile);
             }
         }
 
-        public virtual void Dispose(bool disposing)
+        public void Update(TaskModel taskModel, byte[] audioFile, string audioFilePath)
         {
-            if (!this._disposed)
+            _taskRepository.Update(taskModel);
+
+            if (taskModel.AudioFileName != null && audioFile!=null)
             {
-                if (disposing)
-                {
-                    _db.Dispose();
-                }
-                this._disposed = true;
+                File.WriteAllBytes(audioFilePath, audioFile);
             }
         }
 
-        public void Dispose()
+        public void Delete(int id)
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            TaskModel taskModel = _taskRepository.Delete(id);
+
+            if (taskModel.AudioFileName != null)
+            {
+                var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + taskModel.AudioFileName);
+
+                File.Delete(filePath);
+            }
         }
+
+        public TaskModel DownloadAudioFile(int id)
+        {
+           TaskModel taskModel= _taskRepository.DownloadAudioFile(id);
+
+            return taskModel;
+
+        }
+
     }
 }

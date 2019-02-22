@@ -17,69 +17,28 @@ namespace TestProject.WebApp.Repository
     public class TaskRepository : ITaskRepository<TaskModel>
     {
         private TaskContext _db;
-        private TaskModel _taskModel;
-        private string _filename;
 
         public TaskRepository()
         {
-            _db = new TaskContext() ;
+            _db = new TaskContext();
         }
 
-        public string Create(HttpRequest httpRequest)
+        public void Create(TaskModel taskModel)
         {
-            try
-            {
-                if (httpRequest.Files.Count > 0)
-                {
-                    foreach (string file in httpRequest.Files)
-                    {
-                        var postedFile = httpRequest.Files[file];
-
-                        _filename = postedFile.FileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
-
-                        var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + _filename);
-
-                        postedFile.SaveAs(filePath);
-
-                    }
-                }
-
-                if (httpRequest["TaskModel"] != null)
-                {
-                    var postedForm = httpRequest.Form["TaskModel"];
-                    _taskModel = JsonConvert.DeserializeObject<TaskModel>(postedForm);
-                    _db.Tasks.Add(_taskModel);
-                    _db.SaveChanges();
-                    
-                }
-            }
-
-            catch (Exception exception)
-            {
-                return exception.Message;
-            }
-
-            return "no files";
-
+            _db.Tasks.Add(taskModel);
+            _db.SaveChanges();
         }
 
-        public void Delete(int id)
+        public TaskModel Delete(int id)
         {
-            TaskModel task = _db.Tasks.Find(id);
-            if (task.AudioFileName != null)
+            TaskModel taskModel = _db.Tasks.Find(id);
+
+            if (taskModel != null)
             {
-                var fileName = task.AudioFileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
-
-                var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
-
-                File.Delete(filePath);
-            }
-
-            if (task != null)
-            {
-                _db.Tasks.Remove(task);
+                _db.Tasks.Remove(taskModel);
                 _db.SaveChanges();
             }
+            return taskModel;
         }
 
         public IEnumerable<TaskModel> GetTasks(string id)
@@ -88,57 +47,17 @@ namespace TestProject.WebApp.Repository
             return tasks;
         }
 
-        public string Update(HttpRequest httpRequest)
+        public void Update(TaskModel taskModel)
         {
-            try
-            {
-                if (httpRequest.Files.Count > 0)
-                {
-                    foreach (string file in httpRequest.Files)
-                    {
-                        var postedFile = httpRequest.Files[file];
-
-                        var fileName = postedFile.FileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
-
-                        var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
-
-                        postedFile.SaveAs(filePath);
-                    }
-                }
-
-                if (httpRequest["TaskModel"] != null)
-                {
-                    var postedForm = httpRequest.Form["TaskModel"];
-                    _taskModel = JsonConvert.DeserializeObject<TaskModel>(postedForm);
-                    _db.Entry(_taskModel).State = EntityState.Modified;
-                    _db.SaveChanges();
-                }
-            }
-
-            catch (Exception exception)
-            {
-                return exception.Message;
-            }
-
-            return "no files";
+            _db.Entry(taskModel).State = EntityState.Modified;
+            _db.SaveChanges();
         }
 
-        public HttpResponseMessage DownloadAudioFile(int id)
+        public TaskModel DownloadAudioFile(int id)
         {
-            var task = _db.Tasks.Where(x => x.Id == id).FirstOrDefault();
+            TaskModel taskModel = _db.Tasks.Where(x => x.Id == id).FirstOrDefault();
 
-            var fileName = task.AudioFileName.Split('\\').LastOrDefault().Split('/').LastOrDefault();
-
-            var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + fileName);
-
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-
-            response.Content = new StreamContent(new FileStream(filePath, FileMode.Open, FileAccess.Read));
-            response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment");
-            response.Content.Headers.ContentDisposition.FileName = fileName;
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/3gpp");
-
-            return response;
+            return taskModel;
         }
     }
 }

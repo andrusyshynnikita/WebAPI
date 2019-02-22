@@ -160,18 +160,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="DependencyResolver\UnityResolver.cs" />
     <Compile Include="EF\TaskContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interface\ITaskRepository.cs" />
+    <Compile Include="Interface\ITaskService.cs" />
     <Compile Include="Migrations\201902081233518_InitialCreate.cs" />
     <Compile Include="Migrations\201902081233518_InitialCreate.Designer.cs">
       <DependentUpon>201902081233518_InitialCreate.cs</DependentUpon>
