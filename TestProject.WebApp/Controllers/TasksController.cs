@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Sockets;
 using System.Web;
 using System.Web.Http;
 using TestProject.WebApp.Interface;
@@ -25,8 +27,9 @@ namespace TestProject.WebApp.Controllers
 
         public IEnumerable<TaskModel> GetTasks(string id)
         {
-            var tasks = _taskService.GetTasks(id);
-            return tasks;
+
+            IEnumerable<TaskModel> tasks = _taskService.GetTasks(id);
+            return tasks; 
         }
 
         public void DeleteTasks(int id)
@@ -34,7 +37,7 @@ namespace TestProject.WebApp.Controllers
             _taskService.Delete(id);
         }
 
-        [System.Web.Http.Route("api/Files/Upload")]
+        [Route("api/Files/Upload")]
         public void PostTask()
         {
             HttpRequest httpRequest = HttpContext.Current.Request;

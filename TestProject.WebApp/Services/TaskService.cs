@@ -11,23 +11,22 @@ namespace TestProject.WebApp.Services
 {
     public class TaskService : ITaskService
     {
-        private TaskContext _db = new TaskContext();
-        private ITaskRepository<TaskModel> _taskRepository;
-        public TaskService(ITaskRepository<TaskModel> taskRepository)
+        private ITaskRepository _taskRepository;
+        public TaskService(ITaskRepository taskRepository)
         {
             _taskRepository = taskRepository;
         }
 
         public IEnumerable<TaskModel> GetTasks(string id)
         {
-           var tasks= _taskRepository.GetTasks(id);
+            var tasks = _taskRepository.GetAllUserTasks(id);
 
             return tasks;
         }
 
         public void Create(TaskModel taskModel, byte[] audioFile, string audioFilePath)
         {
-            _taskRepository.Create(taskModel);
+            _taskRepository.Add(taskModel);
             if (taskModel.AudioFileName != null)
             {
                 File.WriteAllBytes(audioFilePath, audioFile);
@@ -36,9 +35,9 @@ namespace TestProject.WebApp.Services
 
         public void Update(TaskModel taskModel, byte[] audioFile, string audioFilePath)
         {
-            _taskRepository.Update(taskModel);
+            _taskRepository.Edit(taskModel);
 
-            if (taskModel.AudioFileName != null && audioFile!=null)
+            if (taskModel.AudioFileName != null && audioFile != null)
             {
                 File.WriteAllBytes(audioFilePath, audioFile);
             }
@@ -46,11 +45,13 @@ namespace TestProject.WebApp.Services
 
         public void Delete(int id)
         {
-            TaskModel taskModel = _taskRepository.Delete(id);
+            _taskRepository.Delete(id);
 
-            if (taskModel.AudioFileName != null)
+            TaskModel task = _taskRepository.GetItem(id);
+
+            if (task.AudioFileName != null)
             {
-                var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + taskModel.AudioFileName);
+                var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + task.AudioFileName);
 
                 File.Delete(filePath);
             }
@@ -58,7 +59,7 @@ namespace TestProject.WebApp.Services
 
         public TaskModel DownloadAudioFile(int id)
         {
-           TaskModel taskModel= _taskRepository.DownloadAudioFile(id);
+            TaskModel taskModel = _taskRepository.GetItem(id);
 
             return taskModel;
 

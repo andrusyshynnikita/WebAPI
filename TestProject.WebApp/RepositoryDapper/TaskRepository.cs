@@ -9,66 +9,66 @@ using Dapper.Contrib.Extensions;
 
 namespace TestProject.WebApp.RepositoryDapper
 {
-    public class TaskRepository : ITaskRepository<TaskModel>
-    {
+    //public class TaskRepository : ITaskRepository
+    //{
 
-      private string connectionString = ConfigurationManager.ConnectionStrings["BookContext"].ConnectionString;
+    //  private string connectionString = ConfigurationManager.ConnectionStrings["BookContext"].ConnectionString;
 
-        public TaskRepository()
-        {
+    //    public TaskRepository()
+    //    {
 
-        }
+    //    }
 
-        public IEnumerable<TaskModel> GetTasks(string id)
-        {
-            using (IDbConnection db = new SqlConnection(connectionString))
-            {
-                var res = SqlMapperExtensions.GetAll<TaskModel>(db).Where(x => x.User_Id == id);
+    //    public IEnumerable<TaskModel> GetTasks(string id)
+    //    {
+    //        using (IDbConnection db = new SqlConnection(connectionString))
+    //        {
+    //            var res = SqlMapperExtensions.GetAll<TaskModel>(db).Where(x => x.User_Id == id);
 
-                return res;
-            }
-        }
+    //            return res;
+    //        }
+    //    }
 
-        public void Create(TaskModel taskModel)
-        {
-            using (IDbConnection db = new SqlConnection(connectionString))
-            {
-                SqlMapperExtensions.Insert(db, taskModel);
-            }
-        }
+    //    public void Create(TaskModel taskModel)
+    //    {
+    //        using (IDbConnection db = new SqlConnection(connectionString))
+    //        {
+    //            SqlMapperExtensions.Insert(db, taskModel);
+    //        }
+    //    }
 
-        public void Update(TaskModel taskModel)
-        {
-            using (IDbConnection db = new SqlConnection(connectionString))
-            {
-                {
-                    SqlMapperExtensions.Update(db, taskModel);
-                }
-            }
-        }
+    //    public void Update(TaskModel taskModel)
+    //    {
+    //        using (IDbConnection db = new SqlConnection(connectionString))
+    //        {
+    //            {
+    //                SqlMapperExtensions.Update(db, taskModel);
+    //            }
+    //        }
+    //    }
 
-        public TaskModel Delete(int id)
-        {
-            using (IDbConnection db = new SqlConnection(connectionString))
-            {
-                TaskModel taskModel = SqlMapperExtensions.Get<TaskModel>(db, id);
+    //    public TaskModel Delete(int id)
+    //    {
+    //        using (IDbConnection db = new SqlConnection(connectionString))
+    //        {
+    //            TaskModel taskModel = SqlMapperExtensions.Get<TaskModel>(db, id);
 
-                if (taskModel != null)
-                {
-                    SqlMapperExtensions.Delete<TaskModel>(db, taskModel);
-                }
+    //            if (taskModel != null)
+    //            {
+    //                SqlMapperExtensions.Delete<TaskModel>(db, taskModel);
+    //            }
 
-                return taskModel;
-            }
-        }
+    //            return taskModel;
+    //        }
+    //    }
 
-        public TaskModel DownloadAudioFile(int id)
-        {
-            IDbConnection db = new SqlConnection(connectionString);
+    //    public TaskModel DownloadAudioFile(int id)
+    //    {
+    //        IDbConnection db = new SqlConnection(connectionString);
 
-            TaskModel taskModel = SqlMapperExtensions.Get<TaskModel>(db, id);
+    //        TaskModel taskModel = SqlMapperExtensions.Get<TaskModel>(db, id);
 
-            return taskModel;
-        }
-    }
+    //        return taskModel;
+    //    }
+    //}
 }

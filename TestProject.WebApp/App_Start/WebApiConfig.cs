@@ -11,17 +11,14 @@ namespace TestProject.WebApp
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
-        {       
+        {
             var container = new UnityContainer();
+            container.RegisterSingleton<ITaskService, TaskService>();
+            // container.RegisterType<ITaskRepository<TaskModel>, TestProject.WebApp.RepositoryDapper.TaskRepository>(new HierarchicalLifetimeManager());
+            container.RegisterSingleton<ITaskRepository, TestProject.WebApp.Repository.TaskRepository>();
 
-            container.RegisterType<ITaskService, TaskService>(new HierarchicalLifetimeManager());
-
-             container.RegisterType<ITaskRepository<TaskModel>, TestProject.WebApp.RepositoryDapper.TaskRepository>(new HierarchicalLifetimeManager());
-            // container.RegisterType<ITaskRepository<TaskModel>, TestProject.WebApp.Repository.TaskRepository>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
-
             config.MapHttpAttributeRoutes();
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

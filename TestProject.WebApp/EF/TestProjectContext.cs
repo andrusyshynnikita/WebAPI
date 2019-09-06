@@ -3,8 +3,12 @@ using TestProject.WebApp.Models;
 
 namespace TestProject.WebApp.EF
 {
-    public class TaskContext : DbContext
+    public class TestProjectContext : DbContext
     {
+        public TestProjectContext()
+        {
+
+        }
         public DbSet<TaskModel> Tasks { get; set; }
 
     }

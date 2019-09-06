@@ -2,7 +2,7 @@ namespace TestProject.WebApp.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TestProject.WebApp.EF.TaskContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EF.TestProjectContext>
     {
         public Configuration()
         {
@@ -10,7 +10,7 @@ namespace TestProject.WebApp.Migrations
             ContextKey = "TestProject.WebApp.EF.TaskContext";
         }
 
-        protected override void Seed(TestProject.WebApp.EF.TaskContext context)
+        protected override void Seed(EF.TestProjectContext context)
         {
             //  This method will be called after migrating to the latest version.
 

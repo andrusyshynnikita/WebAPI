@@ -9,13 +9,9 @@ using TestProject.WebApp.Models;
 
 namespace TestProject.WebApp.Interface
 {
-   public interface ITaskRepository<T> where T : class
+   public interface ITaskRepository : IBaseRepository<TaskModel>
     {
-        IEnumerable<T> GetTasks(string id);
-        void Create(TaskModel taskModel);
-        void Update(TaskModel taskModel);
-        TaskModel Delete(int id);
-        TaskModel DownloadAudioFile(int id);
+        IEnumerable<TaskModel> GetAllUserTasks(string userId);
     }
 
 }
