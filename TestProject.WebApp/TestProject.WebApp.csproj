@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=1.50.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.50.7\lib\net451\Dapper.dll</HintPath>
     </Reference>
@@ -188,6 +191,10 @@
     <Compile Include="Migrations\201902201045579_AddCompanyMigration2.Designer.cs">
       <DependentUpon>201902201045579_AddCompanyMigration2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909060834359_deleteAudioContent.cs" />
+    <Compile Include="Migrations\201909060834359_deleteAudioContent.Designer.cs">
+      <DependentUpon>201909060834359_deleteAudioContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -195,6 +202,7 @@
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Services\TaskService.cs" />
+    <Compile Include="ViewModel\TaskViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -227,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902201045579_AddCompanyMigration2.resx">
       <DependentUpon>201902201045579_AddCompanyMigration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909060834359_deleteAudioContent.resx">
+      <DependentUpon>201909060834359_deleteAudioContent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

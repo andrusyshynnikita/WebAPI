@@ -24,13 +24,15 @@ namespace TestProject.WebApp.Services
             return tasks;
         }
 
-        public void Create(TaskModel taskModel, byte[] audioFile, string audioFilePath)
+        public void Create(TaskModel taskModel)
         {
+            //TODO: create Mapper
             _taskRepository.Add(taskModel);
-            if (taskModel.AudioFileName != null)
-            {
-                File.WriteAllBytes(audioFilePath, audioFile);
-            }
+            //if (taskModel.AudioFileContent != null)
+            //{
+            //    string audioFilePath  = HttpContext.Current.Server.MapPath("~/Uploads/" + taskModel.AudioFileName);
+            //    File.WriteAllBytes(audioFilePath, taskModel.AudioFileContent);
+            //}
         }
 
         public void Update(TaskModel taskModel, byte[] audioFile, string audioFilePath)

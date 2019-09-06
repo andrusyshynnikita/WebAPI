@@ -29,7 +29,7 @@ namespace TestProject.WebApp.Controllers
         {
 
             IEnumerable<TaskModel> tasks = _taskService.GetTasks(id);
-            return tasks; 
+            return tasks;
         }
 
         public void DeleteTasks(int id)
@@ -38,31 +38,11 @@ namespace TestProject.WebApp.Controllers
         }
 
         [Route("api/Files/Upload")]
-        public void PostTask()
+        [HttpPost]
+        public void PostTask(TaskModel task)
         {
-            HttpRequest httpRequest = HttpContext.Current.Request;
 
-            if (httpRequest.Files.Count > 0)
-            {
-                foreach (string file in httpRequest.Files)
-                {
-                    HttpPostedFile postedFile = httpRequest.Files[file];
-
-                     _audiofilePath = HttpContext.Current.Server.MapPath("~/Uploads/" + postedFile.FileName);
-
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        postedFile.InputStream.CopyTo(ms);
-                        _audioFile = ms.ToArray();
-                    }
-                }
-            }
-
-            string postedForm = httpRequest.Form["TaskModel"];
-
-            _taskModel = JsonConvert.DeserializeObject<TaskModel>(postedForm);
-
-            _taskService.Create(_taskModel, _audioFile, _audiofilePath);
+            _taskService.Create(task);
 
         }
 
@@ -97,7 +77,7 @@ namespace TestProject.WebApp.Controllers
         [Route("api/DownloadFile/{id}")]
         public HttpResponseMessage GetAudioFile(int id)
         {
-            _taskModel= _taskService.DownloadAudioFile(id);
+            _taskModel = _taskService.DownloadAudioFile(id);
 
             var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + _taskModel.AudioFileName);
 

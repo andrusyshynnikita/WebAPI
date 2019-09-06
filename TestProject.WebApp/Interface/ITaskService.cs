@@ -10,7 +10,7 @@ namespace TestProject.WebApp.Interface
   public  interface ITaskService
     {
         IEnumerable<TaskModel> GetTasks(string id);
-        void Create(TaskModel taskModel, byte[] audioFile, string audioFilePath);
+        void Create(TaskModel taskModel);
         void Update(TaskModel taskModel, byte[] audioFile, string audioFilePath);
         void Delete(int id);
         TaskModel DownloadAudioFile(int id);
