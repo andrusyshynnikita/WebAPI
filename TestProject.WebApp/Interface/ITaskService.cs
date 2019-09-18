@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestProject.WebApp.Models;
+using TestProject.WebApp.ViewModel;
 
 namespace TestProject.WebApp.Interface
 {
-  public  interface ITaskService
+    public interface ITaskService
     {
-        IEnumerable<TaskModel> GetTasks(string id);
-        void Create(TaskModel taskModel);
-        void Update(TaskModel taskModel, byte[] audioFile, string audioFilePath);
-        void Delete(int id);
-        TaskModel DownloadAudioFile(int id);
+        Task<IEnumerable<TaskViewModel>> GetTasks(string id);
+        Task<ResponseViewModel> Create(TaskViewModel taskViewModel);
+        Task<ResponseViewModel> Update(TaskViewModel taskViewModel);
+        Task<ResponseViewModel> Delete(int id);
+        Task<TaskViewModel> DownloadAudioFile(int id);
 
     }
 }

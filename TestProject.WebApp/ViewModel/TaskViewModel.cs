@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,6 +14,8 @@ namespace TestProject.WebApp.ViewModel
         public string Description { get; set; }
         public bool Status { get; set; }
         public string AudioFileName { get; set; }
+
+        [NotMapped]
         public byte[] AudioFileContent { get; set; }
     }
 }
