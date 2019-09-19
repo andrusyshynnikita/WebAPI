@@ -12,7 +12,7 @@ namespace TestProject.WebApp.MapperProfiles
     {
         public TaskProfile()
         {
-            CreateMap<TaskModel, TaskViewModel>();
+            CreateMap<TaskModel, TaskViewModel>().ForMember(m => m.AudioFileContent, vm => vm.Ignore());
 
             CreateMap<TaskViewModel, TaskModel>();
         }
