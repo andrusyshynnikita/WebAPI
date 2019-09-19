@@ -1,17 +1,13 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Sockets;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 using TestProject.WebApp.Interface;
-using TestProject.WebApp.Models;
 using TestProject.WebApp.ViewModel;
+using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
+using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
+using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
+using HttpPutAttribute = System.Web.Http.HttpPutAttribute;
 
 namespace TestProject.WebApp.Controllers
 {
@@ -33,27 +29,42 @@ namespace TestProject.WebApp.Controllers
         }
 
         [HttpDelete]
-        public async Task<ResponseViewModel> DeleteTasks(int id)
+        public async Task<ActionResult> DeleteTasks(int id)
         {
             ResponseViewModel result = await _taskService.Delete(id);
 
-            return result;
+            if (result.IsSuccess)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK, "Ok");
+            }
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
         }
 
         [HttpPost]
-        public async Task<ResponseViewModel> PostTask(TaskViewModel task)
+        public async Task<ActionResult> PostTask(TaskViewModel task)
         {
             ResponseViewModel result = await _taskService.Create(task);
 
-            return result;
+            if (result.IsSuccess)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+            }
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
         }
 
         [HttpPut]
-        public async Task<ResponseViewModel> PutTask(TaskViewModel task)
+        public async Task<ActionResult> PutTask(TaskViewModel task)
         {
             ResponseViewModel result = await _taskService.Update(task);
 
-            return result;
+            if (result.IsSuccess)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+            }
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
         }
 
         [HttpGet]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 
 namespace TestProject.WebApp.ViewModel
@@ -19,6 +20,5 @@ namespace TestProject.WebApp.ViewModel
         public bool IsSuccess { get; set; }
 
         public string Message { get; set; }
-
     }
 }

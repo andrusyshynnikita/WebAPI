@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using TestProject.WebApp.EF;
+using TestProject.WebApp.Helpers;
 using TestProject.WebApp.Interface;
 using TestProject.WebApp.Models;
 using TestProject.WebApp.ViewModel;
@@ -35,25 +36,17 @@ namespace TestProject.WebApp.Services
         public async Task<ResponseViewModel> Create(TaskViewModel taskViewModel)
         {
             var responseViewModel = new ResponseViewModel();
+
             var taskModel = _mapper.Map<TaskViewModel, TaskModel>(taskViewModel);
             _taskRepository.Add(taskModel);
-            try
-            {
-                if (taskViewModel.AudioFileContent != null)
-                {
-                    string audioFilePath = HttpContext.Current.Server.MapPath("~/Uploads/" + taskModel.AudioFileName);
-                    File.WriteAllBytes(audioFilePath, taskViewModel.AudioFileContent);
-                }
-                responseViewModel.IsSuccess = true;
+            responseViewModel.IsSuccess = true;
 
-                return responseViewModel;
-            }
-            catch (Exception ex)
+            if (!string.IsNullOrEmpty(taskViewModel.AudioFileName) && taskViewModel.AudioFileContent != null)
             {
-                responseViewModel.Message = ex.Message;
-
-                return responseViewModel;
+                responseViewModel.IsSuccess = await StorageHelper.WriteByteToFileAsync(taskViewModel.AudioFileName, taskViewModel.AudioFileContent);
             }
+
+            return responseViewModel;
         }
 
         public async Task<ResponseViewModel> Update(TaskViewModel taskViewModel)
@@ -62,54 +55,30 @@ namespace TestProject.WebApp.Services
 
             var taskModel = _mapper.Map<TaskViewModel, TaskModel>(taskViewModel);
             _taskRepository.Edit(taskModel);
+            responseViewModel.IsSuccess = true;
 
-            try
+            if (!string.IsNullOrEmpty(taskViewModel.AudioFileName) && taskViewModel.AudioFileContent != null)
             {
-                if (taskViewModel.AudioFileContent != null)
-                {
-                    string audioFilePath = HttpContext.Current.Server.MapPath("~/Uploads/" + taskModel.AudioFileName);
-                    File.WriteAllBytes(audioFilePath, taskViewModel.AudioFileContent);
-                }
-
-                responseViewModel.IsSuccess = true;
-
-                return responseViewModel;
+                responseViewModel.IsSuccess = await StorageHelper.WriteByteToFileAsync(taskViewModel.AudioFileName, taskViewModel.AudioFileContent);
             }
-            catch (Exception ex)
-            {
-                responseViewModel.Message = ex.Message;
 
-                return responseViewModel;
-            }
+            return responseViewModel;
         }
 
         public async Task<ResponseViewModel> Delete(int id)
         {
             var responseViewModel = new ResponseViewModel();
 
-            _taskRepository.Delete(id);
-
             TaskModel task = _taskRepository.GetItem(id);
+            _taskRepository.Delete(id);
+            responseViewModel.IsSuccess = true;
 
-            try
+            if (!string.IsNullOrEmpty(task?.AudioFileName))
             {
-                if (task.AudioFileName != null)
-                {
-                    var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + task.AudioFileName);
-
-                    File.Delete(filePath);
-                }
-
-                responseViewModel.IsSuccess = true;
-
-                return responseViewModel;
+                responseViewModel.IsSuccess = await StorageHelper.DeleteFile(task.AudioFileName);
             }
-            catch (Exception ex)
-            {
-                responseViewModel.Message = ex.Message;
 
-                return responseViewModel;
-            }
+            return responseViewModel;
         }
 
         public async Task<TaskViewModel> DownloadAudioFile(int id)
@@ -119,8 +88,7 @@ namespace TestProject.WebApp.Services
 
             if (!string.IsNullOrEmpty(taskModel.AudioFileName))
             {
-                var filePath = HttpContext.Current.Server.MapPath("~/Uploads/" + taskViewModel.AudioFileName);
-                taskViewModel.AudioFileContent = File.ReadAllBytes(filePath);
+                taskViewModel.AudioFileContent = await StorageHelper.ReadFileAsync(taskViewModel.AudioFileName);
             }
 
             return taskViewModel;
