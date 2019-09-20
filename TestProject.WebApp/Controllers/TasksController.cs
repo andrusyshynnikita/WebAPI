@@ -44,20 +44,7 @@ namespace TestProject.WebApp.Controllers
         [HttpPost]
         public async Task<ActionResult> PostTask(TaskViewModel task)
         {
-            ResponseViewModel result = await _taskService.Create(task);
-
-            if (result.IsSuccess)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
-            }
-
-            return new HttpStatusCodeResult(System.Net.HttpStatusCode.InternalServerError);
-        }
-
-        [HttpPut]
-        public async Task<ActionResult> PutTask(TaskViewModel task)
-        {
-            ResponseViewModel result = await _taskService.Update(task);
+            ResponseViewModel result = await _taskService.CreateOrUpdateTask(task);
 
             if (result.IsSuccess)
             {

@@ -33,28 +33,14 @@ namespace TestProject.WebApp.Services
             return tasksviewModel;
         }
 
-        public async Task<ResponseViewModel> Create(TaskViewModel taskViewModel)
+        public async Task<ResponseViewModel> CreateOrUpdateTask(TaskViewModel taskViewModel)
         {
             var responseViewModel = new ResponseViewModel();
 
             var taskModel = _mapper.Map<TaskViewModel, TaskModel>(taskViewModel);
-            _taskRepository.Add(taskModel);
-            responseViewModel.IsSuccess = true;
 
-            if (!string.IsNullOrEmpty(taskViewModel.AudioFileName) && taskViewModel.AudioFileContent != null)
-            {
-                responseViewModel.IsSuccess = await StorageHelper.WriteByteToFileAsync(taskViewModel.AudioFileName, taskViewModel.AudioFileContent);
-            }
+            _taskRepository.AddOrUpdate(taskModel);
 
-            return responseViewModel;
-        }
-
-        public async Task<ResponseViewModel> Update(TaskViewModel taskViewModel)
-        {
-            var responseViewModel = new ResponseViewModel();
-
-            var taskModel = _mapper.Map<TaskViewModel, TaskModel>(taskViewModel);
-            _taskRepository.Edit(taskModel);
             responseViewModel.IsSuccess = true;
 
             if (!string.IsNullOrEmpty(taskViewModel.AudioFileName) && taskViewModel.AudioFileContent != null)

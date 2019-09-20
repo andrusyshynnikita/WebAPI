@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using TestProject.WebApp.EF;
@@ -28,9 +29,9 @@ namespace TestProject.WebApp.Repository
             return _dbSet;
         }
 
-        public void Add(TEntity item)
+        public void AddOrUpdate(TEntity item)
         {
-            _dbSet.Add(item);
+            _dbSet.AddOrUpdate(item);
             SaveChanges();
         }
 

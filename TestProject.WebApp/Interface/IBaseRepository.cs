@@ -11,7 +11,7 @@ namespace TestProject.WebApp.Interface
 
         TEntity GetItem(int id);
 
-        void Add(TEntity item);
+        void AddOrUpdate(TEntity item);
 
         void Edit(TEntity item);
 
